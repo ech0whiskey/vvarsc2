@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace vvarscNET.Core
+{
+    public static class Globals
+    {
+        public static string CoreDBName = "Core";
+        public static readonly string AuthHandlerToken = "00055U8J7bJ4MkWv7x6lMi38Yg";
+        public static readonly string ApplicationPID = "AdminCon";
+    }
+}
