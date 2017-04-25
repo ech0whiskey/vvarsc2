@@ -1,0 +1,11 @@
+D:\GIT\DevTFS_Luna\AdminConsole\_output\AdminConsole.Model.dll
+D:\GIT\DevTFS_Luna\AdminConsole\_output\AdminConsole.Model.pdb
+D:\GIT\DevTFS_Luna\AdminConsole\AdminConsole.Model\bin\Debug\AdminConsole.Model.dll
+D:\GIT\DevTFS_Luna\AdminConsole\AdminConsole.Model\bin\Debug\AdminConsole.Model.pdb
+D:\GIT\DevTFS_Luna\AdminConsole\AdminConsole.Model\obj\Debug\AdminConsole.Model.dll
+D:\GIT\DevTFS_Luna\AdminConsole\AdminConsole.Model\obj\Debug\AdminConsole.Model.pdb
+D:\GIT\vvarsc-ms\AdminConsole\AdminConsole.Model\bin\Debug\AdminConsole.Model.dll
+D:\GIT\vvarsc-ms\AdminConsole\AdminConsole.Model\bin\Debug\AdminConsole.Model.pdb
+D:\GIT\vvarsc-ms\AdminConsole\AdminConsole.Model\obj\Debug\AdminConsole.Model.csprojResolveAssemblyReference.cache
+D:\GIT\vvarsc-ms\AdminConsole\AdminConsole.Model\obj\Debug\AdminConsole.Model.dll
+D:\GIT\vvarsc-ms\AdminConsole\AdminConsole.Model\obj\Debug\AdminConsole.Model.pdb

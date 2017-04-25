@@ -1,0 +1,9 @@
+D:\GIT\vvarsc-ms\vvarscNET\_output\scNET_Core.dacpac
+D:\GIT\vvarsc-ms\vvarscNET\_output\vvarscNET.Database.dll
+D:\GIT\vvarsc-ms\vvarscNET\_output\vvarscNET.Database.pdb
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\Model.xml
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\refactor.xml
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\postdeploy.sql
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\predeploy.sql
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\vvarscNET.Database.dll
+D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Database\obj\Debug\vvarscNET.Database.pdb

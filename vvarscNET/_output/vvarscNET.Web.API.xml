@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>vvarscNET.Web.API</name>
+    </assembly>
+    <members>
+        <member name="T:vvarscNET.Web.API.App_Start.SimpleInjectorWebApiInitializer">
+            <summary>
+            Class for SimpleInjector Initialization of Dependant Components (Commands, Queries, etc).
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.App_Start.SimpleInjectorWebApiInitializer.InitializeContainer(SimpleInjector.Container)">
+            <summary>
+            Initialize Container for SimpleInjector
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.App_Start.SimpleInjectorWebApiInitializer.Initialize">
+            <summary>Initialize the container and register it as Web API Dependency Resolver.</summary>
+        </member>
+        <member name="T:vvarscNET.Web.API.App_Start.Startup">
+            <summary>
+            App StartUp Configuration Class
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.App_Start.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            StartUp Configuration Method
+            </summary>
+            <param name="appBuilder"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.App_Start.Startup.SerializeSettings(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Private method for adding json serializer settings
+            </summary>
+            <param name="config">HttpConfiguration</param>
+        </member>
+        <member name="T:vvarscNET.Web.API.WebApiConfig">
+            <summary>
+            WebAPI Config Class
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Register Config Entries - do not put routes in here, they are defined as attributes of each controller method.
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Controllers.GroupsController">
+            <summary>
+            Controller for Groups
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.GroupsController.#ctor(vvarscNET.Core.Service.Interfaces.QueryServices.IGroupsQueryService)">
+            <summary>
+            Constructor for GroupsController
+            </summary>
+            <param name="groupsQueryService"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.GroupsController.ListGroupsByShellAndGroupType(System.Int32,System.String)">
+            <summary>
+            Method to Return List of Groups of a Certain Type within a Given Shell
+            </summary>
+            <returns>List of Groups</returns>
+            <param name="groupType">Type of Group to Retrieve</param>
+            <param name="shellID">ID of the Shell for which to Retrive Groups</param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Controllers.AuthenticationController">
+            <summary>
+            Controller for Handling Authentication of Members using AdminConsole System
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AuthenticationController.#ctor(vvarscNET.Core.Service.Interfaces.IAuthenticationService)">
+            <summary>
+            Constructor for Authentication Controller
+            </summary>
+            <param name="authService"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AuthenticationController.ProcessLogin(vvarscNET.Model.RequestModels.Authentication.AuthenticateMemberRequestModel)">
+            <summary>
+            Method to Authenticate Member. If members belongs to Prolfiiq Shell and is an Active,
+            Non-Test-Account user, this method will return an AccessToken Object encompassing the user details, signifying they should be able to login to AdminConsole.
+            </summary>
+            <param name="model">AuthenticateMemberRequestModel</param>
+            <returns>Member</returns>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AuthenticationController.RenewToken(vvarscNET.Model.RequestModels.Authentication.RenewTokenRequestModel)">
+            <summary>
+            Method to renew AccessToken for Member - requires that the member has a currently valid token
+            </summary>
+            <param name="model">RenewTokenRequestModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AuthenticationController.ProcessLogout(vvarscNET.Model.RequestModels.Authentication.LogoutMemberRequestModel)">
+            <summary>
+            Method to Logout Member - results in a call to DB to expire the Member's Current AccessToken
+            </summary>
+            <param name="model">LogoutMemberRequestModel</param>
+            <returns>Member</returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.Controllers.ModulesController">
+            <summary>
+            Controller for Modules
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.ModulesController.#ctor(vvarscNET.Core.Service.Interfaces.QueryServices.IModulesQueryService)">
+            <summary>
+            Constructor for ModulesController
+            </summary>
+            <param name="modulesQueryService"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.ModulesController.ListFeedModulesForShell(System.Int32)">
+            <summary>
+            Method to Return List of Feed (READ + PING) Modules for a Given Account (Shell)
+            </summary>
+            <returns>List of Feed Modules</returns>
+            <param name="shellID">ID of Account (Shell) for which to retrive Feed Modules</param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.ModulesController.ListLibraryModulesForShell(System.Int32)">
+            <summary>
+            Method to Return List of Library Modules for a Given Account (Shell)
+            </summary>
+            <returns>List of Library Modules</returns>
+            <param name="shellID">ID of Account (Shell) for which to retrive Library Modules</param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Controllers.AccountsController">
+            <summary>
+            Controller for Accounts (Shells)
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AccountsController.#ctor(vvarscNET.Core.Service.Interfaces.QueryServices.IAccountsQueryService)">
+            <summary>
+            Constructor for AccountsController
+            </summary>
+            <param name="accountsQueryService"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.AccountsController.ListActiveShells">
+            <summary>
+            Method to Return List of Active Accounts (Shells)
+            </summary>
+            <returns>List of Shells</returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.Controllers.MembersController">
+            <summary>
+            Controller for Member object
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.MembersController.#ctor(vvarscNET.Core.Service.Interfaces.QueryServices.IMembersQueryService,vvarscNET.Core.Service.Interfaces.CommandServices.IMemberCommandService)">
+            <summary>
+            Constructor for Members Controller
+            </summary>
+            <param name="memberQueryService"></param>
+            <param name="memberCommandService"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.MembersController.GetMemberByPID(System.String)">
+            <summary>
+            Method to GET a Member by MemberPID
+            </summary>
+            <param name="memberPID">Unique ID of Member to GET</param>
+            <returns>Member</returns>
+        </member>
+        <member name="M:vvarscNET.Web.API.Controllers.MembersController.UpdateMember(vvarscNET.Model.RequestModels.Members.UpdateMemberRequestModel)">
+            <summary>
+            Method to Update a Member
+            </summary>
+            <param name="member">Member Object to Update</param>
+            <returns>Result Object</returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.WebApiApplication">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.WebApiApplication.Application_Start">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:vvarscNET.Web.API.Infrastructure.Attributes.ApiExceptionFilterAttribute">
+            <summary>
+            API Expcetion Handler Class
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Attributes.ApiExceptionFilterAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Infrastructure.Attributes.ApiModelValidationAttribute">
+            <summary>
+            API Validation Class
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Attributes.ApiModelValidationAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Override Method for API Request Model Validation
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Infrastructure.Exceptions.GlobalExceptionHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Exceptions.GlobalExceptionHandler.HandleAsync(System.Web.Http.ExceptionHandling.ExceptionHandlerContext,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.Infrastructure.Exceptions.UnhandledExceptionLogger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Exceptions.UnhandledExceptionLogger.#ctor(vvarscNET.Core.Interfaces.ILogWriter)">
+            <summary>
+            
+            </summary>
+            <param name="logWriter"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Exceptions.UnhandledExceptionLogger.Log(System.Web.Http.ExceptionHandling.ExceptionLoggerContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:vvarscNET.Web.API.Infrastructure.Extensions.AppBuilderExtensions">
+            <summary>
+            Extensions for AppBuilder
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Extensions.AppBuilderExtensions.UseApiAuthentication(Owin.IAppBuilder,vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions)">
+            <summary>
+            Method to configure use of ApiAuthenticationMiddleware
+            </summary>
+            <param name="app"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:vvarscNET.Web.API.Infrastructure.Extensions.AppBuilderExtensions.UseGlobalException(Owin.IAppBuilder,vvarscNET.Web.API.OwinMiddlewares.Configuration.GlobalExceptionOptions)">
+            <summary>
+            Method to configure use of ApiExceptionMiddleware
+            </summary>
+            <param name="app"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.ApiKeyDefaults">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:vvarscNET.Web.API.OwinMiddlewares.ApiKeyDefaults.AuthenticationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.ApiAuthenticationMiddleware">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.ApiAuthenticationMiddleware.#ctor(Microsoft.Owin.OwinMiddleware,vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions)">
+            <summary>
+            
+            </summary>
+            <param name="next"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.ApiAuthenticationMiddleware.CreateHandler">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions.#ctor(SimpleInjector.Container)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="P:vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions.SignInAsAuthenticationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions.AuthService">
+            <summary>
+            Get Token Service
+            </summary>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.Configuration.GlobalExceptionOptions">
+            <summary>
+            Global Exceptions Options
+            </summary>
+        </member>
+        <member name="P:vvarscNET.Web.API.OwinMiddlewares.Configuration.GlobalExceptionOptions.LogWriter">
+            <summary>
+            Global LogWriter
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.Configuration.GlobalExceptionOptions.#ctor(SimpleInjector.Container)">
+            <summary>
+            constructor for GlobalExceptionOptions Class
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.GlobalExceptionMiddleware">
+            <summary>
+            This class defines the GlobalException Middleware from Owin
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.GlobalExceptionMiddleware.#ctor(Microsoft.Owin.OwinMiddleware,vvarscNET.Web.API.OwinMiddlewares.Configuration.GlobalExceptionOptions)">
+            <summary>
+            constructor for GlobalExceptionMiddleware class
+            </summary>
+            <param name="next"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.GlobalExceptionMiddleware.Invoke(Microsoft.Owin.IOwinContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:vvarscNET.Web.API.OwinMiddlewares.Handler.AuthenticationMiddlewareHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.Handler.AuthenticationMiddlewareHandler.#ctor(vvarscNET.Web.API.OwinMiddlewares.Configuration.ApiAuthenticationOptions)">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.Handler.AuthenticationMiddlewareHandler.AuthenticateCoreAsync">
+            <summary>
+            The core authentication logic which must be provided by the handler. Will be invoked at most
+            once per request. Do not call directly, call the wrapping Authenticate method instead.
+            </summary>
+            <returns>
+            The ticket data provided by the authentication logic
+            </returns>
+        </member>
+        <member name="M:vvarscNET.Web.API.OwinMiddlewares.Handler.AuthenticationMiddlewareHandler.InvokeAsync">
+            <summary>
+            Called once by common code after initialization. If an authentication middleware responds directly to
+            specifically known paths it must override this virtual, compare the request path to it's known paths, 
+            provide any response information as appropriate, and true to stop further processing.
+            </summary>
+            <returns>
+            Returning false will cause the common code to call the next middleware in line. Returning true will
+            cause the common code to begin the async completion journey without calling the rest of the middleware
+            pipeline.
+            </returns>
+        </member>
+        <member name="T:HttpRequestMessageExtension">
+            <summary>
+            HttpRequest Message Extensions
+            </summary>
+        </member>
+        <member name="M:HttpRequestMessageExtension.GetUserContext(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Method to Get UserContext from HttpRequest
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
