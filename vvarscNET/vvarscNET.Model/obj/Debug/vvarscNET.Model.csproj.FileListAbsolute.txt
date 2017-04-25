@@ -1,6 +1,0 @@
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\bin\Debug\AdminConsole.Model.dll
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\bin\Debug\AdminConsole.Model.pdb
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\_output\vvarscNET.Model.dll
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\_output\vvarscNET.Model.pdb
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\obj\Debug\vvarscNET.Model.dll
-D:\GIT\vvarsc-ms\vvarscNET\vvarscNET.Model\obj\Debug\vvarscNET.Model.pdb

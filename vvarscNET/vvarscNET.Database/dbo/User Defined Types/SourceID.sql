@@ -1,3 +1,0 @@
-﻿CREATE TYPE [dbo].[SourceID]
-    FROM VARCHAR (25) NULL;
-
