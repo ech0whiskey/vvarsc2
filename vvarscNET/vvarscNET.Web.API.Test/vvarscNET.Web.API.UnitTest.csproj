@@ -60,11 +60,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Controllers\GroupsControllerTest.cs" />
-    <Compile Include="Controllers\AuthenticationControllerTest.cs" />
-    <Compile Include="Controllers\ModulesControllerTest.cs" />
-    <Compile Include="Controllers\AccountsControllerTest.cs" />
-    <Compile Include="Controllers\MembersControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +89,9 @@
       <Project>{087223f3-0baa-4eca-a16b-dee0c5900f59}</Project>
       <Name>vvarscNET.Web.API</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -72,10 +72,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Decorators\ValidateAccessTokenPre_QH_DecoratorTest.cs" />
-    <Compile Include="Decorators\ValidateUserContextPre_CH_DecoratorTest.cs" />
-    <Compile Include="Dispatchers\QueryDispatcherTest.cs" />
-    <Compile Include="Dispatchers\CommandDispatcherTest.cs" />
     <Compile Include="Extensions\LoggerExtensionsTests.cs" />
     <Compile Include="Factories\SQLConnectionFactoryTest.cs" />
     <Compile Include="Logger\LogWriterTests.cs" />
@@ -97,6 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Decorators\" />
+    <Folder Include="Dispatchers\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

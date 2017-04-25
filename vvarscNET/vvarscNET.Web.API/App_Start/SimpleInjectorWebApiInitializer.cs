@@ -1,42 +1,13 @@
 ﻿using vvarscNET.Core.Dispatchers;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Logger;
-using vvarscNET.Core.Service.QueryServices.Accounts;
-using vvarscNET.Core.Service.QueryServices.Groups;
-using vvarscNET.Core.Service.QueryServices.Members;
-using vvarscNET.Core.Service.QueryServices.Modules;
-using vvarscNET.Core.Service.QueryServices.Operations;
-using vvarscNET.Core.Service.Security;
-using vvarscNET.Core.Data.QueryHandlers.Accounts;
-using vvarscNET.Core.Data.QueryHandlers.Authentication;
-using vvarscNET.Core.Data.QueryHandlers.Groups;
-using vvarscNET.Core.Data.QueryHandlers.Members;
-using vvarscNET.Core.Data.QueryHandlers.Modules;
-using vvarscNET.Core.QueryModels.Accounts;
-using vvarscNET.Core.QueryModels.Authentication;
-using vvarscNET.Core.QueryModels.Groups;
-using vvarscNET.Core.QueryModels.Members;
-using vvarscNET.Core.QueryModels.Modules;
-using vvarscNET.Model.ResponseModels.Accounts;
-using vvarscNET.Model.ResponseModels.Authentication;
-using vvarscNET.Model.ResponseModels.Groups;
-using vvarscNET.Model.ResponseModels.Members;
-using vvarscNET.Model.ResponseModels.Modules;
 using log4net;
-using System.Collections.Generic;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(vvarscNET.Web.API.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 
 namespace vvarscNET.Web.API.App_Start
 {
-    using Core.CommandModels.Members;
-    using Core.Data.CommandHandlers.Members;
-    using Core.Decorators;
     using Core.Factories;
-    using Core.Service.CommandServices.Members;
-    using Core.Service.Interfaces;
-    using Core.Service.Interfaces.CommandServices;
-    using Core.Service.Interfaces.QueryServices;
     using SimpleInjector;
     using System;
     using System.Configuration;
@@ -55,7 +26,7 @@ namespace vvarscNET.Web.API.App_Start
             // force the load of the query dll using ONE specific queryHandler so that getassemblies finds it
             container.Options.AllowOverridingRegistrations = true;
 
-            container.RegisterSingleton<ILog>(LogManager.GetLogger("AdminConsole-Web-Api"));
+            container.RegisterSingleton<ILog>(LogManager.GetLogger("vvarscnet-Web-Api"));
             container.Register<ILogWriter, LogWriter>();
 
             // for integration Nunit testing. Otherwise pulls from web.config
@@ -64,8 +35,8 @@ namespace vvarscNET.Web.API.App_Start
 
             container.Register<IContainer, IocContainer>(Lifestyle.Scoped);
 
-            container.RegisterDecorator(typeof(ICommandHandler<>), typeof(ValidateUserContextPre_CH_Decorator<>));
-            container.RegisterDecorator(typeof(IQueryHandler<,>), typeof(ValidateAccessTokenPre_QH_Decorator<,>));
+            //container.RegisterDecorator(typeof(ICommandHandler<>), typeof(ValidateUserContextPre_CH_Decorator<>));
+            //container.RegisterDecorator(typeof(IQueryHandler<,>), typeof(ValidateAccessTokenPre_QH_Decorator<,>));
 
             RegisterQueries(container);
 
@@ -73,7 +44,7 @@ namespace vvarscNET.Web.API.App_Start
 
             // Other Services
             //container.Register<ITokenService, JwtTokenService>(Lifestyle.Scoped);
-            container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Scoped);
+            //container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Scoped);
         }
 
         private static void RegisterCommands(Container container)
@@ -86,10 +57,10 @@ namespace vvarscNET.Web.API.App_Start
             container.Register(typeof(ICommandDispatcher), typeof(CommandDispatcher), Lifestyle.Scoped);
 
             // Command Handlers
-            container.Register<ICommandHandler<UpdateMember_C>, UpdateMember_CH>();
+            //container.Register<ICommandHandler<UpdateMember_C>, UpdateMember_CH>();
 
             // Command Services
-            container.Register<IMemberCommandService, MemberCommandService>(Lifestyle.Scoped);
+            //container.Register<IMemberCommandService, MemberCommandService>(Lifestyle.Scoped);
         }
 
         private static void RegisterQueries(Container container)
@@ -115,11 +86,11 @@ namespace vvarscNET.Web.API.App_Start
             //container.Register<IQueryHandler<AuthenticateMember_Q, AuthenticateMember_QRM>, AuthenticateMember_QH>();
 
             // Query Services
-            container.Register<IClientRegistrationQueryService, ClientRegistrationQueryService>(Lifestyle.Scoped);
-            container.Register<IMembersQueryService, MembersQueryService>(Lifestyle.Scoped);
-            container.Register<IAccountsQueryService, AccountsQueryService>(Lifestyle.Scoped);
-            container.Register<IModulesQueryService, ModulesQueryService>(Lifestyle.Scoped);
-            container.Register<IGroupsQueryService, GroupsQueryService>(Lifestyle.Scoped);
+            //container.Register<IClientRegistrationQueryService, ClientRegistrationQueryService>(Lifestyle.Scoped);
+            //container.Register<IMembersQueryService, MembersQueryService>(Lifestyle.Scoped);
+            //container.Register<IAccountsQueryService, AccountsQueryService>(Lifestyle.Scoped);
+            //container.Register<IModulesQueryService, ModulesQueryService>(Lifestyle.Scoped);
+            //container.Register<IGroupsQueryService, GroupsQueryService>(Lifestyle.Scoped);
         }
 
         /// <summary>Initialize the container and register it as Web API Dependency Resolver.</summary>

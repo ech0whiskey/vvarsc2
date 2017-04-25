@@ -4,12 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace vvarscNET.Model.Result
 {
     public class Result
     {
-        public List<CompositeID> ItemIDs { get; set; }
+        public List<string> ItemIDs { get; set; }
 
         /// <summary>
         /// The returned Status of the request
@@ -23,13 +24,7 @@ namespace vvarscNET.Model.Result
 
         public Result()
         {
-            ItemIDs = new List<CompositeID>();
+            ItemIDs = new List<string>();
         }
-    }
-
-    public class CompositeID
-    {
-        public string IDType { get; set; }
-        public string IDValue { get; set; }
     }
 }

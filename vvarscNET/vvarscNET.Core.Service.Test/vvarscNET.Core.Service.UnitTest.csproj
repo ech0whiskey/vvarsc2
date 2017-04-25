@@ -58,14 +58,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="CommandServices\Members\MemberCommandServiceTest.cs" />
-    <Compile Include="QueryServices\Accounts\AccountsQueryServiceTest.cs" />
-    <Compile Include="Security\AuthenticationServiceTest.cs" />
-    <Compile Include="QueryServices\Groups\GroupsQueryServiceTest.cs" />
-    <Compile Include="QueryServices\Members\MembersQueryServiceTest.cs" />
-    <Compile Include="QueryServices\Modules\ModulesQueryServiceTest.cs" />
-    <Compile Include="QueryServices\Operations\ClientRegistrationQueryServiceTest.cs" />
-    <Compile Include="Security\JwtTokenServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +80,11 @@
       <Project>{5be1faa1-7c46-438c-80cd-ae2e2097c6fb}</Project>
       <Name>vvarscNET.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandServices\" />
+    <Folder Include="QueryServices\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

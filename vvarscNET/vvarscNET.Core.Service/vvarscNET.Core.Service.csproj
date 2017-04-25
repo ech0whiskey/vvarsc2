@@ -48,23 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandServices\Members\MemberCommandService.cs" />
-    <Compile Include="Interfaces\CommandServices\IMemberCommandService.cs" />
-    <Compile Include="Interfaces\QueryServices\IGroupsQueryService.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
-    <Compile Include="Interfaces\QueryServices\IModulesQueryService.cs" />
-    <Compile Include="Interfaces\QueryServices\IAccountsQueryService.cs" />
-    <Compile Include="Interfaces\QueryServices\IMembersQueryService.cs" />
     <Compile Include="Interfaces\IService.cs" />
-    <Compile Include="Interfaces\QueryServices\IClientRegistrationQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryServices\Accounts\AccountsQueryService.cs" />
-    <Compile Include="Security\AuthenticationService.cs" />
-    <Compile Include="QueryServices\Groups\GroupsQueryService.cs" />
-    <Compile Include="QueryServices\Members\MembersQueryService.cs" />
-    <Compile Include="QueryServices\Modules\ModulesQueryService.cs" />
-    <Compile Include="QueryServices\Operations\ClientRegistrationQueryService.cs" />
-    <Compile Include="Security\JwtTokenService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vvarscNET.Core.Data\vvarscNET.Core.Data.csproj">
@@ -82,6 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandServices\" />
+    <Folder Include="Interfaces\CommandServices\" />
+    <Folder Include="Interfaces\QueryServices\" />
+    <Folder Include="QueryServices\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

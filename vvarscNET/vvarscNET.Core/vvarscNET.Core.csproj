@@ -48,11 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
-    <Compile Include="CommandModels\Authentication\CreateAccessToken_C.cs" />
-    <Compile Include="CommandModels\Members\UpdateMember_C.cs" />
-    <Compile Include="Decorators\ValidateAccessTokenPre_QH_Decorator.cs" />
-    <Compile Include="Decorators\ValidateUserContextPre_CH_Decorator.cs" />
     <Compile Include="Dispatchers\CommandDispatcher.cs" />
     <Compile Include="Dispatchers\PermissionQueryDispatcher.cs" />
     <Compile Include="Dispatchers\QueryDispatcher.cs" />
@@ -70,21 +65,11 @@
     <Compile Include="Interfaces\IQueryHandler.cs" />
     <Compile Include="Interfaces\ITokenService.cs" />
     <Compile Include="Interfaces\IUserContext.cs" />
-    <Compile Include="QueryModels\Accounts\ListActiveShells_Q.cs" />
-    <Compile Include="QueryModels\Authentication\GetAccessTokenByPID_Q.cs" />
-    <Compile Include="QueryModels\Authentication\GetLatestMemberAccessToken_Q.cs" />
-    <Compile Include="QueryModels\Authentication\AuthenticateMember_Q.cs" />
-    <Compile Include="QueryModels\Groups\ListGroupsByShellAndGroupType_Q.cs" />
-    <Compile Include="QueryModels\Members\GetMemberByAccessToken_Q.cs" />
-    <Compile Include="QueryModels\Modules\ListLibraryModulesForShell_Q.cs" />
-    <Compile Include="QueryModels\Modules\ListFeedModulesForShell_Q.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="Logger\ApiLogEntry.cs" />
     <Compile Include="Logger\LogEntry.cs" />
     <Compile Include="Logger\LogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryModels\Members\GetMemberByPID_Q.cs" />
-    <Compile Include="QueryModels\Operations\GetClientRegistrationByAppName_Q.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vvarscNET.Model\vvarscNET.Model.csproj">
@@ -94,6 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandModels\" />
+    <Folder Include="Decorators\" />
+    <Folder Include="QueryModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
