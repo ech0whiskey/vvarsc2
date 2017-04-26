@@ -3,12 +3,13 @@
 	,UserName [dbo].Name
 	,RSIHandle [dbo].Name
 	,[Password] [dbo].Name
+	,OrganizationSpectrumID nvarchar(10)
 	,Existing bit
 )
 
-insert into @UsersToCreate (UserName, RSIHandle, [Password])
+insert into @UsersToCreate (UserName, RSIHandle, [Password], OrganizationSpectrumID)
 values
-('SuperAdmin','SuperAdmin','vvarmachine2017')
+('SuperAdmin','SuperAdmin','vvarmachine2017', 'WARMACHINE')
 
 
 DECLARE @ExistingUsers TABLE (
@@ -39,6 +40,7 @@ DECLARE @Total int = (select COUNT(1) from @UsersToCreate)
 DECLARE @UserName [dbo].Name
 		,@RSIHandle [dbo].Name
 		,@Password [dbo].Name
+		,@OrganizationSpectrumID nvarchar(10)
 		,@Existing bit
 		,@UserID int
 
@@ -47,6 +49,7 @@ BEGIN
 	select
 		@UserName = c.UserName
 		,@RSIHandle = c.RSIHandle
+		,@OrganizationSpectrumID = c.OrganizationSpectrumID
 		,@Password = c.[Password]
 		,@Existing = c.Existing
 	from @UsersToCreate c
@@ -58,7 +61,7 @@ BEGIN
 		select
 			@UserName
 			,@RSIHandle
-			,0 [OrganizationID]
+			,(select o.ID from [Organizations].[Organizations] o where o.OrganizationSpectrumID = @OrganizationSpectrumID)
 			,1 [IsActive]
 			,SYSUTCDATETIME() [CreatedOn]
 			,'DataSetup' [CreatedBy]
@@ -74,7 +77,7 @@ BEGIN
 			@UserID
 			,@UserName
 			,@Password
-			,0 [OrganizationID]
+			,(select o.ID from [Organizations].[Organizations] o where o.OrganizationSpectrumID = @OrganizationSpectrumID)
 			,SYSUTCDATETIME() [CreatedOn]
 			,'DataSetup' [CreatedBy]
 			,SYSUTCDATETIME() [ModifiedOn]

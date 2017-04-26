@@ -91,5 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSetup\CreateUsers.sql" />
+    <None Include="DataSetup\CreateOrganizations.sql" />
   </ItemGroup>
 </Project>

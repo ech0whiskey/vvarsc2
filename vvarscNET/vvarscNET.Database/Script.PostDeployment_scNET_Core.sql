@@ -12,6 +12,11 @@ Post-Deployment Script Template
 PRINT 'Starting Post-Deployment'
 
 PRINT ''
+print 'Executing Script: CreateOrganizations.sql'
+:r .\DataSetup\CreateOrganizations.sql
+GO
+
+PRINT ''
 print 'Executing Script: CreateUsers.sql'
 :r .\DataSetup\CreateUsers.sql
 GO
