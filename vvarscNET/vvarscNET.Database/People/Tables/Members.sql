@@ -3,6 +3,7 @@
 	,UserName [dbo].Name NOT NULL
 	,RSIHandle [dbo].Name NOT NULL
 	,OrganizationID int NOT NULL
+	,UserType [dbo].Enum
 	,IsActive bit
 	,CreatedOn [dbo].CreatedOn
 	,CreatedBy [dbo].CreatedBy

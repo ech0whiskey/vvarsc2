@@ -1,0 +1,3 @@
+﻿CREATE TYPE [dbo].[Enum]
+    FROM NVARCHAR(100) NOT NULL;
+

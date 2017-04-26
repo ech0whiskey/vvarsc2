@@ -30,6 +30,7 @@ namespace AdminConsole.Core.Data.QueryHandlers.Members
 	                    ,m.UserName
 	                    ,m.RSIHandle
 	                    ,m.OrganizationID
+                        ,m.UserType
 	                    ,m.IsActive
 	                    ,m.CreatedOn
 	                    ,m.CreatedBy

@@ -85,6 +85,7 @@
     <Build Include="People\Tables\Members.sql" />
     <Build Include="Authentication\Tables\Token.sql" />
     <Build Include="Authentication\Tables\Credentials.sql" />
+    <Build Include="dbo\User Defined Types\Enum.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment_scNET_Core.sql" />

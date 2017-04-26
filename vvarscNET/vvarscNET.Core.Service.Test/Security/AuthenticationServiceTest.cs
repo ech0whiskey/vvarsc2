@@ -142,7 +142,7 @@ namespace vvarscNET.Core.Service.UnitTest.Security
             };
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).Returns(firstCmdResult);
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).Returns(null);
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).Returns(null);
 
             Assert.Throws<Exception>(() => _authenticationService.GenerateAccessToken(memberID, organizationID));
         }
@@ -180,12 +180,12 @@ namespace vvarscNET.Core.Service.UnitTest.Security
             };
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).Returns(firstCmdResult);
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).Returns(tokenQueryResult);
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).Returns(tokenQueryResult);
 
             var finalResult = _authenticationService.GenerateAccessToken(memberID, organizationID);
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).MustHaveHappened();
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).MustHaveHappened();
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).MustHaveHappened();
 
             //Can't Assert DateTime Values for expiry date becuase they are Created within the Command, and will always be different from the expected.
             Assert.AreEqual(expectedFinalResult.AccessTokenValue, finalResult.AccessTokenValue);
@@ -249,7 +249,7 @@ namespace vvarscNET.Core.Service.UnitTest.Security
             };
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).Returns(firstCmdResult);
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).Returns(null);
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).Returns(null);
 
             Assert.Throws<Exception>(() => _authenticationService.RenewAccessToken(memberID, organizationID, accessToken));
         }
@@ -288,12 +288,12 @@ namespace vvarscNET.Core.Service.UnitTest.Security
             };
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).Returns(firstCmdResult);
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).Returns(tokenQueryResult);
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).Returns(tokenQueryResult);
 
             var finalResult = _authenticationService.RenewAccessToken(memberID, organizationID, parentTokenID);
 
             A.CallTo(() => _commandDispatcher.Dispatch<CreateAccessToken_C>(A<UserContext>.Ignored, A<CreateAccessToken_C>.Ignored)).MustHaveHappened();
-            A.CallTo(() => _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<string>.Ignored, A<GetAccessTokenByValue_Q>.Ignored)).MustHaveHappened();
+            A.CallTo(() => _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(A<GetAccessTokenByValue_Q>.Ignored)).MustHaveHappened();
 
             //Can't Assert DateTime Values for expiry date becuase they are Created within the Command, and will always be different from the expected.
             Assert.AreEqual(expectedFinalResult.AccessTokenValue, finalResult.AccessTokenValue);

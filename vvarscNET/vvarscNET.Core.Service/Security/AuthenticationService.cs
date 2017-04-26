@@ -80,6 +80,7 @@ namespace vvarscNET.Core.Service.Security
 
                 //Get Full Token After Creation
                 var returnTokenQRM = _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(newTokenQuery);
+
                 if (returnTokenQRM != null)
                 {
                     returnToken = new AccessToken

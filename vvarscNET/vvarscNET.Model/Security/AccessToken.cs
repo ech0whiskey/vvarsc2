@@ -11,6 +11,7 @@ namespace vvarscNET.Model.Security
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
         public int OrganizationID { get; set; }
+        public string UserType { get; set; }
 
         //Constructor
         public AccessToken()
