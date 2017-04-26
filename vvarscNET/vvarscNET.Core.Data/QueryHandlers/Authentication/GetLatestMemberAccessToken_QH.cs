@@ -42,8 +42,8 @@ namespace vvarscNET.Core.Data.QueryHandlers.Authentication
 
                 var res = connection.Query<GetAccessToken_QRM>(sql, new
                 {
-                    MemberPID = query.MemberID,
-                    ShellID = query.OrganizationID
+                    MemberID = query.MemberID,
+                    OrganizationID = query.OrganizationID
                 }).FirstOrDefault();
 
                 return res;

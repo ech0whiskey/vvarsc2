@@ -33,9 +33,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.Authentication
                 connection.Open();
 
                 var cmd = @"
-                    update c set
-	                    c.ValidTo = SYSUTCDATETIME()
-	                    ,c.OfflineExpiryDate = GETDATE()
+                    update t set
+	                    t.ValidTo = SYSUTCDATETIME()
                     from [Authentication].[Tokens] t
                     where t.MemberID = @MemberID
 	                    and t.AccessToken = @AccessToken

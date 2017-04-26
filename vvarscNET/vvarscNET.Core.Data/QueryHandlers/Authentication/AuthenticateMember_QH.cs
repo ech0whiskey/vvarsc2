@@ -31,28 +31,21 @@ namespace vvarscNET.Core.Data.QueryHandlers.Authentication
 
                 var sql = @"
                     select
-	                    CAST(m.InstanceID as nvarchar(100)) [InstanceID]
-	                    ,m.MemberPID
-	                    ,ino.OwnerID [MemberID]
-	                    ,m.[Login] [UserName]
-	                    ,m.[Email]
-	                    ,m.FirstName
-	                    ,m.LastName
-	                    ,m.LastLoginDate
-	                    ,m.[Language]
-	                    ,m.Region
-	                    ,m.TimeZone
-	                    ,m.Customer_ID
-	                    ,ino.ShellID
-	                    ,m.InsertDate [CreatedOn]
-                    from Users.Members m
-                    join Users.In_Owner ino
-	                    on ino.InstanceID = m.InstanceID
-	                    and ino.ShellID = (select dbl.ShellID from Accounts.Shell.DBLookUp dbl where dbl.ShellName = 'prolifiq')
-                    where m.[Login] = @UserName
-	                    and m.[Password] = @Password
-	                    and m.MemberType = 2
-	                    and m.[Status] = 1
+	                    m.ID
+	                    ,m.UserName
+	                    ,m.RSIHandle
+	                    ,m.OrganizationID
+	                    ,m.IsActive
+	                    ,m.CreatedOn
+	                    ,m.CreatedBy
+	                    ,m.ModifiedOn
+	                    ,m.ModifiedBy
+                    from [People].[Members] m
+                    join [Authentication].[Credentials] c
+                        on c.MemberID = m.ID
+	                    and c.[PasswordHash] = @Password
+                    where m.IsActive = 1
+	                    and m.UserName = @UserName
                 ";
 
                 var res = connection.Query<AuthenticateMember_QRM>(sql, new

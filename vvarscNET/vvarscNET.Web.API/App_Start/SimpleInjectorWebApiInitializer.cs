@@ -7,10 +7,13 @@ using log4net;
 
 namespace vvarscNET.Web.API.App_Start
 {
+    using Core.Data.QueryHandlers.Authentication;
     using Core.Decorators;
     using Core.Factories;
+    using Core.QueryModels.Authentication;
     using Core.Service.Interfaces;
     using Core.Service.Security;
+    using Model.ResponseModels.Authentication;
     using SimpleInjector;
     using System;
     using System.Configuration;
@@ -77,7 +80,7 @@ namespace vvarscNET.Web.API.App_Start
             container.Register(typeof(IPermissionQueryDispatcher), typeof(PermissionQueryDispatcher), Lifestyle.Scoped);
 
             // Permission Query Handlers
-            //container.Register<IPermissionQueryHandler<GetAccessTokenByPID_Q, GetAccessToken_QRM>, GetAccessTokenByPID_QH>();
+            container.Register<IPermissionQueryHandler<GetAccessTokenByValue_Q, GetAccessToken_QRM>, GetAccessTokenByValue_QH>();
 
             // Query Handlers
             //container.Register<IQueryHandler<GetMemberByPID_Q, GetMemberByPID_QRM>, GetMemberByPID_QH>();

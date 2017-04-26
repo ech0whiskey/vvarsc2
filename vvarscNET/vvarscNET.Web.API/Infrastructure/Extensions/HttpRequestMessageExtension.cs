@@ -33,7 +33,7 @@ public static class HttpRequestMessageExtension
         UserContext context = new UserContext
         {
             AccessToken = AccessToken.Value,
-            MemberID = Convert.ToInt32(MemberID)
+            MemberID = Convert.ToInt32(MemberID.Value)
         };
 
         return context;

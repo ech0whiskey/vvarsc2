@@ -79,7 +79,7 @@ namespace vvarscNET.Core.Service.Security
                 };
 
                 //Get Full Token After Creation
-                var returnTokenQRM = _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(Globals.AuthHandlerToken, newTokenQuery);
+                var returnTokenQRM = _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(newTokenQuery);
                 if (returnTokenQRM != null)
                 {
                     returnToken = new AccessToken
@@ -136,7 +136,7 @@ namespace vvarscNET.Core.Service.Security
                 };
 
                 //Get Full Token After Creation
-                var returnTokenQRM = _queryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(Globals.AuthHandlerToken, newTokenQuery);
+                var returnTokenQRM = _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(newTokenQuery);
                 if (returnTokenQRM != null)
                 {
                     returnToken = new AccessToken
