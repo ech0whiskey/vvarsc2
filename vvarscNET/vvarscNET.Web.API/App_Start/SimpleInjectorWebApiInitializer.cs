@@ -7,7 +7,10 @@ using log4net;
 
 namespace vvarscNET.Web.API.App_Start
 {
+    using Core.Decorators;
     using Core.Factories;
+    using Core.Service.Interfaces;
+    using Core.Service.Security;
     using SimpleInjector;
     using System;
     using System.Configuration;
@@ -35,16 +38,15 @@ namespace vvarscNET.Web.API.App_Start
 
             container.Register<IContainer, IocContainer>(Lifestyle.Scoped);
 
-            //container.RegisterDecorator(typeof(ICommandHandler<>), typeof(ValidateUserContextPre_CH_Decorator<>));
-            //container.RegisterDecorator(typeof(IQueryHandler<,>), typeof(ValidateAccessTokenPre_QH_Decorator<,>));
+            container.RegisterDecorator(typeof(ICommandHandler<>), typeof(ValidateUserContextPre_CH_Decorator<>));
+            container.RegisterDecorator(typeof(IQueryHandler<,>), typeof(ValidateAccessTokenPre_QH_Decorator<,>));
 
             RegisterQueries(container);
 
             RegisterCommands(container);
 
             // Other Services
-            //container.Register<ITokenService, JwtTokenService>(Lifestyle.Scoped);
-            //container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Scoped);
+            container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Scoped);
         }
 
         private static void RegisterCommands(Container container)

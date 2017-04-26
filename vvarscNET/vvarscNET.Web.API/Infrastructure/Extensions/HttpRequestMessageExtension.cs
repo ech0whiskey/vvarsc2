@@ -22,18 +22,18 @@ public static class HttpRequestMessageExtension
         IIdentity requestIdentity = request.GetRequestContext().Principal.Identity;
         IEnumerable<Claim> requestClaims = ((ClaimsIdentity)requestIdentity).Claims;
 
-        var AccessTokenId = requestClaims
+        var AccessToken = requestClaims
                             .Where(c => c.Type.Equals(ClaimTypes.Sid, StringComparison.CurrentCultureIgnoreCase))
                             .FirstOrDefault(c => c != null);
 
-        var MemberPID = requestClaims
+        var MemberID = requestClaims
                             .Where(c => c.Type.Equals(ClaimTypes.NameIdentifier, StringComparison.CurrentCultureIgnoreCase))
                             .FirstOrDefault(c => c != null);
 
         UserContext context = new UserContext
         {
-            AccessTokenId = AccessTokenId.Value,
-            MemberPID = MemberPID.Value
+            AccessToken = AccessToken.Value,
+            MemberID = Convert.ToInt32(MemberID)
         };
 
         return context;

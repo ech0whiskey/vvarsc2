@@ -21,10 +21,8 @@ namespace vvarscNET.Core.Dispatchers
         {
             if (command == null) throw new ArgumentNullException(nameof(command));
             if (context == null) throw new ArgumentNullException(nameof(context));
-            if (string.IsNullOrEmpty(context.AccessTokenId))
-                throw new ArgumentNullException(nameof(context.AccessTokenId));
-            if (string.IsNullOrEmpty(context.MemberPID))
-                throw new ArgumentNullException(nameof(context.MemberPID));
+            if (string.IsNullOrEmpty(context.AccessToken))
+                throw new ArgumentNullException(nameof(context.AccessToken));
 
             var handler = _container.GetInstance<ICommandHandler<TCommand>>();
             if (handler == null)

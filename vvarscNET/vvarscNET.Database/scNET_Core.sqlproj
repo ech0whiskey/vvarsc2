@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\_output\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugSymbols>true</DebugSymbols>
@@ -64,19 +64,32 @@
     <Folder Include="Organizations\Tables" />
     <Folder Include="dbo" />
     <Folder Include="dbo\User Defined Types" />
+    <Folder Include="Authentication" />
+    <Folder Include="People" />
+    <Folder Include="People\Tables" />
+    <Folder Include="Authentication\Tables" />
+    <Folder Include="DataSetup" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Schemas\Organizations.sql" />
     <Build Include="Organizations\Tables\Organizations.sql" />
     <Build Include="dbo\User Defined Types\CreatedBy.sql" />
     <Build Include="dbo\User Defined Types\CreatedOn.sql" />
-    <Build Include="dbo\User Defined Types\CustID.sql" />
     <Build Include="dbo\User Defined Types\Description.sql" />
-    <Build Include="dbo\User Defined Types\ID.sql" />
     <Build Include="dbo\User Defined Types\ModifiedBy.sql" />
     <Build Include="dbo\User Defined Types\ModifiedOn.sql" />
     <Build Include="dbo\User Defined Types\Name.sql" />
-    <Build Include="dbo\User Defined Types\SourceID.sql" />
     <Build Include="dbo\User Defined Types\StatusMessage.sql" />
+    <Build Include="Security\Schemas\People.sql" />
+    <Build Include="Security\Schemas\Authentication.sql" />
+    <Build Include="People\Tables\Members.sql" />
+    <Build Include="Authentication\Tables\Token.sql" />
+    <Build Include="Authentication\Tables\Credentials.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment_scNET_Core.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataSetup\CreateUsers.sql" />
   </ItemGroup>
 </Project>

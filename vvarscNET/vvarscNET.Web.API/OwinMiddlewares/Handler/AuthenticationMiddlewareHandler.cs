@@ -41,18 +41,15 @@ namespace vvarscNET.Web.API.OwinMiddlewares.Handler
                 return Task.FromResult(new AuthenticationTicket(null, null));
 
             var accessTokenID = authHeader.Substring(tokenType.Length).Trim();
-            //if (!_tokenService.ValidateTokenHash(jwt))
-            //    throw new SecurityException("Invalid Token");
 
-            //JwtApiToken jsonwWebToken = _tokenService.GetJsonWebToken(jwt);
             Context.Response.Headers.Add("Authorization", new[] { $"{tokenType}{accessTokenID}" });
 
-            var token = _authService.GetAccessTokenByID(accessTokenID);
+            var token = _authService.GetAccessTokenByValue(accessTokenID);
             if (token != null)
             {
                 var identity = new ClaimsIdentity(Options.SignInAsAuthenticationType);
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, token.member_pid, null, Options.AuthenticationType));
-                identity.AddClaim(new Claim(ClaimTypes.Sid, token.id, null, Options.AuthenticationType));
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, token.MemberID, null, Options.AuthenticationType));
+                identity.AddClaim(new Claim(ClaimTypes.Sid, token.ID, null, Options.AuthenticationType));
 
                 return Task.FromResult(new AuthenticationTicket(identity, new AuthenticationProperties()));
             }

@@ -9,10 +9,10 @@ namespace vvarscNET.Core
 {
     public class UserContext : IUserContext
     {
-        public string AccessTokenId { get; set; }
+        public string AccessToken { get; set; }
 
-        public string MemberPID { get; set; }
+        public int MemberID { get; set; }
 
-        public int ShellID { get; set; }
+        public int OrganizationID { get; set; }
     }
 }

@@ -4,7 +4,7 @@
 @model Collection<ApiDescription>
 
     @{
-        ViewBag.Title = "AdminConsole Web API Help Page";
+        ViewBag.Title = "VVarMachine SC .NET Web API Help Page";
 
         // Group APIs by controller
         ILookup<string, ApiDescription> apiGroups = Model.OrderBy(d => d.ActionDescriptor.ControllerDescriptor.ControllerName).ToLookup(api => api.ActionDescriptor.ControllerDescriptor.ControllerName);

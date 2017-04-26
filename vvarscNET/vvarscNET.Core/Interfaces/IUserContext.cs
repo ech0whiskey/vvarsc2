@@ -8,10 +8,10 @@ namespace vvarscNET.Core.Interfaces
 {
     public interface IUserContext
     {
-        string AccessTokenId { get; set; }
+        string AccessToken { get; set; }
 
-        string MemberPID { get; set; }
+        int MemberID { get; set; }
 
-        int ShellID { get; set; }
+        int OrganizationID { get; set; }
     }
 }

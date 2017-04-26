@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using vvarscNET.Model.ResponseModels.Authentication;
+using vvarscNET.Model.RequestModels.Authentication;
 using vvarscNET.Model.Security;
 using vvarscNET.Model.Result;
 
@@ -6,16 +8,16 @@ namespace vvarscNET.Core.Service.Interfaces
 {
     public interface IAuthenticationService
     {
-        //AuthenticateMember_QRM AuthenticateMember(string accessTokenID, AuthenticateMemberRequestModel model);
+        AuthenticateMember_QRM AuthenticateMember(string accessToken, AuthenticateMemberRequestModel model);
 
-        AccessToken GenerateAccessToken(string memberPID, int shellID);
+        AccessToken GenerateAccessToken(int memberPID, int organizationID);
 
-        AccessToken RenewAccessToken(string memberPID, int shellID, string parentTokenID);
+        AccessToken RenewAccessToken(int memberPID, int organizationID, string parentToken);
 
-        AccessToken GetAccessTokenByID(string accessTokenID);
+        AccessToken GetAccessTokenByValue(string accessToken);
 
-        AccessToken GetLatestMemberAccessToken(string memberPID, int shellID);
+        AccessToken GetLatestMemberAccessToken(int memberPID, int organizationID);
 
-        Result ExpireAccessToken(string memberPID, int shellID, string accessTokenID);
+        Result ExpireAccessToken(int memberPID, int shellID, string accessToken);
     }
 }
