@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SecuredHome</h2>
+<p>
+    UserName: @Session["Username"]
+    AccessToken: @Session["AccessToken"]
+    ExpirationDate (UTC): @Session["ExpirationDate"]
+</p>

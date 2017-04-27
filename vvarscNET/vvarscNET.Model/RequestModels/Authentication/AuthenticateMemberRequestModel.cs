@@ -12,6 +12,7 @@ namespace vvarscNET.Model.RequestModels.Authentication
         [Required]
         public string UserName;
         [Required]
+        [DataType(DataType.Password)]
         public string Password;
     }
 }

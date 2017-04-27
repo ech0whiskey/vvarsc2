@@ -1,0 +1,40 @@
+﻿@model vvarscNET.Model.RequestModels.Authentication.AuthenticateMemberRequestModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<p>Enter your Credentials to Access this site.</p>
+
+<article>
+
+    @using (Html.BeginForm("ProcessLogin", "Authentication", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>AuthenticateMemberRequestModel</legend>
+
+            <div class="label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="label">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <div class="label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="label">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <p>
+                <input type="submit" value="Login" name="ProcessLogin"/>
+            </p>
+        </fieldset>
+    }
+</article>

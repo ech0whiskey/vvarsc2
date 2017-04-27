@@ -1,0 +1,12 @@
+﻿@if (Session["AccessToken"] == null)
+{
+    <ul>
+        <li><a href="../Authentication/Login" target="">Login</a></li>
+    </ul>
+}
+else
+{
+    <ul>
+        <li>@Session["UserName"]<a href="../Authentication/Logout" target="">Logout</a></li>
+    </ul>
+}

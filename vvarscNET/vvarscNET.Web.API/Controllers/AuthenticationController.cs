@@ -46,7 +46,7 @@ namespace vvarscNET.Web.API.Controllers
                 var existingToken = _authService.GetLatestMemberAccessToken(memResult.ID, memResult.OrganizationID);
 
                 //Token exists and is valid
-                if (existingToken != null && existingToken.ValidTo > DateTime.Now)
+                if (existingToken != null && existingToken.ValidTo > DateTime.UtcNow)
                 {
                     return Ok(existingToken);
                 }
@@ -85,7 +85,7 @@ namespace vvarscNET.Web.API.Controllers
                 if (currentToken.MemberID == model.MemberID.ToString())
                 {
                     //Make sure Token isn't Expired
-                    if (currentToken.ValidTo > DateTime.Now)
+                    if (currentToken.ValidTo > DateTime.UtcNow)
                     {
                         var newTokenResult = _authService.RenewAccessToken(model.MemberID, model.OrganizationID, model.AccessToken);
                         return Ok(newTokenResult);
