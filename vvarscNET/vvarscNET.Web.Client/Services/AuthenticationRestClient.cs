@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using vvarscNET.Web.Client.Models;
+using vvarscNET.Web.Client.Interfaces;
 using RestSharp;
 using vvarscNET.Model.Security;
 using vvarscNET.Model.RequestModels.Authentication;
 
-namespace vvarscNET.Web.Client.Helper
+namespace vvarscNET.Web.Client.Services
 {
     public class AuthenticationRestClient : IAuthenticationRestClient
     {

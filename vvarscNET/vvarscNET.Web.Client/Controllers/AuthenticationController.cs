@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
-using vvarscNET.Web.Client.Helper;
+using vvarscNET.Web.Client.Interfaces;
+using vvarscNET.Web.Client.Services;
 using vvarscNET.Model.RequestModels.Authentication;
 using System;
 

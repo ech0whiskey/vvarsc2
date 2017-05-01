@@ -193,15 +193,18 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\SecuredHomeController.cs" />
     <Compile Include="Controllers\ServerDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\IAuthenticationRestClient.cs" />
-    <Compile Include="Helper\IServerDataRestClient.cs" />
-    <Compile Include="Helper\AuthenticationRestClient.cs" />
-    <Compile Include="Helper\ServerDataRestClient.cs" />
+    <Compile Include="Interfaces\IOrganizationsRestClient.cs" />
+    <Compile Include="Interfaces\IAuthenticationRestClient.cs" />
+    <Compile Include="Interfaces\IServerDataRestClient.cs" />
+    <Compile Include="Services\AuthenticationRestClient.cs" />
+    <Compile Include="Services\OrganizationsRestClient.cs" />
+    <Compile Include="Services\ServerDataRestClient.cs" />
     <Compile Include="Helper\SessionCheck.cs" />
     <Compile Include="Models\ServerDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +320,7 @@
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\SecuredHome\Index.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
+    <Content Include="Views\Organizations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

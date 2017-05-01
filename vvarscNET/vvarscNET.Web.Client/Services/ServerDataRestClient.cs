@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using vvarscNET.Web.Client.Models;
+using vvarscNET.Web.Client.Interfaces;
 using RestSharp;
 
-namespace vvarscNET.Web.Client.Helper
+namespace vvarscNET.Web.Client.Services
 {
     public class ServerDataRestClient : IServerDataRestClient
     {

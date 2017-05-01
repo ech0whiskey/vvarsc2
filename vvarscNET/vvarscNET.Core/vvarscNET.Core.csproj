@@ -96,6 +96,7 @@
     <Compile Include="QueryModels\Authentication\AuthenticateMember_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetAccessTokenByValue_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetLatestMemberAccessToken_Q.cs" />
+    <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationByID_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByID_Q.cs" />

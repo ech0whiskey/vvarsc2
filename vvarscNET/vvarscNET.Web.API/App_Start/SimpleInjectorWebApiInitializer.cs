@@ -13,6 +13,7 @@ namespace vvarscNET.Web.API.App_Start
     using Core.QueryModels.Authentication;
     using Core.Service.Interfaces;
     using Core.Service.Security;
+    using Core.Service.QueryServices;
     using Model.ResponseModels.Authentication;
     using SimpleInjector;
     using System;
@@ -91,6 +92,7 @@ namespace vvarscNET.Web.API.App_Start
             //container.Register<IQueryHandler<AuthenticateMember_Q, AuthenticateMember_QRM>, AuthenticateMember_QH>();
 
             // Query Services
+            container.Register<IOrganizationQueryService, OrganizationQueryService>(Lifestyle.Scoped);
             //container.Register<IClientRegistrationQueryService, ClientRegistrationQueryService>(Lifestyle.Scoped);
             //container.Register<IMembersQueryService, MembersQueryService>(Lifestyle.Scoped);
             //container.Register<IAccountsQueryService, AccountsQueryService>(Lifestyle.Scoped);

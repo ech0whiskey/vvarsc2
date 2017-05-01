@@ -1,4 +1,4 @@
-﻿namespace vvarscNET.Models.Enums
+﻿namespace vvarscNET.Model.Enums
 {
     /// <summary>
     /// The StatusEnum used for return the status of a request

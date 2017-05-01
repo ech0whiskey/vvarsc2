@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using vvarscNET.Web.Client.Models;
 
-namespace vvarscNET.Web.Client.Helper
+namespace vvarscNET.Web.Client.Interfaces
 {
     public interface IServerDataRestClient
     {

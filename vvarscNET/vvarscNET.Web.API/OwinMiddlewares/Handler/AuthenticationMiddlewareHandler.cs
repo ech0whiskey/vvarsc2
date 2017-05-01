@@ -36,7 +36,7 @@ namespace vvarscNET.Web.API.OwinMiddlewares.Handler
         protected override Task<AuthenticationTicket> AuthenticateCoreAsync()
         {
             var authHeader = Request.Headers["Authorization"];
-            var tokenType = "Access ";
+            var tokenType = "access ";
             if (authHeader == null || !authHeader.StartsWith(tokenType, System.StringComparison.CurrentCultureIgnoreCase))
                 return Task.FromResult(new AuthenticationTicket(null, null));
 
@@ -49,7 +49,7 @@ namespace vvarscNET.Web.API.OwinMiddlewares.Handler
             {
                 var identity = new ClaimsIdentity(Options.SignInAsAuthenticationType);
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, token.MemberID, null, Options.AuthenticationType));
-                identity.AddClaim(new Claim(ClaimTypes.Sid, token.ID, null, Options.AuthenticationType));
+                identity.AddClaim(new Claim(ClaimTypes.Sid, token.AccessTokenValue, null, Options.AuthenticationType));
 
                 return Task.FromResult(new AuthenticationTicket(identity, new AuthenticationProperties()));
             }

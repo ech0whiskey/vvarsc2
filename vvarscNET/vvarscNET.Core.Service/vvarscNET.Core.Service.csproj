@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\QueryServices\IOrganizationQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryServices\OrganizationQueryService.cs" />
     <Compile Include="Security\AuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +76,6 @@
   <ItemGroup>
     <Folder Include="CommandServices\" />
     <Folder Include="Interfaces\CommandServices\" />
-    <Folder Include="Interfaces\QueryServices\" />
-    <Folder Include="QueryServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
