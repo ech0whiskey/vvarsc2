@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\_output\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugSymbols>true</DebugSymbols>
@@ -68,7 +68,6 @@
     <Folder Include="People" />
     <Folder Include="People\Tables" />
     <Folder Include="Authentication\Tables" />
-    <Folder Include="DataSetup" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Schemas\Organizations.sql" />
@@ -86,12 +85,5 @@
     <Build Include="Authentication\Tables\Token.sql" />
     <Build Include="Authentication\Tables\Credentials.sql" />
     <Build Include="dbo\User Defined Types\Enum.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Script.PostDeployment_scNET_Core.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DataSetup\CreateUsers.sql" />
-    <None Include="DataSetup\CreateOrganizations.sql" />
   </ItemGroup>
 </Project>

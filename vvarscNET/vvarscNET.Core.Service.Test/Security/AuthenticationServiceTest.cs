@@ -3,7 +3,7 @@ using vvarscNET.Core.Service.Security;
 using NUnit.Framework;
 using FakeItEasy;
 using vvarscNET.Core.QueryModels.Authentication;
-using vvarscNET.Core.QueryModels.Members;
+using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.CommandModels.Authentication;
 using vvarscNET.Model.ResponseModels.Authentication;
 using vvarscNET.Model.Result;
@@ -14,7 +14,7 @@ using vvarscNET.Model.RequestModels.Authentication;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
-using vvarscNET.Model.ResponseModels.Members;
+using vvarscNET.Model.ResponseModels.People;
 using vvarscNET.Model.Security;
 
 namespace vvarscNET.Core.Service.UnitTest.Security

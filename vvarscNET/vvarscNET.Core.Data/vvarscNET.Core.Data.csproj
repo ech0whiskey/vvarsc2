@@ -44,14 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\Authentication\CreateCredential_CH.cs" />
     <Compile Include="CommandHandlers\Authentication\CreateAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
+    <Compile Include="CommandHandlers\People\CreateMember_CH.cs" />
     <Compile Include="QueryHandlers\Authentication\AuthenticateMember_QH.cs" />
     <Compile Include="QueryHandlers\Authentication\GetAccessTokenByValue_QH.cs" />
     <Compile Include="QueryHandlers\Authentication\GetLatestMemberAccessToken_QH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlers\Members\GetMemberByAccessToken_QH.cs" />
     <Compile Include="QueryHandlers\Members\GetMemberByID_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\GetOrganizationByID_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\GetOrganizationBySpectrumID_QH.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vvarscNET.Core\vvarscNET.Core.csproj">

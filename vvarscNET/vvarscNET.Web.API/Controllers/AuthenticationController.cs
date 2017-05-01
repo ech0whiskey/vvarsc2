@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using System.Net.Http;
 using System.Net;
 using System;
+using System.Security.Cryptography;
 
 namespace vvarscNET.Web.API.Controllers
 {
@@ -37,6 +38,14 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(AccessToken))]
         public IHttpActionResult ProcessLogin([FromBody] AuthenticateMemberRequestModel model)
         {
+            //Hash Entered Password
+            SHA256Managed hashalgo = new SHA256Managed();
+            byte[] hash = hashalgo.ComputeHash(System.Text.Encoding.UTF8.GetBytes(model.Password));
+            string pwhash = BitConverter.ToString(hash);
+            pwhash = pwhash.Replace("-", "");
+
+            model.Password = pwhash;
+
             //Check if Member can Be Authenticated
             var memResult = _authService.AuthenticateMember(Request.GetUserContext().AccessToken, model);
 

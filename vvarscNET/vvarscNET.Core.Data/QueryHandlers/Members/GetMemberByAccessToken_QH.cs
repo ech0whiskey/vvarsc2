@@ -1,13 +1,13 @@
 ﻿using Dapper;
-using vvarscNET.Core.QueryModels.Members;
+using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
-using vvarscNET.Model.ResponseModels.Members;
+using vvarscNET.Model.ResponseModels.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
 
-namespace AdminConsole.Core.Data.QueryHandlers.Members
+namespace AdminConsole.Core.Data.QueryHandlers.People
 {
     public class GetMemberByAccessToken_QH : IPermissionQueryHandler<GetMemberByAccessToken_Q, GetMemberByAccessToken_QRM>
     {
