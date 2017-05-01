@@ -29,7 +29,59 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init organization");
             if (!InitOrgAdmins(connectionString))
                 throw new Exception("Could not init organization admins");
+            if (!InitSuperAdmin(connectionString))
+                throw new Exception("Could not init superadmin");
         }
+
+        #region SuperAdmin
+        private static bool InitSuperAdmin(string connectionString)
+        {
+            //Create Member
+            string userName = "superadmin";
+            var memCmd = new CreateMember_C
+            {
+                UserName = userName,
+                RSIHandle = "invalid_handle",
+                UserType = Model.Enums.UserTypeEnum.SuperAdmin,
+                OrganizationID = 0,
+                IsActive = true
+            };
+
+            CreateMember_CH createMember_CH = new CreateMember_CH(new SQLConnectionFactory(connectionString));
+            var memResult = createMember_CH.Handle(Globals.UserContext, memCmd);
+
+            if (memResult.Status != System.Net.HttpStatusCode.OK)
+            {
+                return false;
+            }
+            var memID = Convert.ToInt32(memResult.ItemIDs.FirstOrDefault());
+
+            //Create Credential for Member
+            SHA256Managed hashalgo = new SHA256Managed();
+            byte[] hash = hashalgo.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userName.ToLower()));
+            string passwordHash = BitConverter.ToString(hash);
+            passwordHash = passwordHash.Replace("-", "");
+
+            var credCmd = new CreateCredential_C
+            {
+                MemberID = memID,
+                UserName = userName,
+                PasswordHash = passwordHash,
+                OrganizationID = 0
+            };
+
+            CreateCredential_CH createCredential_CH = new CreateCredential_CH(new SQLConnectionFactory(connectionString));
+            var credResult = createCredential_CH.Handle(Globals.UserContext, credCmd);
+
+            if (credResult.Status != System.Net.HttpStatusCode.OK)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
 
         #region Organizations
         private static bool InitOrganization(string connectionString)

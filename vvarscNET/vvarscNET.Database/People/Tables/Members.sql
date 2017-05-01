@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [People].[Members] (
 	ID int identity(1,1) NOT NULL
-	,UserName [dbo].Name NOT NULL
+	,UserName [dbo].Name NOT NULL UNIQUE
 	,RSIHandle [dbo].Name NOT NULL
 	,OrganizationID int NOT NULL
 	,UserType [dbo].Enum

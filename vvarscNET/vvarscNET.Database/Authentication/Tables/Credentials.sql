@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Authentication].[Credentials] (
 	ID int identity(1,1)
 	,MemberID int
-	,UserName [dbo].Name
+	,UserName [dbo].Name NOT NULL UNIQUE
 	,PasswordHash [dbo].Name
 	,OrganizationID int NOT NULL
 	,CreatedOn [dbo].CreatedOn

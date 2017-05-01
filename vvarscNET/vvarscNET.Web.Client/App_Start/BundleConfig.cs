@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ConsumeWebAPI
+namespace vvarscNET.Web.Client
 {
     public class BundleConfig
     {

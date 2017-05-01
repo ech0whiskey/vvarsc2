@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using vvarscNET.Web.Client.Models;
 
-namespace ConsumeWebAPI
+namespace vvarscNET.Web.Client
 {
     public static class AuthConfig
     {

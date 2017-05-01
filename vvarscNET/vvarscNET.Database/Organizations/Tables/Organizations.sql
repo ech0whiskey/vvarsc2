@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Organizations].[Organizations] (
 	ID INT IDENTITY(1,1) NOT NULL
 	,OrganizationName [dbo].Name
-	,OrganizationSpectrumID nvarchar(10)
+	,OrganizationSpectrumID nvarchar(10) UNIQUE
 	,OrganizationWebsiteURL [dbo].Name
 	,IsActive bit
 	,CreatedOn [dbo].CreatedOn
