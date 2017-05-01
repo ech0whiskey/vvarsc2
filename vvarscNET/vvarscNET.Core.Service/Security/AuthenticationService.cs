@@ -83,6 +83,16 @@ namespace vvarscNET.Core.Service.Security
 
                 if (returnTokenQRM != null)
                 {
+                    //Get Member for Token
+                    var memQuery = new GetMemberByID_Q
+                    {
+                        MemberID = returnTokenQRM.MemberID.ToString()
+                    };
+
+                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                    if (memResult == null)
+                        throw new Exception("Unable to retrive Member after AccessToken Creation");
+                    
                     returnToken = new AccessToken
                     {
                         ID = returnTokenQRM.ID.ToString(),
@@ -90,7 +100,8 @@ namespace vvarscNET.Core.Service.Security
                         AccessTokenValue = returnTokenQRM.AccessToken,
                         ValidFrom = returnTokenQRM.ValidFrom,
                         ValidTo = returnTokenQRM.ValidTo,
-                        OrganizationID = returnTokenQRM.OrganizationID
+                        OrganizationID = returnTokenQRM.OrganizationID,
+                        UserType = memResult.UserType.ToString()
                     };
                 }
                 else
@@ -140,6 +151,16 @@ namespace vvarscNET.Core.Service.Security
                 var returnTokenQRM = _permQueryDispatcher.Dispatch<GetAccessTokenByValue_Q, GetAccessToken_QRM>(newTokenQuery);
                 if (returnTokenQRM != null)
                 {
+                    //Get Member for Token
+                    var memQuery = new GetMemberByID_Q
+                    {
+                        MemberID = returnTokenQRM.MemberID.ToString()
+                    };
+
+                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                    if (memResult == null)
+                        throw new Exception("Unable to retrive Member after AccessToken Creation");
+
                     returnToken = new AccessToken
                     {
                         ID = returnTokenQRM.ID.ToString(),
@@ -147,7 +168,8 @@ namespace vvarscNET.Core.Service.Security
                         AccessTokenValue = returnTokenQRM.AccessToken,
                         ValidFrom = returnTokenQRM.ValidFrom,
                         ValidTo = returnTokenQRM.ValidTo,
-                        OrganizationID = returnTokenQRM.OrganizationID
+                        OrganizationID = returnTokenQRM.OrganizationID,
+                        UserType = memResult.UserType.ToString()
                     };
                 }
                 else
@@ -163,11 +185,11 @@ namespace vvarscNET.Core.Service.Security
             return returnToken;
         }
 
-        public AccessToken GetLatestMemberAccessToken(int memberPID, int organizationID)
+        public AccessToken GetLatestMemberAccessToken(int memberID, int organizationID)
         {
             var query = new GetLatestMemberAccessToken_Q
             {
-                MemberID = memberPID,
+                MemberID = memberID,
                 OrganizationID = organizationID
             };
 
@@ -175,6 +197,16 @@ namespace vvarscNET.Core.Service.Security
 
             if (queryResult != null)
             {
+                //Get Member for Token
+                var memQuery = new GetMemberByID_Q
+                {
+                    MemberID = queryResult.MemberID.ToString()
+                };
+
+                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                if (memResult == null)
+                    throw new Exception("Unable to retrive Member for AccessToken");
+
                 return new AccessToken
                 {
                     ID = queryResult.ID.ToString(),
@@ -182,7 +214,8 @@ namespace vvarscNET.Core.Service.Security
                     AccessTokenValue = queryResult.AccessToken,
                     ValidFrom = queryResult.ValidFrom,
                     ValidTo = queryResult.ValidTo,
-                    OrganizationID = queryResult.OrganizationID
+                    OrganizationID = queryResult.OrganizationID,
+                    UserType = memResult.UserType
                 };
             }
             else
@@ -216,6 +249,16 @@ namespace vvarscNET.Core.Service.Security
 
             if (queryResult != null)
             {
+                //Get Member for Token
+                var memQuery = new GetMemberByID_Q
+                {
+                    MemberID = queryResult.MemberID.ToString()
+                };
+
+                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                if (memResult == null)
+                    throw new Exception("Unable to retrive Member for AccessToken");
+
                 return new AccessToken
                 {
                     ID = queryResult.ID.ToString(),
@@ -223,7 +266,8 @@ namespace vvarscNET.Core.Service.Security
                     AccessTokenValue = queryResult.AccessToken,
                     ValidFrom = queryResult.ValidFrom,
                     ValidTo = queryResult.ValidTo,
-                    OrganizationID = queryResult.OrganizationID
+                    OrganizationID = queryResult.OrganizationID,
+                    UserType = memResult.UserType.ToString()
                 };
             }
             else

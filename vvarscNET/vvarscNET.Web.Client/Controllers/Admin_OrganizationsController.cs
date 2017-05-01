@@ -3,11 +3,10 @@ using System.Web.Mvc;
 using vvarscNET.Web.Client.Interfaces;
 using vvarscNET.Web.Client.Services;
 using vvarscNET.Web.Client.Helper;
-using vvarscNET.Model.RequestModels.Authentication;
 
 namespace vvarscNET.Web.Client.Controllers
 {
-    public class OrganizationsController : Controller
+    public class Admin_OrganizationsController : Controller
     {
         static readonly IOrganizationsRestClient RestClient = new OrganizationsRestClient();
 
@@ -15,7 +14,10 @@ namespace vvarscNET.Web.Client.Controllers
         {
             var helper = new HelperFunctions(HttpContext);
             if (!helper.CheckValidSession())
-                return RedirectToAction("Logout", "Authentication");
+                return RedirectToAction("Unauthorized", "Home");
+
+            if (!helper.IsSuperAdmin())
+                return RedirectToAction("Forbidden", "Home");
 
             return View(RestClient.ListOrganizations(HttpContext));
         }

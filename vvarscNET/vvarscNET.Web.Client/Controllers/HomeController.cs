@@ -29,5 +29,15 @@ namespace vvarscNET.Web.Client.Controllers
         {
             return View();
         }
+
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
+
+        public ActionResult Forbidden()
+        {
+            return View();
+        }
     }
 }

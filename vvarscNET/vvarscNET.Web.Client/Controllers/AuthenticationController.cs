@@ -33,6 +33,7 @@ namespace vvarscNET.Web.Client.Controllers
                     Session.Add("UserName", model.UserName);
                     Session.Add("MemberID", result.MemberID);
                     Session.Add("OrganizationID", result.OrganizationID);
+                    Session.Add("UserType", result.UserType);
 
                     return RedirectToAction("Index", "SecuredHome");
                 }
