@@ -27,5 +27,17 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
+
+        public Organization GetOrganizationByID(string accessToken, int organizationID)
+        {
+            var query = new GetOrganizationByID_Q
+            {
+                ID = organizationID
+            };
+
+            var result = _queryDispatcher.Dispatch<GetOrganizationByID_Q, Organization>(accessToken, query);
+
+            return result;
+        }
     }
 }

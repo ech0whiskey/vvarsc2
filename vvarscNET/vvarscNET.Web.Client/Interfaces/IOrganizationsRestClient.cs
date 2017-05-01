@@ -7,5 +7,7 @@ namespace vvarscNET.Web.Client.Interfaces
     public interface IOrganizationsRestClient
     {
         IEnumerable<Organization> ListOrganizations(HttpContextBase Context);
+
+        Organization GetOrganizationByID(HttpContextBase Context, int OrganizationID);
     }
 }

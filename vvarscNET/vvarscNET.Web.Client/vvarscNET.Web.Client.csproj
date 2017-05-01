@@ -191,6 +191,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin_OrganizationsController.cs" />
@@ -323,6 +324,7 @@
     <Content Include="Views\Admin_Organizations\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Home\Forbidden.cshtml" />
+    <Content Include="Views\Organizations\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

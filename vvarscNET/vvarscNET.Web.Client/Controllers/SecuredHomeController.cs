@@ -13,7 +13,8 @@ namespace vvarscNET.Web.Client.Controllers
             if (!helper.CheckValidSession())
                 return RedirectToAction("Logout", "Authentication");
 
-            return View();
+            //return View();
+            return RedirectToAction("Details", "Organizations", new { ID = HttpContext.Session["OrganizationID"] });
         }
     }
 }

@@ -32,5 +32,19 @@ namespace vvarscNET.Web.Client.Services
 
             return JsonConvert.DeserializeObject<IEnumerable<Organization>>(response.Content);
         }
+
+        public Organization GetOrganizationByID(HttpContextBase Context, int OrganizationID)
+        {
+            var request = new RestRequest("organizations/{id}", Method.GET) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddParameter("id", OrganizationID, ParameterType.UrlSegment);
+
+            var response = _client.Execute<Organization>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<Organization>(response.Content);
+        }
     }
 }

@@ -39,5 +39,19 @@ namespace vvarscNET.Web.API.Controllers
             return Ok(returnData);
         }
 
+        /// <summary>
+        /// Method to Get a Specific Organizations
+        /// </summary>
+        /// <returns>Organization</returns>
+        [HttpGet]
+        [Route("organizations/{id}")]
+        [ResponseType(typeof(Organization))]
+        public IHttpActionResult GetOrganizationByID([FromUri] int id)
+        {
+            var returnData = _orgService.GetOrganizationByID(Request.GetUserContext().AccessToken, id);
+
+            return Ok(returnData);
+        }
+
     }
 }

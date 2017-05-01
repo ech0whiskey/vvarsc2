@@ -10,5 +10,6 @@ namespace vvarscNET.Core.Service.Interfaces
     public interface IOrganizationQueryService
     {
         List<Organization> ListOrganizations(string accessToken);
+        Organization GetOrganizationByID(string accessToken, int organizationID);
     }
 }
