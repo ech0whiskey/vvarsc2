@@ -59,7 +59,7 @@ namespace vvarscNET.Web.API.Controllers
         }
 
         /// <summary>
-        /// Method to list members belonging to an Organizations
+        /// Method to list Members belonging to an Organization
         /// </summary>
         /// <param name="id">ID of Organization</param>
         /// <returns>List of Members</returns>

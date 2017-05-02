@@ -1,0 +1,86 @@
+﻿html, body {
+    height: 100%;
+    font-family: Electrolize;
+}
+
+#mainWebsiteInner, #headerInner, #footerInner {
+    width: 95%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#MainWrapper {
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    background-image: url(http://sc.vvarmachine.com/images/gridbg_glow.png);
+    background-position: left top;
+    background-repeat: repeat;
+}
+
+#FOOTER {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: 152px;
+    margin-top: -152px;
+    clear: both;
+    max-width: 1600px;
+    border-bottom: 1px solid rgba(0, 153, 170, 0.9);
+}
+
+#CONTENT {
+    margin-right: 8px;
+    margin-left: 8px;
+    padding-bottom: 152px;
+    clear: both;
+}
+
+#contentInner {
+    border-collapse: separate;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.two-line-separator {
+    height: 5px;
+    width: 100%;
+    background: url(http://sc.vvarmachine.com/images/double-line-sep.png) no-repeat center top, url(http://sc.vvarmachine.com/images/double-line-sep.png) no-repeat center bottom;
+    background-size: 100% 1px;
+}
+
+/*PARALLAX CLASSES AND SETUP*/
+.background {
+    background-image: url(http://sc.vvarmachine.com/images/backgrounds/main_vanguard_2160p.jpg);
+    background-repeat: no-repeat;
+    /* custom background-position */
+    background-position: 50% 50%;
+}
+.fullscreen,
+.content-a {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+    .fullscreen.overflow,
+    .fullscreen.overflow .content-a {
+        height: auto;
+        min-height: 100%;
+    }
+
+/* content centering styles */
+.content-a {
+    /*display:table;*/
+}
+
+.content-b {
+    /*display:table-cell;*/
+    position: relative;
+    vertical-align: middle;
+    min-height: 100%;
+}
+/*END PARALLAX CLASSES*/
