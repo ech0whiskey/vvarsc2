@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Service.Interfaces;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Core.Service.QueryServices
 {

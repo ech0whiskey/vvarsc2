@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Test.Helpers.Data
 {

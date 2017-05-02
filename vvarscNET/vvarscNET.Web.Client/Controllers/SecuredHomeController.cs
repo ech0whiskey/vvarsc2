@@ -14,7 +14,14 @@ namespace vvarscNET.Web.Client.Controllers
                 return RedirectToAction("Logout", "Authentication");
 
             //return View();
-            return RedirectToAction("Details", "Organizations", new { ID = HttpContext.Session["OrganizationID"] });
+            if (HttpContext.Session["UserType"].ToString() == "SuperAdmin")
+            { 
+                return RedirectToAction("Index", "Admin_Organizations");
+            }
+            else
+            {
+                return RedirectToAction("Details", "Organizations", new { ID = HttpContext.Session["OrganizationID"] });
+            }
         }
     }
 }

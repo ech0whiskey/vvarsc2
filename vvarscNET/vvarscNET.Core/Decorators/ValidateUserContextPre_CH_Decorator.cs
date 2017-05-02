@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.QueryModels.Authentication;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 using vvarscNET.Model.ResponseModels.Authentication;
 using vvarscNET.Core;
 using vvarscNET.Model.Result;
@@ -16,12 +16,12 @@ namespace vvarscNET.Core.Decorators
     public class ValidateUserContextPre_CH_Decorator<TCommand> : ICommandHandler<TCommand>
     {
         private readonly ICommandHandler<TCommand> _decoratedCH;
-        private readonly IPermissionQueryHandler<GetMemberByAccessToken_Q, GetMemberByAccessToken_QRM> _getMemberByToken_QH;
+        private readonly IPermissionQueryHandler<GetMemberByAccessToken_Q, Member> _getMemberByToken_QH;
         private readonly IPermissionQueryHandler<GetAccessTokenByValue_Q, GetAccessToken_QRM> _getAccessTokenByValue_QH;
 
         public ValidateUserContextPre_CH_Decorator(
             ICommandHandler<TCommand> commandHandler,
-            IPermissionQueryHandler<GetMemberByAccessToken_Q, GetMemberByAccessToken_QRM> getMemberByToken_QH,
+            IPermissionQueryHandler<GetMemberByAccessToken_Q, Member> getMemberByToken_QH,
             IPermissionQueryHandler<GetAccessTokenByValue_Q, GetAccessToken_QRM> getAccessTokenByValue_QH)
         {
             _decoratedCH = commandHandler;

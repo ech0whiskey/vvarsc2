@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 using System.Web;
 
 namespace vvarscNET.Web.Client.Interfaces

@@ -56,8 +56,6 @@
     <Compile Include="ResponseModels\Authentication\AuthenticateMember_QRM.cs" />
     <Compile Include="ResponseModels\Authentication\CreateAccessToken_CRM.cs" />
     <Compile Include="ResponseModels\Authentication\GetAccessToken_QRM.cs" />
-    <Compile Include="ResponseModels\People\GetMemberByAccessToken_QRM.cs" />
-    <Compile Include="ResponseModels\People\GetMemberByID_QRM.cs" />
     <Compile Include="Result\Result.cs" />
     <Compile Include="Security\AccessToken.cs" />
     <Compile Include="Security\JwtApiToken.cs" />

@@ -1,5 +1,5 @@
 ﻿using vvarscNET.Core.Interfaces;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 using System.Collections.Generic;
 
 namespace vvarscNET.Core.QueryModels.Organizations

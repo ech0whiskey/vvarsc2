@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using vvarscNET.Web.Client.Interfaces;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 using RestSharp;
 using System.Web;
 using Newtonsoft.Json;

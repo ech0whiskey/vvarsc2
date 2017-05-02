@@ -6,19 +6,20 @@ using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
-namespace AdminConsole.Core.Data.QueryHandlers.People
+namespace vvarscNET.Core.Data.QueryHandlers.People
 {
-    public class GetMemberByAccessToken_QH : IPermissionQueryHandler<GetMemberByAccessToken_Q, Member>
+    public class ListMembersForOrganization_QH : IQueryHandler<ListMembersForOrganization_Q, List<Member>>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public GetMemberByAccessToken_QH(SQLConnectionFactory connFactory)
+        public ListMembersForOrganization_QH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Member Handle(GetMemberByAccessToken_Q query)
+        public List<Member> Handle(string accessTokenID, ListMembersForOrganization_Q query)
         {
             using (var connection = _connFactory.GetConnection())
             {
@@ -37,15 +38,10 @@ namespace AdminConsole.Core.Data.QueryHandlers.People
 	                    ,m.ModifiedOn
 	                    ,m.ModifiedBy
                     from [People].[Members] m
-                    join [Authentication].[Token] t
-	                    on t.MemberID = m.MemberID
-	                    and t.AccessToken = @AccessToken
-                    where m.IsActive = 1              
+                    where m.OrganizationID = @OrganizationID            
                 ";
 
-                var res = connection.Query<Member>(sql, new {
-                    AccessTokenID = query.AccessToken
-                }).FirstOrDefault();
+                var res = connection.Query<Member>(sql, new { OrganizationID = query.OrganizationID }).ToList();
 
                 return res;
             }

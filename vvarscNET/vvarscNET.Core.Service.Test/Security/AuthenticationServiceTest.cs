@@ -14,7 +14,7 @@ using vvarscNET.Model.RequestModels.Authentication;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 using vvarscNET.Model.Security;
 
 namespace vvarscNET.Core.Service.UnitTest.Security

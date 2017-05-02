@@ -2,7 +2,7 @@
 using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 using System;
 using System.Linq;
 using System.Data.SqlClient;

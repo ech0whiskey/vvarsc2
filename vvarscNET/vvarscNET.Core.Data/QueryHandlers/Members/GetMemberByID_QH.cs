@@ -2,14 +2,14 @@
 using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
 
 namespace vvarscNET.Core.Data.QueryHandlers.People
 {
-    public class GetMemberByID_QH : IQueryHandler<GetMemberByID_Q, GetMemberByID_QRM>
+    public class GetMemberByID_QH : IQueryHandler<GetMemberByID_Q, Member>
     {
         private readonly SQLConnectionFactory _connFactory;
 
@@ -18,7 +18,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
             _connFactory = connFactory;
         }
 
-        public GetMemberByID_QRM Handle(string accessTokenID, GetMemberByID_Q query)
+        public Member Handle(string accessTokenID, GetMemberByID_Q query)
         {
             using (var connection = _connFactory.GetConnection())
             {
@@ -40,7 +40,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
                     where m.ID = @MemberID              
                 ";
 
-                var res = connection.Query<GetMemberByID_QRM>(sql, new { MemberID = query.MemberID }).FirstOrDefault();
+                var res = connection.Query<Member>(sql, new { MemberID = query.MemberID }).FirstOrDefault();
 
                 return res;
             }

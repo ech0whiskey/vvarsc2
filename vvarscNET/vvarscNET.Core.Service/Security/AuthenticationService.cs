@@ -5,7 +5,7 @@ using vvarscNET.Model.RequestModels.Authentication;
 using vvarscNET.Core.QueryModels.Authentication;
 using vvarscNET.Core.CommandModels.Authentication;
 using vvarscNET.Core.QueryModels.People;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -89,7 +89,7 @@ namespace vvarscNET.Core.Service.Security
                         MemberID = returnTokenQRM.MemberID.ToString()
                     };
 
-                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
                     if (memResult == null)
                         throw new Exception("Unable to retrive Member after AccessToken Creation");
                     
@@ -157,7 +157,7 @@ namespace vvarscNET.Core.Service.Security
                         MemberID = returnTokenQRM.MemberID.ToString()
                     };
 
-                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                    var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
                     if (memResult == null)
                         throw new Exception("Unable to retrive Member after AccessToken Creation");
 
@@ -203,7 +203,7 @@ namespace vvarscNET.Core.Service.Security
                     MemberID = queryResult.MemberID.ToString()
                 };
 
-                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
                 if (memResult == null)
                     throw new Exception("Unable to retrive Member for AccessToken");
 
@@ -255,7 +255,7 @@ namespace vvarscNET.Core.Service.Security
                     MemberID = queryResult.MemberID.ToString()
                 };
 
-                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, GetMemberByID_QRM>(Globals.AuthHandlerToken, memQuery);
+                var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
                 if (memResult == null)
                     throw new Exception("Unable to retrive Member for AccessToken");
 

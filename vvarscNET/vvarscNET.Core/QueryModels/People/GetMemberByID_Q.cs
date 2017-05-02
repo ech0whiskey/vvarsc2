@@ -1,9 +1,9 @@
 ﻿using vvarscNET.Core.Interfaces;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 
 namespace vvarscNET.Core.QueryModels.People
 {
-    public class GetMemberByID_Q : IQuery<GetMemberByID_QRM>
+    public class GetMemberByID_Q : IQuery<Member>
     {
         public string MemberID;
     }

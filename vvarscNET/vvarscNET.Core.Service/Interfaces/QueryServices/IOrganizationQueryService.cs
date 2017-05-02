@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using vvarscNET.Model.Objects;
+using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Core.Service.Interfaces
 {

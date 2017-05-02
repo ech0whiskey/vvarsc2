@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.QueryModels.Authentication;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.People;
 using vvarscNET.Model.ResponseModels.Authentication;
 using vvarscNET.Core;
 using vvarscNET.Model.Result;

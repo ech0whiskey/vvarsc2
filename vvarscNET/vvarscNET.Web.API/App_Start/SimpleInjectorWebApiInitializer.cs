@@ -93,11 +93,7 @@ namespace vvarscNET.Web.API.App_Start
 
             // Query Services
             container.Register<IOrganizationQueryService, OrganizationQueryService>(Lifestyle.Scoped);
-            //container.Register<IClientRegistrationQueryService, ClientRegistrationQueryService>(Lifestyle.Scoped);
-            //container.Register<IMembersQueryService, MembersQueryService>(Lifestyle.Scoped);
-            //container.Register<IAccountsQueryService, AccountsQueryService>(Lifestyle.Scoped);
-            //container.Register<IModulesQueryService, ModulesQueryService>(Lifestyle.Scoped);
-            //container.Register<IGroupsQueryService, GroupsQueryService>(Lifestyle.Scoped);
+            container.Register<IMemberQueryService, MemberQueryService>(Lifestyle.Scoped);
         }
 
         /// <summary>Initialize the container and register it as Web API Dependency Resolver.</summary>
