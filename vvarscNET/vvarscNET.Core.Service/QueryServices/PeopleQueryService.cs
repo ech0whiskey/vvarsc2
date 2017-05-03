@@ -10,11 +10,11 @@ using vvarscNET.Core.QueryModels.People;
 
 namespace vvarscNET.Core.Service.QueryServices
 {
-    public class MemberQueryService : IMemberQueryService
+    public class PeopleQueryService : IPeopleQueryService
     {
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public MemberQueryService(IQueryDispatcher queryDispatcher)
+        public PeopleQueryService(IQueryDispatcher queryDispatcher)
         {
             _queryDispatcher = queryDispatcher;
         }

@@ -17,17 +17,17 @@ namespace vvarscNET.Web.API.Controllers
     public class OrganizationsController : ApiController
     {
         private IOrganizationQueryService _orgService;
-        private IMemberQueryService _memberService;
+        private IPeopleQueryService _peopleService;
 
         /// <summary>
         /// Constructor for Organizations Controller
         /// </summary>
         /// <param name="orgService"></param>
-        /// <param name="memberService"></param>
-        public OrganizationsController(IOrganizationQueryService orgService, IMemberQueryService memberService)
+        /// <param name="peopleService"></param>
+        public OrganizationsController(IOrganizationQueryService orgService, IPeopleQueryService peopleService)
         {
             _orgService = orgService;
-            _memberService = memberService;
+            _peopleService = peopleService;
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(List<Member>))]
         public IHttpActionResult ListMembersForOrganization([FromUri] int id)
         {
-            var returnData = _memberService.ListMembersForOrganization(Request.GetUserContext().AccessToken, id);
+            var returnData = _peopleService.ListMembersForOrganization(Request.GetUserContext().AccessToken, id);
 
             return Ok(returnData);
         }

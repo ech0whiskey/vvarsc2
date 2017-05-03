@@ -7,7 +7,7 @@ using vvarscNET.Model.Objects.People;
 
 namespace vvarscNET.Core.Service.Interfaces
 {
-    public interface IMemberQueryService
+    public interface IPeopleQueryService
     {
         List<Member> ListMembersForOrganization(string accessToken, int organizationID);
     }
