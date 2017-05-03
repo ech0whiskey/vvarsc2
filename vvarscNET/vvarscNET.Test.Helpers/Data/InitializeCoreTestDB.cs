@@ -199,6 +199,8 @@ namespace vvarscNET.Test.Helpers.Data
                     PayGradeDisplayName = pg.PayGradeDisplayName,
                     PayGradeOrderBy = pg.PayGradeOrderBy,
                     PayGradeGroup = pg.PayGradeGroup,
+                    PayGradeDescriptionText = pg.PayGradeDescriptionText,
+                    PayGradeNotes = pg.PayGradeNotes,
                     IsActive = true
                 };
 

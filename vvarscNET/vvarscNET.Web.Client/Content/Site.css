@@ -15,13 +15,17 @@ body {
     padding: 0;
 }
 
+p {
+    font-size: 12pt;
+    margin-top: 0px;
+}
+
 a {
     color: #D7E8FC;
     font-size: 0.9em;
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
-    text-decoration: none;
 }
 
 a:link, a:visited,
@@ -73,15 +77,39 @@ h1 {
 }
 
 h2 {
-    font-size: 1.75em;
+    margin: 0;
+    padding: 8px 0px 8px 0px;
+    font-family: 'Orbitron',sans-serif;
+    font-weight: normal;
+    letter-spacing: .005em;
+    color: #FFF;
+    font-size: 20pt;
+    text-shadow: 0px 0px 4px rgba(0,224,255,0.8),0px 0px 12px rgba(0,160,182,0.9);
+    font-variant: small-caps;
+    display: inline-block;
 }
 
 h3 {
-    font-size: 1.2em;
+    margin: 0;
+    padding: 8px 0 8px 0px;
+    font-family: 'Electrolize',sans-serif;
+    font-weight: normal;
+    letter-spacing: .005em;
+    color: #FFF;
+    font-size: 16pt;
+    text-shadow: 0px 0px 4px #00E0FF,0px 0px 12px #00A0B6;
 }
 
 h4 {
-    font-size: 1.1em;
+    margin: 0;
+    padding: 8px 0 8px 0px;
+    font-family: 'Electrolize',sans-serif;
+    font-weight: normal;
+    letter-spacing: .005em;
+    color: #FFF;
+    font-size: 12pt;
+    text-shadow: 0px 0px 4px #00E0FF,0px 0px 12px #00A0B6;
+    font-style: italic;
 }
 
 h5, h6 {
@@ -347,7 +375,6 @@ aside {
     #loginForm .validation-summary-errors li {
         display: inline;
         list-style: none;
-        margin: 0;
     }
 
     #loginForm input {
@@ -631,7 +658,6 @@ tr.pager td {
         #login li {
             display: inline;
             list-style: none;
-            margin: 0;
             padding: 0;
         }
 

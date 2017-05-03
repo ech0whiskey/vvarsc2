@@ -12,6 +12,8 @@ namespace vvarscNET.Core.CommandModels.People
         public string PayGradeDisplayName;
         public int PayGradeOrderBy;
         public string PayGradeGroup;
+        public string PayGradeDescriptionText;
+        public string PayGradeNotes;
         public bool IsActive;
     }
 }

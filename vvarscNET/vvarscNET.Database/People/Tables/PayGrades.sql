@@ -4,6 +4,8 @@
 	,PayGradeDisplayName [dbo].Name
 	,PayGradeOrderBy int
 	,PayGradeGroup [dbo].Enum
+	,PayGradeDescriptionText nvarchar(max)
+	,PayGradeNotes nvarchar(max)
 	,IsActive bit
 	,CreatedOn [dbo].CreatedOn
 	,CreatedBy [dbo].CreatedBy

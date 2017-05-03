@@ -1,0 +1,136 @@
+﻿@model List<vvarscNET.Model.ResponseModels.People.Rank_QRM>
+
+@{
+    ViewBag.Title = "Ranks";
+}
+
+<h2>Fleet Rank Structure</h2>
+<div class="description_container2">
+    <p style="text-align: center; font-style: italic">
+        The VVarMachine Combined Fleet uses a Hierarchical Military Unit Structure and Ranking System, with design elements incorporated from the organization of the US Navy, AirForce, and Marines.
+    </p>
+    <div class="description_container3">
+        <div class="corner corner-top-left">
+        </div>
+        <div class="corner corner-top-right">
+        </div>
+        <div class="corner corner-bottom-left">
+        </div>
+        <div class="corner corner-bottom-right">
+        </div>
+        <h3 style="padding-left: 4px; margin-left: 0">
+            Fleet Ranks and PayGrades
+        </h3>
+        In armed-forces around the world, a member's rank is defined by a <strong>PayGrade</strong>, and a <strong>Role</strong> that the member performs. As the member becomes more proficient in the skills needed to perform that Role, he or she can receive promotion to a higher PayGrade. When the member is sufficiently qualified in their speciality, and has reached the appropriate PayGrade, they can be chosen to lead and develop the skills of lower-grade members in their field. PayGrades are divided into three groups:
+        <ul>
+            <li style="color: #FFF; font-style: italic">
+                <a href="#EnlistedRanks">Enlisted Ranks</a>
+            </li>
+            <li style="color: #FFF; font-style: italic">
+                Warrant Officer Ranks (not used in the VVarMachine Naval Fleet)
+            </li>
+            <li style="color: #FFF; font-style: italic">
+                <a href="#EnlistedRanks">Officer Ranks</a>
+            </li>
+        </ul>
+        Because there are far more PayGrades than there are supported ranks in the RSI Organization Structure, each group of PayGrades can be divided further into sub-categories. These sub-categories relate directly to the six rank-levels of the RSI Organization Structure.
+        <br />
+        <br />
+        Military Flight Units and Division/Fleet Command utilize the Navy Rank Names and Images. Marine Names and Images are used by dedicated ground combat units, along with Quick Reaction Force (QRF) Units.
+        <br />
+        <br />
+        Details about each PayGrade can be found below, including the requirements for advancement from one to the next.
+    </div>
+</div>
+<br />
+<br />
+
+@{ 
+    //order the list
+    var sortedList = Model.OrderByDescending(x => x.PayGradeOrderBy).ThenByDescending(x => x.RankType).ToList();
+}
+
+<div id="EnlistedRanks" class="description_container" style="
+	font-size: 10pt;
+	color: #A2B5D2
+">
+    <div class="top-line">
+    </div>
+    <div class="corner4 corner-diag-blue-topLeft">
+    </div>
+    <div class="corner4 corner-diag-blue-topRight">
+    </div>
+    <div class="corner4 corner-diag-blue-bottomLeft">
+    </div>
+    <div class="corner4 corner-diag-blue-bottomRight">
+    </div>
+    <h3>
+        Enlisted Ranks
+    </h3>
+    <div class="description_inner">
+        <!--Enlisted Ranks-->
+        @{
+            var enlistedPayGradeGroups = sortedList.Where(a => a.PayGradeGroup == "Member" || a.PayGradeGroup == "NCO" || a.PayGradeGroup == "Senior NCO").Select(a => new { a.PayGradeGroup, a.PayGradeName }).Distinct().ToList();
+            foreach (var pgg in enlistedPayGradeGroups)
+            {
+                var payGrades = sortedList.Where(a => a.PayGradeGroup == pgg.PayGradeGroup && a.PayGradeName == pgg.PayGradeName).Select(a => new {
+                    a.PayGradeName,
+                    a.PayGradeDescriptionText,
+                    a.PayGradeNotes
+                }).Distinct().ToList();
+
+                foreach (var pg in payGrades)
+                {
+                    <div class="table_header_block">
+                    </div>
+                    <div id="@pg.PayGradeName" class="description_entry">
+                        <div class="description_entry_header">
+                            <h4>
+                                @pg.PayGradeName [ @pgg.PayGradeGroup ]
+                            </h4>
+                        </div>
+                            @{
+                                var payGradeRanks = sortedList.Where(a => a.PayGradeName == pg.PayGradeName).ToList();
+                                //Display Images
+                                foreach (var pgr in payGradeRanks)
+                                {
+                                    <div class="image_wrapper" style="
+                                        display: inline-block;
+                                        padding:8px;
+                                    ">
+                                        <div class="image_container" style="height:68px; width:68px;">
+                                            <div class="corner corner-top-left">
+                                            </div>
+                                            <div class="corner corner-top-right">
+                                            </div>
+                                            <div class="corner corner-bottom-left">
+                                            </div>
+                                            <div class="corner corner-bottom-right">
+                                            </div>
+                                            <img class="rankImage" align="middle" alt="@pgr.PayGradeName @pgr.RankType" src="@pgr.RankImage" />
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <ul style="margin-top:0px;">
+                            @{ 
+                                foreach (var pgr in payGradeRanks)
+                                {
+                                    <li style="color:#FFF; font-style:italic;">
+                                        @pgr.RankType <strong>@pgr.RankName</strong> - @pgr.RankAbbr
+                                    </li>
+                                }
+                            }
+                            </ul>
+                        <p style="padding-left: 12px; font-size:10pt;">
+                            @pg.PayGradeDescriptionText
+                        </p>
+                        <p style="padding-left: 12px; font-size:10pt;">
+                            @pg.PayGradeNotes
+                        </p>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

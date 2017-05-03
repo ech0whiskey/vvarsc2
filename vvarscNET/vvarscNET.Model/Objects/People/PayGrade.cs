@@ -13,6 +13,8 @@ namespace vvarscNET.Model.Objects.People
         public string PayGradeDisplayName;
         public int PayGradeOrderBy;
         public string PayGradeGroup;
+        public string PayGradeDescriptionText;
+        public string PayGradeNotes;
         public bool IsActive;
         public DateTime CreatedOn;
         public string CreatedBy;

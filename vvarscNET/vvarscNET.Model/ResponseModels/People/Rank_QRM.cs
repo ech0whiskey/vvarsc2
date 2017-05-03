@@ -10,10 +10,12 @@ namespace vvarscNET.Model.ResponseModels.People
     {
         public int RankID;
         public int PayGradeID;
-        public int PayGradeName;
-        public int PayGradeDisplayName;
+        public string PayGradeName;
+        public string PayGradeDisplayName;
         public int PayGradeOrderBy;
-        public int PayGradeGroup;
+        public string PayGradeGroup;
+        public string PayGradeDescriptionText;
+        public string PayGradeNotes;
         public string RankName;
         public string RankAbbr;
         public string RankType;

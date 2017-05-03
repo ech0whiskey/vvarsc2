@@ -197,13 +197,16 @@
     <Compile Include="Controllers\Admin_OrganizationsController.cs" />
     <Compile Include="Controllers\SecuredHomeController.cs" />
     <Compile Include="Controllers\ServerDataController.cs" />
+    <Compile Include="Controllers\WikiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IPeopleRestClient.cs" />
     <Compile Include="Interfaces\IOrganizationsRestClient.cs" />
     <Compile Include="Interfaces\IAuthenticationRestClient.cs" />
     <Compile Include="Interfaces\IServerDataRestClient.cs" />
     <Compile Include="Services\AuthenticationRestClient.cs" />
+    <Compile Include="Services\PeopleRestClient.cs" />
     <Compile Include="Services\OrganizationsRestClient.cs" />
     <Compile Include="Services\ServerDataRestClient.cs" />
     <Compile Include="Helper\HelperFunctions.cs" />
@@ -211,6 +214,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Styles\Accents.css" />
+    <Content Include="Content\Styles\Shared.css" />
     <Content Include="Content\Styles\Layout.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -326,6 +331,7 @@
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Home\Forbidden.cshtml" />
     <Content Include="Views\Organizations\Details.cshtml" />
+    <Content Include="Views\Wiki\Ranks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

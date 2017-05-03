@@ -33,6 +33,8 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 	                    ,pg.PayGradeDisplayName
 	                    ,pg.PayGradeOrderBy
 	                    ,pg.PayGradeGroup
+                        ,pg.PayGradeDescriptionText
+                        ,pg.PayGradeNotes
 	                    ,r.RankName
 	                    ,r.RankAbbr
 	                    ,r.RankType

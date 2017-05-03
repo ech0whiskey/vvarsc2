@@ -35,6 +35,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,PayGradeDisplayName
 	                    ,PayGradeOrderBy
 	                    ,PayGradeGroup
+                        ,PayGradeDescriptionText
+                        ,PayGradeNotes
 	                    ,IsActive
 	                    ,CreatedOn
 	                    ,CreatedBy
@@ -45,6 +47,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,@PayGradeDisplayName
 	                    ,@PayGradeOrderBy
 	                    ,@PayGradeGroup
+                        ,@PayGradeDescriptionText
+                        ,@PayGradeNotes
 	                    ,@IsActive
 	                    ,@CreatedOn
 	                    ,@CreatedBy
@@ -65,6 +69,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                             PayGradeDisplayName = command.PayGradeDisplayName,
                             PayGradeOrderBy = command.PayGradeOrderBy,
                             PayGradeGroup = command.PayGradeGroup,
+                            PayGradeDescriptionText = command.PayGradeDescriptionText,
+                            PayGradeNotes = command.PayGradeNotes,
                             IsActive = command.IsActive,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),
