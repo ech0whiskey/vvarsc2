@@ -10,7 +10,7 @@ namespace vvarscNET.Core.CommandModels.Authentication
     public class CreateAccessToken_C : ICommand
     {
         public int MemberID;
-        public int OrganizationID;
+        public int? OrganizationID;
         public DateTime ValidFrom;
         public DateTime ValidTo;
         public string ParentAccessToken;

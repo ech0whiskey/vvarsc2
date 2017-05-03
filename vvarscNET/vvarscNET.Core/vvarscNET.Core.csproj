@@ -74,6 +74,8 @@
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrganization_C.cs" />
     <Compile Include="CommandModels\People\CreateMember_C.cs" />
+    <Compile Include="CommandModels\People\CreateRank_C.cs" />
+    <Compile Include="CommandModels\People\CreatePayGrade_C.cs" />
     <Compile Include="Decorators\ValidateAccessTokenPre_QH_Decorator.cs" />
     <Compile Include="Decorators\ValidateUserContextPre_CH_Decorator.cs" />
     <Compile Include="Dispatchers\CommandDispatcher.cs" />

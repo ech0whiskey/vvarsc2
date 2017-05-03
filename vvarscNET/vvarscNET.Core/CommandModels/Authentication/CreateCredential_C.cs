@@ -12,6 +12,6 @@ namespace vvarscNET.Core.CommandModels.Authentication
         public int MemberID;
         public string UserName;
         public string PasswordHash;
-        public int OrganizationID;
+        public int? OrganizationID;
     }
 }

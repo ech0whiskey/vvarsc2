@@ -31,6 +31,8 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init organization admins");
             if (!InitSuperAdmin(connectionString))
                 throw new Exception("Could not init superadmin");
+            if (!InitPayGradesAndRanks(connectionString))
+                throw new Exception("Could not init PayGrades and Ranks");
         }
 
         #region SuperAdmin
@@ -43,7 +45,7 @@ namespace vvarscNET.Test.Helpers.Data
                 UserName = userName,
                 RSIHandle = "invalid_handle",
                 UserType = Model.Enums.UserTypeEnum.SuperAdmin,
-                OrganizationID = 0,
+                OrganizationID = null,
                 IsActive = true
             };
 
@@ -67,7 +69,7 @@ namespace vvarscNET.Test.Helpers.Data
                 MemberID = memID,
                 UserName = userName,
                 PasswordHash = passwordHash,
-                OrganizationID = 0
+                OrganizationID = null
             };
 
             CreateCredential_CH createCredential_CH = new CreateCredential_CH(new SQLConnectionFactory(connectionString));
@@ -183,6 +185,60 @@ namespace vvarscNET.Test.Helpers.Data
             }
             return true;
         }
+        #endregion
+
+        #region PayGrades/Ranks
+        private static bool InitPayGradesAndRanks(string connectionString)
+        {
+            foreach (var pg in SetupData._paygrades)
+            {
+                //Create PayGrade
+                var pgCmd = new CreatePayGrade_C
+                {
+                    PayGradeName = pg.PayGradeName,
+                    PayGradeDisplayName = pg.PayGradeDisplayName,
+                    PayGradeOrderBy = pg.PayGradeOrderBy,
+                    PayGradeGroup = pg.PayGradeGroup,
+                    IsActive = true
+                };
+
+                CreatePayGrade_CH createPayGrade_CH = new CreatePayGrade_CH(new SQLConnectionFactory(connectionString));
+                var pgResult = createPayGrade_CH.Handle(Globals.UserContext, pgCmd);
+
+                if (pgResult.Status != System.Net.HttpStatusCode.OK)
+                {
+                    return false;
+                }
+                var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
+
+                var pgRanks = SetupData._ranks.Where(a => a.PayGradeID == pgID).ToList();
+                foreach (var rank in pgRanks)
+                {
+                    //Create Rank(s) for this PayGrade
+                    var rankCmd = new CreateRank_C
+                    {
+                        PayGradeID = pgID,
+                        RankName = rank.RankName,
+                        RankAbbr = rank.RankAbbr,
+                        RankType = rank.RankType,
+                        RankImage = rank.RankImage,
+                        RankGroupName = rank.RankGroupName,
+                        RankGroupImage = rank.RankGroupImage,
+                        IsActive = true
+                    };
+
+                    CreateRank_CH createRank_CH = new CreateRank_CH(new SQLConnectionFactory(connectionString));
+                    var rankResult = createRank_CH.Handle(Globals.UserContext, rankCmd);
+
+                    if (rankResult.Status != System.Net.HttpStatusCode.OK)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         #endregion
     }
 }
