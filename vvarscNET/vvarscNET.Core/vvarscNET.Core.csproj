@@ -103,6 +103,7 @@
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationBySpectrumID_Q.cs" />
+    <Compile Include="QueryModels\People\ListRanks_Q.cs" />
     <Compile Include="QueryModels\People\ListMembersForOrganization_Q.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="Logger\ApiLogEntry.cs" />

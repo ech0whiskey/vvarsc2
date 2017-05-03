@@ -55,9 +55,10 @@
     <Compile Include="QueryHandlers\Authentication\GetAccessTokenByValue_QH.cs" />
     <Compile Include="QueryHandlers\Authentication\GetLatestMemberAccessToken_QH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryHandlers\Members\GetMemberByAccessToken_QH.cs" />
-    <Compile Include="QueryHandlers\Members\ListMembersForOrganization_QH.cs" />
-    <Compile Include="QueryHandlers\Members\GetMemberByID_QH.cs" />
+    <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
+    <Compile Include="QueryHandlers\People\ListRanks_QH.cs" />
+    <Compile Include="QueryHandlers\People\ListMembersForOrganization_QH.cs" />
+    <Compile Include="QueryHandlers\People\GetMemberByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListOrganizations_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetOrganizationByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetOrganizationBySpectrumID_QH.cs" />

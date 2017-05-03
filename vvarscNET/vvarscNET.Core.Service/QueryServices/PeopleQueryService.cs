@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Service.Interfaces;
 using vvarscNET.Model.Objects.People;
+using vvarscNET.Model.ResponseModels.People;
 using vvarscNET.Core.QueryModels.People;
 
 namespace vvarscNET.Core.Service.QueryServices
@@ -27,6 +28,15 @@ namespace vvarscNET.Core.Service.QueryServices
             };
 
             var result = _queryDispatcher.Dispatch<ListMembersForOrganization_Q, List<Member>>(accessToken, query);
+
+            return result;
+        }
+
+        public List<Rank_QRM> ListRanks(string accessToken)
+        {
+            var query = new ListRanks_Q();
+
+            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<Rank_QRM>>(accessToken, query);
 
             return result;
         }
