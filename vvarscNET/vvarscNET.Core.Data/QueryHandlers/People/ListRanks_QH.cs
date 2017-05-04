@@ -2,6 +2,7 @@
 using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
+using vvarscNET.Model.Objects.People;
 using vvarscNET.Model.ResponseModels.People;
 using System;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.People
 {
-    public class ListRanks_QH : IQueryHandler<ListRanks_Q, List<Rank_QRM>>
+    public class ListRanks_QH : IQueryHandler<ListRanks_Q, List<ListRanks_QRM>>
     {
         private readonly SQLConnectionFactory _connFactory;
 
@@ -19,8 +20,11 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
             _connFactory = connFactory;
         }
 
-        public List<Rank_QRM> Handle(string accessTokenID, ListRanks_Q query)
+        public List<ListRanks_QRM> Handle(string accessTokenID, ListRanks_Q query)
         {
+            Dictionary<int, ListRanks_QRM> xRanks = new Dictionary<int, ListRanks_QRM>();
+            Dictionary<int, HashSet<OrgRole>> xRanksOrgRoles = new Dictionary<int, HashSet<OrgRole>>();
+
             using (var connection = _connFactory.GetConnection())
             {
                 connection.Open();
@@ -41,18 +45,63 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 	                    ,r.RankImage
 	                    ,r.RankGroupName
 	                    ,r.RankGroupImage
+						,mr.ID
+						,mr.RoleName
+						,mr.RoleShortName
+						,mr.RoleDisplayName
+						,mr.RoleType
+						,mr.RoleOrderBy
+						,mr.IsActive
+						,mr.IsHidden
                     from People.Ranks r
                     join People.PayGrades pg
 	                    on pg.ID = r.PayGradeID
+					outer apply (
+						select
+							r.*
+						from People.PayGradeOrgRoleMap m
+						join People.OrgRoles r
+							on r.ID = m.OrgRoleID
+						where m.PayGradeID = pg.ID
+					) mr
                     order by
 	                    pg.PayGradeOrderBy
 	                    ,r.RankType
-	                    ,r.RankName           
+	                    ,r.RankName          
                 ";
 
-                var res = connection.Query<Rank_QRM>(sql).ToList();
+                var res = connection.Query<ListRanks_QRM, OrgRole, ListRanks_QRM>(sql, (rank, role) =>
+                {
+                    if (!xRanks.ContainsKey(rank.RankID))
+                        xRanks[rank.RankID] = rank;
 
-                return res;
+                    if (role != null)
+                    {
+                        if (!xRanksOrgRoles.ContainsKey(rank.RankID))
+                            xRanksOrgRoles[rank.RankID] = new HashSet<OrgRole>();
+                        xRanksOrgRoles[rank.RankID].Add(new OrgRole
+                        {
+                            ID = role.ID,
+                            RoleName = role.RoleName,
+                            RoleShortName = role.RoleShortName,
+                            RoleDisplayName = role.RoleDisplayName,
+                            RoleType = role.RoleType,
+                            IsActive = role.IsActive,
+                            IsHidden = role.IsHidden
+                        });
+                    }
+                    return rank;
+                }).ToList();
+
+                foreach (var r in xRanks.Values)
+                {
+                    HashSet<OrgRole> orgRoles = null;
+                    xRanksOrgRoles.TryGetValue(r.RankID, out orgRoles);
+                    if (orgRoles != null)
+                        r.SupportedOrgRoles = orgRoles.ToList();
+                }
+
+                return xRanks.Values.ToList();
             }
         }
     }

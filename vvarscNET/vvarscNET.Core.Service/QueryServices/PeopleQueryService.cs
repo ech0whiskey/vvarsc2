@@ -32,11 +32,11 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public List<Rank_QRM> ListRanks(string accessToken)
+        public List<ListRanks_QRM> ListRanks(string accessToken)
         {
             var query = new ListRanks_Q();
 
-            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<Rank_QRM>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<ListRanks_QRM>>(accessToken, query);
 
             return result;
         }

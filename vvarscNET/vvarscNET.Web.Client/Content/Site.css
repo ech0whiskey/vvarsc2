@@ -44,9 +44,9 @@ nav, section {
 }
 
 mark {
-    background-color: #a6dbed;
-    padding-left: 5px;
-    padding-right: 5px;
+    text-shadow: 0px 0px 4px rgba(0,224,255,0.8),0px 0px 12px rgba(0,160,182,0.9);
+    background-color: rgba(0,0,0,0);
+    color: #ddd;
 }
 
 .float-left {
@@ -180,10 +180,7 @@ footer {
 }
 
 #login a {
-    background-color: #d3dce0;
-    margin-left: 10px;
-    margin-right: 3px;
-    padding: 2px 3px;
+    padding: 2px;
     text-decoration: none;
 }
 
@@ -236,27 +233,21 @@ ul#menu li a:hover {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-    background-color: #fff;
+
 }
 
-    .featured .content-wrapper {
-        background-color: #7ac0da;
-        background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        color: #3e5667;
-        padding: 20px 40px 30px 40px;
-    }
+.featured .content-wrapper {
+    color: #DDD;
+    padding: 20px 40px 30px 40px;
+}
 
-        .featured hgroup.title h1, .featured hgroup.title h2 {
-            color: #fff;
-        }
+.featured hgroup.title h1, .featured hgroup.title h2 {
+    color: #DDD;
+}
 
-        .featured p {
-            font-size: 1.1em;
-        }
+.featured p {
+    font-size: 1.1em;
+}
 
 /* page titles */
 hgroup.title {

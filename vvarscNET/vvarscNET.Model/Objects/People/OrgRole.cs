@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace vvarscNET.Model.Objects.People
 {
-    public class PayGrade
+    public class OrgRole
     {
         public int ID;
-        public string PayGradeName;
-        public string PayGradeDisplayName;
-        public int PayGradeOrderBy;
-        public string PayGradeGroup;
-        public string PayGradeDescriptionText;
-        public string PayGradeNotes;
-        public List<string> SupportedOrgRoles;
+        public string RoleName;
+        public string RoleShortName;
+        public string RoleDisplayName;
+        public string RoleType;
+        public int RoleOrderBy;
         public bool IsActive;
+        public bool IsHidden;
         public DateTime CreatedOn;
         public string CreatedBy;
         public DateTime ModifiedOn;

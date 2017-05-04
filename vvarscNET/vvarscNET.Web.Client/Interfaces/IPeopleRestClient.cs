@@ -6,6 +6,6 @@ namespace vvarscNET.Web.Client.Interfaces
 {
     public interface IPeopleRestClient
     {
-        IEnumerable<Rank_QRM> ListRanks(HttpContextBase Context);
+        IEnumerable<ListRanks_QRM> ListRanks(HttpContextBase Context);
     }
 }

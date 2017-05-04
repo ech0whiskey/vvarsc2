@@ -32,7 +32,7 @@ namespace vvarscNET.Web.API.Controllers
         /// <returns>List of Ranks</returns>
         [HttpGet]
         [Route("ranks")]
-        [ResponseType(typeof(List<Rank_QRM>))]
+        [ResponseType(typeof(List<ListRanks_QRM>))]
         public IHttpActionResult ListRanks()
         {
             var returnData = _peopleService.ListRanks(Request.GetUserContext().AccessToken);

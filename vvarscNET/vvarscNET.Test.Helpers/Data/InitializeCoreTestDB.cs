@@ -31,6 +31,8 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init organization admins");
             if (!InitSuperAdmin(connectionString))
                 throw new Exception("Could not init superadmin");
+            if (!InitOrgRoles(connectionString))
+                throw new Exception("Could not init OrgRoles");
             if (!InitPayGradesAndRanks(connectionString))
                 throw new Exception("Could not init PayGrades and Ranks");
         }
@@ -213,6 +215,24 @@ namespace vvarscNET.Test.Helpers.Data
                 }
                 var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
 
+                //Map Roles to PayGrade
+                if (pg.SupportedOrgRoles != null && pg.SupportedOrgRoles.Count > 0)
+                {
+                    var pgrCmd = new AddOrgRolesToPayGrade_C
+                    {
+                        PayGradeID = pgID,
+                        SupportedOrgRoles = pg.SupportedOrgRoles
+                    };
+
+                    AddOrgRolesToPayGrade_CH addOrgRolesToPayGrade_CH = new AddOrgRolesToPayGrade_CH(new SQLConnectionFactory(connectionString));
+                    var pgrResult = addOrgRolesToPayGrade_CH.Handle(Globals.UserContext, pgrCmd);
+
+                    if (pgrResult.Status != System.Net.HttpStatusCode.OK)
+                    {
+                        return false;
+                    }
+                }
+
                 var pgRanks = SetupData._ranks.Where(a => a.PayGradeID == pgID).ToList();
                 foreach (var rank in pgRanks)
                 {
@@ -237,6 +257,37 @@ namespace vvarscNET.Test.Helpers.Data
                         return false;
                     }
                 }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Roles
+        private static bool InitOrgRoles(string connectionString)
+        {
+            foreach (var or in SetupData._orgRoles)
+            {
+                //Create OrgRole
+                var orCmd = new CreateOrgRole_C
+                {
+                    RoleName = or.RoleName,
+                    RoleShortName = or.RoleShortName,
+                    RoleDisplayName = or.RoleDisplayName,
+                    RoleType = or.RoleType,
+                    RoleOrderBy = or.RoleOrderBy,
+                    IsActive = or.IsActive,
+                    IsHidden = or.IsHidden
+                };
+
+                CreateOrgRole_CH createOrgRole_CH = new CreateOrgRole_CH(new SQLConnectionFactory(connectionString));
+                var pgResult = createOrgRole_CH.Handle(Globals.UserContext, orCmd);
+
+                if (pgResult.Status != System.Net.HttpStatusCode.OK)
+                {
+                    return false;
+                }
+                var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
             }
             return true;
         }

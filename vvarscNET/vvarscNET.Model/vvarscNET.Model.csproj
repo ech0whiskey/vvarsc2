@@ -49,6 +49,7 @@
     <Compile Include="Enums\UserTypeEnum.cs" />
     <Compile Include="Objects\Organizations\Organization.cs" />
     <Compile Include="Objects\People\Member.cs" />
+    <Compile Include="Objects\People\OrgRole.cs" />
     <Compile Include="Objects\People\PayGrade.cs" />
     <Compile Include="Objects\People\Rank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,7 +59,7 @@
     <Compile Include="ResponseModels\Authentication\AuthenticateMember_QRM.cs" />
     <Compile Include="ResponseModels\Authentication\CreateAccessToken_CRM.cs" />
     <Compile Include="ResponseModels\Authentication\GetAccessToken_QRM.cs" />
-    <Compile Include="ResponseModels\People\Rank_QRM.cs" />
+    <Compile Include="ResponseModels\People\ListRanks_QRM.cs" />
     <Compile Include="Result\Result.cs" />
     <Compile Include="Security\AccessToken.cs" />
     <Compile Include="Security\JwtApiToken.cs" />

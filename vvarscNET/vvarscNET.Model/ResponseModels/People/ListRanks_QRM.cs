@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vvarscNET.Model.Objects.People;
 
 namespace vvarscNET.Model.ResponseModels.People
 {
-    public class Rank_QRM
+    public class ListRanks_QRM
     {
         public int RankID;
         public int PayGradeID;
@@ -22,5 +23,6 @@ namespace vvarscNET.Model.ResponseModels.People
         public string RankImage;
         public string RankGroupName;
         public string RankGroupImage;
+        public List<OrgRole> SupportedOrgRoles;
     }
 }

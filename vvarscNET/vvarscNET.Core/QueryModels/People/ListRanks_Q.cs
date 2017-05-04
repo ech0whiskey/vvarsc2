@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace vvarscNET.Core.QueryModels.People
 {
-    public class ListRanks_Q : IQuery<List<Rank_QRM>>
+    public class ListRanks_Q : IQuery<List<ListRanks_QRM>>
     {
         
     }

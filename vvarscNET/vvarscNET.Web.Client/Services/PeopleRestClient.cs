@@ -20,17 +20,17 @@ namespace vvarscNET.Web.Client.Services
             _client = new RestClient(_url);
         }
 
-        public IEnumerable<Rank_QRM> ListRanks(HttpContextBase Context)
+        public IEnumerable<ListRanks_QRM> ListRanks(HttpContextBase Context)
         {
             var request = new RestRequest("ranks", Method.GET) { RequestFormat = DataFormat.Json};
             request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
 
-            var response = _client.Execute<List<Rank_QRM>>(request);
+            var response = _client.Execute<List<ListRanks_QRM>>(request);
 
             if (response.Content == null)
                 throw new Exception(response.ErrorMessage);
 
-            return JsonConvert.DeserializeObject<IEnumerable<Rank_QRM>>(response.Content);
+            return JsonConvert.DeserializeObject<IEnumerable<ListRanks_QRM>>(response.Content);
         }
     }
 }

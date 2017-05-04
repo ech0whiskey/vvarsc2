@@ -1,4 +1,4 @@
-﻿@model List<vvarscNET.Model.ResponseModels.People.Rank_QRM>
+﻿@model List<vvarscNET.Model.ResponseModels.People.ListRanks_QRM>
 
 @{
     ViewBag.Title = "Ranks";
@@ -90,7 +90,14 @@
                             </h4>
                         </div>
                             @{
-                                var payGradeRanks = sortedList.Where(a => a.PayGradeName == pg.PayGradeName).ToList();
+                                var payGradeRanks = sortedList.Where(a => a.PayGradeName == pg.PayGradeName).Select(a => new
+                                {
+                                    a.PayGradeName,
+                                    a.RankAbbr,
+                                    a.RankName,
+                                    a.RankType,
+                                    a.RankImage
+                                }).Distinct().ToList();
                                 //Display Images
                                 foreach (var pgr in payGradeRanks)
                                 {
@@ -112,8 +119,9 @@
                                     </div>
                                 }
                             }
-                            <ul style="margin-top:0px;">
+                            <ul style="margin-top:0px;margin-bottom:4px;">
                             @{ 
+                                //Display Each Rank Name + Abbreviation
                                 foreach (var pgr in payGradeRanks)
                                 {
                                     <li style="color:#FFF; font-style:italic;">
@@ -122,10 +130,29 @@
                                 }
                             }
                             </ul>
-                        <p style="padding-left: 12px; font-size:10pt;">
+                            <h5 style="margin-left:8px;margin-top:4px;margin-bottom:4px;color: #DDD;">
+                                Supported Org Roles
+                            </h5>
+                            @{
+                                var orgRoleList = sortedList.Where(a => a.PayGradeName == pg.PayGradeName).FirstOrDefault().SupportedOrgRoles;
+                            }
+                            <ul style="margin-top:0px;margin-bottom:8px;font-size:9pt;">
+                                @{
+                                    if (orgRoleList != null && orgRoleList.Count > 0)
+                                    { 
+                                        foreach (var r in orgRoleList)
+                                        {
+                                            <li style="color:#DDD; font-style:italic;">
+                                                @r.RoleName
+                                            </li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
                             @pg.PayGradeDescriptionText
                         </p>
-                        <p style="padding-left: 12px; font-size:10pt;">
+                        <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
                             @pg.PayGradeNotes
                         </p>
                     </div>
