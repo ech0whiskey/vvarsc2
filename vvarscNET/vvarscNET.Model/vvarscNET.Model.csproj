@@ -59,6 +59,7 @@
     <Compile Include="ResponseModels\Authentication\AuthenticateMember_QRM.cs" />
     <Compile Include="ResponseModels\Authentication\CreateAccessToken_CRM.cs" />
     <Compile Include="ResponseModels\Authentication\GetAccessToken_QRM.cs" />
+    <Compile Include="ResponseModels\Organizations\GetFullOrganization_QRM.cs" />
     <Compile Include="ResponseModels\People\ListRanks_QRM.cs" />
     <Compile Include="Result\Result.cs" />
     <Compile Include="Security\AccessToken.cs" />

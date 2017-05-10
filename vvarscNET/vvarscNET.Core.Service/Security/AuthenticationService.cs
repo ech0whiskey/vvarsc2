@@ -86,7 +86,7 @@ namespace vvarscNET.Core.Service.Security
                     //Get Member for Token
                     var memQuery = new GetMemberByID_Q
                     {
-                        MemberID = returnTokenQRM.MemberID.ToString()
+                        MemberID = returnTokenQRM.MemberID
                     };
 
                     var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
@@ -154,7 +154,7 @@ namespace vvarscNET.Core.Service.Security
                     //Get Member for Token
                     var memQuery = new GetMemberByID_Q
                     {
-                        MemberID = returnTokenQRM.MemberID.ToString()
+                        MemberID = returnTokenQRM.MemberID
                     };
 
                     var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
@@ -200,7 +200,7 @@ namespace vvarscNET.Core.Service.Security
                 //Get Member for Token
                 var memQuery = new GetMemberByID_Q
                 {
-                    MemberID = queryResult.MemberID.ToString()
+                    MemberID = queryResult.MemberID
                 };
 
                 var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);
@@ -252,7 +252,7 @@ namespace vvarscNET.Core.Service.Security
                 //Get Member for Token
                 var memQuery = new GetMemberByID_Q
                 {
-                    MemberID = queryResult.MemberID.ToString()
+                    MemberID = queryResult.MemberID
                 };
 
                 var memResult = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(Globals.AuthHandlerToken, memQuery);

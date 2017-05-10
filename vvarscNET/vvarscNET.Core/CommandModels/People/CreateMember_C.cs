@@ -13,7 +13,8 @@ namespace vvarscNET.Core.CommandModels.People
         public string UserName;
         public string RSIHandle;
         public int? OrganizationID;
-        public UserTypeEnum UserType;
+        public string UserType;
+        public int? RankID;
         public bool IsActive;
     }
 }

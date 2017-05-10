@@ -37,7 +37,22 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 	                    ,m.CreatedBy
 	                    ,m.ModifiedOn
 	                    ,m.ModifiedBy
-                    from [People].[Members] m
+	                    ,pg.ID [PayGradeID]
+	                    ,pg.PayGradeName
+	                    ,pg.PayGradeDisplayName
+	                    ,pg.PayGradeGroup
+	                    ,r1.ID [RankID]
+	                    ,r1.RankName
+	                    ,r1.RankAbbr
+	                    ,r1.RankType
+	                    ,r1.RankImage
+	                    ,r1.RankGroupName
+	                    ,r1.RankGroupImage
+                    from People.Members m
+                    join People.Ranks r1
+	                    on r1.ID = m.RankID
+                    join People.PayGrades pg
+	                    on pg.ID = r1.PayGradeID
                     where m.OrganizationID = @OrganizationID            
                 ";
 

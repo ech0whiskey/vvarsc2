@@ -5,6 +5,6 @@ namespace vvarscNET.Core.QueryModels.People
 {
     public class GetMemberByID_Q : IQuery<Member>
     {
-        public string MemberID;
+        public int MemberID;
     }
 }

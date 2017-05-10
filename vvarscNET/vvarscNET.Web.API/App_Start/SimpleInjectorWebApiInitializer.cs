@@ -18,6 +18,7 @@ namespace vvarscNET.Web.API.App_Start
     using SimpleInjector;
     using System;
     using System.Configuration;
+    using vvarscNET.Core.Service.CommandServices;
 
     /// <summary>
     /// Class for SimpleInjector Initialization of Dependant Components (Commands, Queries, etc).
@@ -66,7 +67,7 @@ namespace vvarscNET.Web.API.App_Start
             //container.Register<ICommandHandler<UpdateMember_C>, UpdateMember_CH>();
 
             // Command Services
-            //container.Register<IMemberCommandService, MemberCommandService>(Lifestyle.Scoped);
+            container.Register<IPeopleCommandService, PeopleCommandService>(Lifestyle.Scoped);
         }
 
         private static void RegisterQueries(Container container)

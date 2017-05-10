@@ -37,14 +37,14 @@ namespace AdminConsole.Core.Data.QueryHandlers.People
 	                    ,m.ModifiedOn
 	                    ,m.ModifiedBy
                     from [People].[Members] m
-                    join [Authentication].[Token] t
-	                    on t.MemberID = m.MemberID
+                    join [Authentication].[Tokens] t
+	                    on t.MemberID = m.ID
 	                    and t.AccessToken = @AccessToken
                     where m.IsActive = 1              
                 ";
 
                 var res = connection.Query<Member>(sql, new {
-                    AccessTokenID = query.AccessToken
+                    AccessToken = query.AccessToken
                 }).FirstOrDefault();
 
                 return res;

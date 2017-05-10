@@ -22,7 +22,7 @@ p {
 
 a {
     color: #D7E8FC;
-    font-size: 0.9em;
+    font-size: 10pt;
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
@@ -121,6 +121,10 @@ h5, h6 {
         text-decoration: none;
     }
 
+select {
+    margin-bottom: 4px;
+}
+
 
 /* main layout
 ----------------------------------------------------------*/
@@ -157,27 +161,28 @@ footer {
 ----------------------------------------------------------*/
 .site-title {
     color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 2.3em;
+    font-size: 24pt;
     margin: 0;
 }
 
-.site-title a, .site-title a:hover, .site-title a:active {
+.site-title a, .site-title a:active {
     background: none;
     color: #c8c8c8;
     outline: none;
     text-decoration: none;
 }
 
-
-/* login
-----------------------------------------------------------*/
-#login {
-    display: block;
-    font-size: .85em;
-    margin: 0 0 10px;
-    text-align: right;
+.site-title a:hover{
+    color: #FFF;
 }
+    /* login
+----------------------------------------------------------*/
+    #login {
+        display: block;
+        font-size: .85em;
+        margin: 0 0 10px;
+        text-align: right;
+    }
 
 #login a {
     padding: 2px;
@@ -198,6 +203,7 @@ footer {
 #login li {
     display: inline;
     list-style: none;
+    vertical-align: middle;
 }
 
 
@@ -224,7 +230,7 @@ ul#menu li a {
 }
 
 ul#menu li a:hover {
-    color: #333;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -323,12 +329,12 @@ ol.round {
 
 /* content */
 article {
-    float: left;
+    /*float: right;*/
     width: 80%;
 }
 
 aside {
-    float: right;
+    /*float: right;*/
     width: 20%;
 }
 
@@ -446,8 +452,8 @@ input, textarea {
     background: #fff;
     color: #333;
     font-size: 1.2em;
-    margin: 5px 0 6px 0;
-    padding: 5px;
+    margin: 4px 0 4px 0;
+    padding: 4px;
     width: 300px;
 }
 
@@ -469,12 +475,7 @@ textarea {
     input[type="submit"],
     input[type="button"],
     button {
-        background-color: #d3dce0;
-        border: 1px solid #787878;
         cursor: pointer;
-        font-size: 1.2em;
-        font-weight: 600;
-        padding: 7px;
         margin-right: 8px;
         width: auto;
     }

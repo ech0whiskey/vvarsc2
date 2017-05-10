@@ -18,6 +18,7 @@ using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Data.QueryHandlers.People;
 using vvarscNET.Core.CommandModels.People;
 using vvarscNET.Core.Data.CommandHandlers.People;
+using vvarscNET.Model.Enums;
 
 namespace vvarscNET.Test.Helpers.Data
 {
@@ -25,6 +26,8 @@ namespace vvarscNET.Test.Helpers.Data
     {
         public static void Initialize(string connectionString, bool isTest = false)
         {
+            if (!InitPayGradesAndRanks(connectionString))
+                throw new Exception("Could not init PayGrades and Ranks");
             if (!InitOrganization(connectionString))
                 throw new Exception("Could not init organization");
             if (!InitOrgAdmins(connectionString))
@@ -33,8 +36,6 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init superadmin");
             if (!InitOrgRoles(connectionString))
                 throw new Exception("Could not init OrgRoles");
-            if (!InitPayGradesAndRanks(connectionString))
-                throw new Exception("Could not init PayGrades and Ranks");
         }
 
         #region SuperAdmin
@@ -46,7 +47,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 UserName = userName,
                 RSIHandle = "invalid_handle",
-                UserType = Model.Enums.UserTypeEnum.SuperAdmin,
+                UserType = "SuperAdmin",
                 OrganizationID = null,
                 IsActive = true
             };
@@ -144,7 +145,7 @@ namespace vvarscNET.Test.Helpers.Data
                     {
                         UserName = userName,
                         RSIHandle = "invalid_handle",
-                        UserType = Model.Enums.UserTypeEnum.Admin,
+                        UserType = "Admin",
                         OrganizationID = organization.ID,
                         IsActive = true
                     };

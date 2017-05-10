@@ -24,9 +24,10 @@ namespace vvarscNET.Web.Client.Helper
                 return true;
         }
 
-        public bool IsSuperAdmin()
+        public bool IsAdmin()
         {
-            if (Context.Session["UserType"].ToString() == "SuperAdmin")
+            if (Context.Session["UserType"].ToString() == "SuperAdmin" ||
+                Context.Session["UserType"].ToString() == "Admin")
                 return true;
             else
                 return false;

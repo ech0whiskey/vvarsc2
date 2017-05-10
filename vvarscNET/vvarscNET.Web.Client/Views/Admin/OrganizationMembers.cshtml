@@ -1,0 +1,72 @@
+﻿@model List<vvarscNET.Model.Objects.People.Member>
+@{
+    ViewBag.Title = "Members";
+}
+
+<h2>Member Management</h2>
+
+<div>
+    <button id="adminCreateMember" class="adminButton adminButtonCreate" title="Add New Member" style="
+		margin-left: 0px;
+		margin-bottom: 4px;
+		width: 100%;
+		text-align: right;"
+        onclick="location.href='@Url.Action("CreateMember","Admin",new { id = Session["OrganizationID"] })'">
+        <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_add.png" />
+        Add New Member
+    </button>
+    <div id="AdminMemberList" class="description_container">
+        <div class="top-line">
+        </div>
+        <div class="corner4 corner-diag-blue-topLeft">
+        </div>
+        <div class="corner4 corner-diag-blue-topRight">
+        </div>
+        <div class="corner4 corner-diag-blue-bottomLeft">
+        </div>
+        <div class="corner4 corner-diag-blue-bottomRight">
+        </div>
+        <div class="description_inner">
+            @{
+                foreach (var member in Model)
+                {
+                    <div class="table_header_block">
+                    </div>
+                    <div class="description_entry" style="
+                    margin-bottom:4px;
+                    display: block;
+                ">
+                        <div style="
+                        float: right;
+                        text-align: right;
+                    ">
+                            <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;">
+                                <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
+                            </button>
+                            <button class="adminButton adminButtonDelete" title="Delete Member" style="margin-left: 0px;">
+                                <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_delete.png">
+                            </button>
+                        </div>
+                        <div style="display:table;">
+                            <div class="image_wrapper">
+                                <div class="image_container" style="
+                            height: 20px;
+                            width: 20px;
+                            padding-left: 0px;
+                            padding-right: 0px;
+                        ">
+                                    <img class="rankImageSmall"
+                                         src="@member.RankImage" />
+                                </div>
+                                <div class="rankImage_text">
+                                    @member.RankAbbr @member.UserName
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</div>

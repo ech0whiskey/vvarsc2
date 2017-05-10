@@ -35,6 +35,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,RSIHandle
 	                    ,OrganizationID
                         ,UserType
+                        ,RankID
 	                    ,IsActive
 	                    ,CreatedOn
 	                    ,CreatedBy
@@ -45,6 +46,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,@RSIHandle
 	                    ,@OrganizationID
                         ,@UserType
+                        ,@RankID
 	                    ,@IsActive
 	                    ,@CreatedOn
 	                    ,@CreatedBy
@@ -64,7 +66,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                             UserName = command.UserName,
                             RSIHandle = command.RSIHandle,
                             OrganizationID = command.OrganizationID,
-                            UserType = command.UserType.ToString(),
+                            UserType = command.UserType,
+                            RankID = command.RankID,
                             IsActive = command.IsActive,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),

@@ -18,5 +18,16 @@ namespace vvarscNET.Model.Objects.People
         public string CreatedBy;
         public DateTime ModifiedOn;
         public string ModifiedBy;
+        public int PayGradeID;
+        public string PayGradeName;
+        public string PayGradeDisplayName;
+        public string PayGradeGroup;
+        public int RankID;
+        public string RankName;
+        public string RankAbbr;
+        public string RankType;
+        public string RankImage;
+        public string RankGroupName;
+        public string RankGroupImage;
     }
 }

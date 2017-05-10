@@ -9,6 +9,7 @@
     @Styles.Render("~/Content/Styles/Layout.css")
     @Styles.Render("~/Content/Styles/Shared.css")
     @Styles.Render("~/Content/Styles/Accents.css")
+    @Styles.Render("~/Content/Styles/Responsive.css")
     @Scripts.Render("~/bundles/modernizr")
     <meta name="description" content="VVarMachine StarCitizen Fleet" />
     <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
@@ -23,7 +24,7 @@
                         <div id="headerInner">
                             <div class="content-wrapper">
                                 <div class="float-left">
-                                    <p class="site-title">@Html.ActionLink("Demo Asp.Net MVC4", "Index", "Home")</p>
+                                    <p class="site-title">@Html.ActionLink("VVarMachine StarCitizen Fleet", "Index", "Home")</p>
                                 </div>
                                 <div class="float-right">
                                     <section id="login">
@@ -32,9 +33,9 @@
                                     <nav>
                                         <ul id="menu">
                                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                            <!--<li>@Html.ActionLink("Manipulate Data", "Index", "ServerData")</li>
                                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
+                                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                            <li>@Html.ActionLink("Admin Zone", "Index", "Admin")</li>
                                         </ul>
                                     </nav>
                                 </div>

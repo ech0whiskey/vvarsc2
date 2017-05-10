@@ -1,0 +1,19 @@
+﻿@media only screen and (max-width:499px){
+    #CONTENT {
+        margin:0;
+    }
+    
+    .content-wrapper{
+        padding:0px;
+    }
+
+    #mainWebsiteInner {
+        width:100%;
+    }
+
+    .description_container {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 24px;
+    }
+}

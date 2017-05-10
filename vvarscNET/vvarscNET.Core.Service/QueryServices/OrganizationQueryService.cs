@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vvarscNET.Core.QueryModels.Organizations;
+using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Service.Interfaces;
+using vvarscNET.Model.Objects.People;
 using vvarscNET.Model.Objects.Organizations;
+using vvarscNET.Model.ResponseModels.Organizations;
 
 namespace vvarscNET.Core.Service.QueryServices
 {

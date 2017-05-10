@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\CommandServices\PeopleCommandService.cs" />
+    <Compile Include="Interfaces\IPeopleCommandService.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\QueryServices\IPeopleQueryService.cs" />
@@ -77,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CommandServices\" />
-    <Folder Include="Interfaces\CommandServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

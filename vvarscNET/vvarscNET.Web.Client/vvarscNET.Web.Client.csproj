@@ -194,7 +194,7 @@
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Admin_OrganizationsController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\SecuredHomeController.cs" />
     <Compile Include="Controllers\ServerDataController.cs" />
     <Compile Include="Controllers\WikiController.cs" />
@@ -205,6 +205,7 @@
     <Compile Include="Interfaces\IOrganizationsRestClient.cs" />
     <Compile Include="Interfaces\IAuthenticationRestClient.cs" />
     <Compile Include="Interfaces\IServerDataRestClient.cs" />
+    <Compile Include="Models\MemberEditModel.cs" />
     <Compile Include="Services\AuthenticationRestClient.cs" />
     <Compile Include="Services\PeopleRestClient.cs" />
     <Compile Include="Services\OrganizationsRestClient.cs" />
@@ -215,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Styles\Accents.css" />
+    <Content Include="Content\Styles\Responsive.css" />
     <Content Include="Content\Styles\Shared.css" />
     <Content Include="Content\Styles\Layout.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -327,11 +329,14 @@
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\SecuredHome\Index.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
-    <Content Include="Views\Admin_Organizations\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
     <Content Include="Views\Home\Forbidden.cshtml" />
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Wiki\Ranks.cshtml" />
+    <Content Include="Views\Admin\Organization.cshtml" />
+    <Content Include="Views\Admin\OrganizationMembers.cshtml" />
+    <Content Include="Views\Admin\CreateMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

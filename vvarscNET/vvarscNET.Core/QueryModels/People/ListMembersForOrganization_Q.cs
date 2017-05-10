@@ -6,6 +6,6 @@ namespace vvarscNET.Core.QueryModels.People
 {
     public class ListMembersForOrganization_Q : IQuery<List<Member>>
     {
-        public string OrganizationID;
+        public int OrganizationID;
     }
 }

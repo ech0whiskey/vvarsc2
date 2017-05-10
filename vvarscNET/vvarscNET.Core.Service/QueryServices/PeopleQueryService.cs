@@ -24,7 +24,7 @@ namespace vvarscNET.Core.Service.QueryServices
         {
             var query = new ListMembersForOrganization_Q
             {
-                OrganizationID = organizationID.ToString()
+                OrganizationID = organizationID
             };
 
             var result = _queryDispatcher.Dispatch<ListMembersForOrganization_Q, List<Member>>(accessToken, query);
