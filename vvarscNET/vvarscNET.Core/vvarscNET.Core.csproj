@@ -73,6 +73,8 @@
     <Compile Include="CommandModels\Authentication\CreateAccessToken_C.cs" />
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrganization_C.cs" />
+    <Compile Include="CommandModels\People\CreateMemberRankHistory_C.cs" />
+    <Compile Include="CommandModels\People\UpdateMember_C.cs" />
     <Compile Include="CommandModels\People\CreateMember_C.cs" />
     <Compile Include="CommandModels\People\CreateOrgRole_C.cs" />
     <Compile Include="CommandModels\People\AddOrgRolesToPayGrade_C.cs" />

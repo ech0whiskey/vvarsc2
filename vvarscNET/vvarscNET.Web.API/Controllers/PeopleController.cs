@@ -89,5 +89,25 @@ namespace vvarscNET.Web.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Method to Update Member
+        /// </summary>
+        /// <param name="id">ID of Member</param>
+        /// <param name="member">Full Member Object to be Updated</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("members/{id}")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult UpdateMember([FromUri] int id, [FromBody] Member member)
+        {
+            //Ensure that Member in Route is the same as Body
+            if (id != member.ID)
+                return BadRequest();
+
+            var result = _peopleCommandSvc.UpdateMember(Request.GetUserContext(), member);
+
+            return Ok(result);
+        }
+
     }
 }

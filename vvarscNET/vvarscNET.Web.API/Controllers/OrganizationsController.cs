@@ -22,7 +22,6 @@ namespace vvarscNET.Web.API.Controllers
         /// Constructor for Organizations Controller
         /// </summary>
         /// <param name="orgService"></param>
-        /// <param name="peopleService"></param>
         public OrganizationsController(IOrganizationQueryService orgService)
         {
             _orgService = orgService;

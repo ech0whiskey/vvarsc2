@@ -16,6 +16,7 @@ namespace vvarscNET.Web.Client.Models
         [Required]
         public string RSIHandle { get; set; }
 
+        [Display(Name = "Organization ID")]
         public int OrganizationID { get; set; }
 
         [Required]

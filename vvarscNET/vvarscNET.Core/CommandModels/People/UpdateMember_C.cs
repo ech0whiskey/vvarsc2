@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using vvarscNET.Core.Interfaces;
+using vvarscNET.Model.Enums;
 
 namespace vvarscNET.Core.CommandModels.People
 {
-    public class AddOrgRolesToPayGrade_C : ICommand
+    public class UpdateMember_C : ICommand
     {
-        public int PayGradeID;
-        public List<String> SupportedOrgRoles;
+        public int ID;
+        public string UserName;
+        public string RSIHandle;
+        public string UserType;
+        public int? RankID;
         public bool IsActive;
     }
 }

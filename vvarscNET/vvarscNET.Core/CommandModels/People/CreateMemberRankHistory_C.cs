@@ -7,10 +7,10 @@ using vvarscNET.Core.Interfaces;
 
 namespace vvarscNET.Core.CommandModels.People
 {
-    public class AddOrgRolesToPayGrade_C : ICommand
+    public class CreateMemberRankHistory_C : ICommand
     {
-        public int PayGradeID;
-        public List<String> SupportedOrgRoles;
-        public bool IsActive;
+        public int MemberID;
+        public int PreviousRankID;
+        public int NewRankID;
     }
 }

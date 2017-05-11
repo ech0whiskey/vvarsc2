@@ -13,10 +13,6 @@ namespace vvarscNET.Model.Objects.People
         public string RSIHandle;
         public int OrganizationID;
         public string UserType;
-        public bool IsActive;
-        public DateTime CreatedOn;
-        public string CreatedBy;
-        public DateTime ModifiedOn;
         public string ModifiedBy;
         public int PayGradeID;
         public string PayGradeName;
@@ -29,5 +25,11 @@ namespace vvarscNET.Model.Objects.People
         public string RankImage;
         public string RankGroupName;
         public string RankGroupImage;
+
+        //Common Fields
+        public bool IsActive;
+        public DateTime CreatedOn;
+        public string CreatedBy;
+        public DateTime ModifiedOn;
     }
 }

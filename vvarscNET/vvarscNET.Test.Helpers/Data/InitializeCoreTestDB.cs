@@ -26,8 +26,6 @@ namespace vvarscNET.Test.Helpers.Data
     {
         public static void Initialize(string connectionString, bool isTest = false)
         {
-            if (!InitPayGradesAndRanks(connectionString))
-                throw new Exception("Could not init PayGrades and Ranks");
             if (!InitOrganization(connectionString))
                 throw new Exception("Could not init organization");
             if (!InitOrgAdmins(connectionString))
@@ -36,6 +34,8 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init superadmin");
             if (!InitOrgRoles(connectionString))
                 throw new Exception("Could not init OrgRoles");
+            if (!InitPayGradesAndRanks(connectionString))
+                throw new Exception("Could not init PayGrades and Ranks");
         }
 
         #region SuperAdmin

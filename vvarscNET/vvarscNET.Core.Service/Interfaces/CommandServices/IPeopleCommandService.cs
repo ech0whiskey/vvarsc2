@@ -11,5 +11,7 @@ namespace vvarscNET.Core.Service.Interfaces
     public interface IPeopleCommandService
     {
         Result CreateMember(UserContext context, Member member);
+
+        Result UpdateMember(UserContext context, Member newMember);
     }
 }
