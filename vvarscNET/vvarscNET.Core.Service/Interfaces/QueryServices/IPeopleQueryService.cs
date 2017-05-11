@@ -13,5 +13,7 @@ namespace vvarscNET.Core.Service.Interfaces
         List<Member> ListMembersForOrganization(string accessToken, int organizationID);
 
         List<ListRanks_QRM> ListRanks(string accessToken);
+
+        Member GetMemberByID(string accessToken, int memberID);
     }
 }

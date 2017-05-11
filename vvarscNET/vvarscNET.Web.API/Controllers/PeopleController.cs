@@ -62,7 +62,7 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to Create a New Member
         /// </summary>
-        /// <param name="member"></param>
+        /// <param name="member">Member Object to be Created</param>
         /// <returns></returns>
         [HttpPost]
         [Route("members")]
@@ -70,6 +70,21 @@ namespace vvarscNET.Web.API.Controllers
         public IHttpActionResult CreateMember([FromBody] Member member)
         {
             var result = _peopleCommandSvc.CreateMember(Request.GetUserContext(), member);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method to Get Member by ID
+        /// </summary>
+        /// <param name="id">ID of Member to be Retrived</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("members/{id}")]
+        [ResponseType(typeof(Member))]
+        public IHttpActionResult GetMember([FromUri] int id)
+        {
+            var result = _peopleQuerySvc.GetMemberByID(Request.GetUserContext().AccessToken, id);
 
             return Ok(result);
         }

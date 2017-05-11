@@ -89,5 +89,9 @@
     <Build Include="People\Tables\PayGrades.sql" />
     <Build Include="People\Tables\OrgRoles.sql" />
     <Build Include="People\Tables\RankOrgRoleMap.sql" />
+    <Build Include="People\Tables\MemberRankHistory.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="scNET_Core.refactorlog" />
   </ItemGroup>
 </Project>

@@ -40,5 +40,17 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
+
+        public Member GetMemberByID(string accessToken, int memberID)
+        {
+            var query = new GetMemberByID_Q
+            {
+                MemberID = memberID
+            };
+
+            var result = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(accessToken, query);
+
+            return result;
+        }
     }
 }

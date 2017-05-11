@@ -17,7 +17,7 @@ body {
 
 p {
     font-size: 12pt;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 a {
@@ -35,7 +35,7 @@ a:active, a:hover {
 
 a:hover {
     color: White;
-    text-shadow: 0px 0px 8px #BBB;
+    text-shadow: 0 0 8px #BBB;
 }
 
 header, footer, hgroup,
@@ -143,7 +143,7 @@ select {
 }
 
 .featured + .main-content {
-        
+    
 }
 
 header .content-wrapper {
@@ -439,20 +439,26 @@ fieldset {
 
 label {
     display: block;
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 10pt;
+    font-weight: normal;
+    font-style: italic;
+    color: #BBB;
 }
 
 label.checkbox {
     display: inline;
 }
 
+.formFieldGroup {
+    margin-bottom:4px;
+}
+
 input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
-    margin: 4px 0 4px 0;
+    font-size: 10pt;
+    margin: 0px;
     padding: 4px;
     width: 300px;
 }
@@ -528,8 +534,9 @@ textarea {
 
 /* styles for validation helpers */
 .field-validation-error {
-    color: #e80c4d;
+    color: #ff5100;
     font-weight: bold;
+    font-style: italic;
 }
 
 .field-validation-valid {

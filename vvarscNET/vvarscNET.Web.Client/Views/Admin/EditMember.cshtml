@@ -1,17 +1,17 @@
 ﻿@model  vvarscNET.Web.Client.Models.MemberEditModel
 
 @{
-    ViewBag.Title = "Create Member";
+    ViewBag.Title = "Edit Member";
 }
 
-<h2>Add New Member</h2>
+<h2>Update Member</h2>
 
 <article>
     <p>
-        Enter New Member Details
+        Enter Member Details
     </p>
 
-    @using (Html.BeginForm("CreateMember", "Admin", new { organizationID = Model.OrganizationID }, FormMethod.Post, null))
+    @using (Html.BeginForm("EditMember", "Admin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -21,11 +21,21 @@
 
             <div class="formFieldGroup">
                 <div class="label">
+                    @Html.LabelFor(model => model.ID)
+                </div>
+                <div class="label">
+                    @Html.DisplayFor(model => model.ID)
+                    @Html.HiddenFor(model => model.ID)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
                     @Html.LabelFor(model => model.UserName)
                 </div>
                 <div class="label">
-                    @Html.EditorFor(model => model.UserName)
-                    @Html.ValidationMessageFor(model => model.UserName)
+                    @Html.DisplayFor(model => model.UserName)
+                    @Html.HiddenFor(model => model.UserName)
                 </div>
             </div>
 
@@ -36,6 +46,26 @@
                 <div class="label">
                     @Html.EditorFor(model => model.RSIHandle)
                     @Html.ValidationMessageFor(model => model.RSIHandle)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.OrganizationID)
+                </div>
+                <div class="label">
+                    @Html.DisplayFor(model => model.OrganizationID)
+                    @Html.HiddenFor(model => model.OrganizationID)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.IsActive)
+                </div>
+                <div class="label">
+                    @Html.DisplayFor(model => model.IsActive)
+                    @Html.HiddenFor(model => model.IsActive)
                 </div>
             </div>
 
@@ -61,7 +91,7 @@
 
             <br />
             <div class="adminDialogButtonPane">
-                <input type="submit" value="Create" class="adminDialogButton dialogButtonSubmit" />  @Html.ActionLink("Cancel", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @class = "adminDialogButton dialogButtonCancel" })
+                <input type="submit" value="Update" class="adminDialogButton dialogButtonSubmit" />  @Html.ActionLink("Cancel", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @class = "adminDialogButton dialogButtonCancel" })
             </div>
         </fieldset>
     }

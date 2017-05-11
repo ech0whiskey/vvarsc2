@@ -16,24 +16,28 @@
         <fieldset>
             <legend>AuthenticateMemberRequestModel</legend>
 
-            <div class="label">
-                @Html.LabelFor(model => model.UserName)
-            </div>
-            <div class="label">
-                @Html.EditorFor(model => model.UserName)
-                @Html.ValidationMessageFor(model => model.UserName)
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.UserName)
+                </div>
+                <div class="label">
+                    @Html.EditorFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
             </div>
 
-            <div class="label">
-                @Html.LabelFor(model => model.Password)
-            </div>
-            <div class="label">
-                @Html.PasswordFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="label">
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
             </div>
 
             <p>
-                <input type="submit" value="Login" name="ProcessLogin"/>
+                <input type="submit" value="Login" name="ProcessLogin" />
             </p>
         </fieldset>
     }

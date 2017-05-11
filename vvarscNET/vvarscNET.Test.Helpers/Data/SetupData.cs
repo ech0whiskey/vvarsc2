@@ -411,7 +411,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 9,
                 RankName = "Lieutenant (Junior Grade)",
-                RankAbbr = "LT",
+                RankAbbr = "LTJG",
                 RankType = "Navy",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O2.png",
                 RankGroupName = "Officer",

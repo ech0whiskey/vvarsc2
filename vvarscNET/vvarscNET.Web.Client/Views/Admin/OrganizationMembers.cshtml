@@ -26,21 +26,27 @@
         </div>
         <div class="corner4 corner-diag-blue-bottomRight">
         </div>
-        <div class="description_inner">
+        <div class="description_inner" style="
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 4px;
+        ">
             @{
                 foreach (var member in Model)
                 {
                     <div class="table_header_block">
                     </div>
                     <div class="description_entry" style="
-                    margin-bottom:4px;
-                    display: block;
-                ">
-                        <div style="
-                        float: right;
-                        text-align: right;
+                        margin-bottom:4px;
+                        display: block;
+                        width: auto;
                     ">
-                            <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;">
+                        <div style="
+                            float: right;
+                            text-align: right;
+                        ">
+                            <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;"
+                                    onclick="location.href='@Url.Action("EditMember","Admin",new { id = @member.ID })'">
                                 <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
                             </button>
                             <button class="adminButton adminButtonDelete" title="Delete Member" style="margin-left: 0px;">
@@ -50,13 +56,12 @@
                         <div style="display:table;">
                             <div class="image_wrapper">
                                 <div class="image_container" style="
-                            height: 20px;
-                            width: 20px;
-                            padding-left: 0px;
-                            padding-right: 0px;
-                        ">
-                                    <img class="rankImageSmall"
-                                         src="@member.RankImage" />
+                                    height: 20px;
+                                    width: 20px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                ">
+                                    <img class="rankImageSmall" src="@member.RankImage" />
                                 </div>
                                 <div class="rankImage_text">
                                     @member.RankAbbr @member.UserName
