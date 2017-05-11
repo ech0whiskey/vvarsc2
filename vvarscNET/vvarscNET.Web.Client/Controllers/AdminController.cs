@@ -241,9 +241,8 @@ namespace vvarscNET.Web.Client.Controllers
                     UserType = member.UserType,
                     IsActive = member.IsActive
                 };
-
-                //NOT IMPLEMENTED
-                //var result = peopleRestClient.EditMember(HttpContext, memToEdit);
+                
+                var result = peopleRestClient.EditMember(HttpContext, memToEdit);
 
                 return RedirectToAction("EditMember", "Admin", new { ID = member.ID });
             }

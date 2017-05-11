@@ -138,8 +138,7 @@ select {
 }
 
 .main-content {
-    padding-left: 10px;
-    padding-top: 30px;
+    padding: 0;
 }
 
 .featured + .main-content {

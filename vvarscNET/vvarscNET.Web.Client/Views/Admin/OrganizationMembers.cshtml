@@ -32,7 +32,8 @@
             padding-bottom: 4px;
         ">
             @{
-                foreach (var member in Model)
+                var sortedList = Model.OrderBy(a => a.UserName);
+                foreach (var member in sortedList)
                 {
                     <div class="table_header_block">
                     </div>
@@ -64,7 +65,7 @@
                                     <img class="rankImageSmall" src="@member.RankImage" />
                                 </div>
                                 <div class="rankImage_text">
-                                    @member.RankAbbr @member.UserName
+                                    @member.RankAbbr <strong>@member.UserName</strong>
                                 </div>
                             </div>
                         </div>

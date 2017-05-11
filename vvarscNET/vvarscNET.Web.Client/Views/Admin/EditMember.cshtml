@@ -4,13 +4,11 @@
     ViewBag.Title = "Edit Member";
 }
 
+@Html.ActionLink("<-- Back to Member List", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @style="text-decoration:none;"})
+<br />
+<br />
 <h2>Update Member</h2>
-
 <article>
-    <p>
-        Enter Member Details
-    </p>
-
     @using (Html.BeginForm("EditMember", "Admin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()

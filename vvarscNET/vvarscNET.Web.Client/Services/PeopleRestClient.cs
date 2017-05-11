@@ -49,10 +49,10 @@ namespace vvarscNET.Web.Client.Services
             return JsonConvert.DeserializeObject<IEnumerable<Member>>(response.Content);
         }
 
-        public Result CreateMember(HttpContextBase Context, Member member)
+        public Result CreateMember(HttpContextBase context, Member member)
         {
             var request = new RestRequest("members", Method.POST) { RequestFormat = DataFormat.Json };
-            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddHeader("Authorization", "access " + context.Session["AccessToken"].ToString());
             request.AddBody(member);
 
             var response = _client.Execute<List<Member>>(request);
@@ -63,10 +63,10 @@ namespace vvarscNET.Web.Client.Services
             return JsonConvert.DeserializeObject<Result>(response.Content);
         }
 
-        public Member GetMemberByID(HttpContextBase Context, int memberID)
+        public Member GetMemberByID(HttpContextBase context, int memberID)
         {
             var request = new RestRequest("members/{id}", Method.GET) { RequestFormat = DataFormat.Json };
-            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddHeader("Authorization", "access " + context.Session["AccessToken"].ToString());
             request.AddParameter("id", memberID, ParameterType.UrlSegment);
 
             var response = _client.Execute<List<Member>>(request);
@@ -75,6 +75,21 @@ namespace vvarscNET.Web.Client.Services
                 throw new Exception(response.ErrorMessage);
 
             return JsonConvert.DeserializeObject<Member>(response.Content);
+        }
+
+        public Result EditMember(HttpContextBase context, Member member)
+        {
+            var request = new RestRequest("members/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + context.Session["AccessToken"].ToString());
+            request.AddParameter("id", member.ID, ParameterType.UrlSegment);
+            request.AddBody(member);
+
+            var response = _client.Execute<Result>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<Result>(response.Content);
         }
     }
 }

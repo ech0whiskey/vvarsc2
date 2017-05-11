@@ -12,5 +12,6 @@ namespace vvarscNET.Web.Client.Interfaces
         IEnumerable<Member> ListMembersForOrganization(HttpContextBase Context, int OrganizationID);
         Result CreateMember(HttpContextBase Context, Member member);
         Member GetMemberByID(HttpContextBase Context, int memberID);
+        Result EditMember(HttpContextBase context, Member member);
     }
 }
