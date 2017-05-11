@@ -52,7 +52,7 @@ namespace vvarscNET.Web.Client.Controllers
             return View(peopleRestClient.ListMembersForOrganization(HttpContext, ID));
         }
 
-        public ActionResult CreateMember(int ID)
+        public ActionResult CreateMember(int organizationID)
         {
             var helper = new HelperFunctions(HttpContext);
             if (!helper.CheckValidSession())
@@ -65,7 +65,7 @@ namespace vvarscNET.Web.Client.Controllers
             var ranks = peopleRestClient.ListRanks(HttpContext);
             var model = new MemberEditModel
             {
-                OrganizationID = ID,
+                OrganizationID = organizationID,
                 Ranks = new List<SelectListItem>(),
                 UserTypes = new List<SelectListItem>()
             };
@@ -145,7 +145,7 @@ namespace vvarscNET.Web.Client.Controllers
             }
         }
 
-        public ActionResult EditMember(int ID)
+        public ActionResult EditMember(int memberID)
         {
             var helper = new HelperFunctions(HttpContext);
             if (!helper.CheckValidSession())
@@ -154,7 +154,7 @@ namespace vvarscNET.Web.Client.Controllers
             if (!helper.IsAdmin())
                 return RedirectToAction("Forbidden", "Home");
 
-            var member = peopleRestClient.GetMemberByID(HttpContext, ID);
+            var member = peopleRestClient.GetMemberByID(HttpContext, memberID);
             if (member == null)
                 throw new Exception("Unable to retrive Member for Edit");
 
@@ -245,6 +245,26 @@ namespace vvarscNET.Web.Client.Controllers
                 var result = peopleRestClient.EditMember(HttpContext, memToEdit);
 
                 return RedirectToAction("EditMember", "Admin", new { ID = member.ID });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult DeleteMember(int memberID, int organizationID)
+        {
+            var helper = new HelperFunctions(HttpContext);
+            if (!helper.CheckValidSession())
+                return RedirectToAction("Unauthorized", "Home");
+
+            if (!helper.IsAdmin())
+                return RedirectToAction("Forbidden", "Home");
+
+            try
+            {
+                var result = peopleRestClient.DeleteMember(HttpContext, memberID);
+                return RedirectToAction("OrganizationMembers", "Admin", new { id = organizationID });
             }
             catch
             {

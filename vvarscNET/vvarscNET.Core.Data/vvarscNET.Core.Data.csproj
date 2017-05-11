@@ -49,6 +49,7 @@
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateMemberRankHistory_CH.cs" />
+    <Compile Include="CommandHandlers\People\DeleteMember_CH.cs" />
     <Compile Include="CommandHandlers\People\UpdateMember_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\People\AddOrgRolesToPayGrade_CH.cs" />

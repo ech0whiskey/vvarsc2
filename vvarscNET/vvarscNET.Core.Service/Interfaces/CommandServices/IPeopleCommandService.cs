@@ -13,5 +13,7 @@ namespace vvarscNET.Core.Service.Interfaces
         Result CreateMember(UserContext context, Member member);
 
         Result UpdateMember(UserContext context, Member newMember);
+
+        Result DeleteMember(UserContext context, int memberID);
     }
 }

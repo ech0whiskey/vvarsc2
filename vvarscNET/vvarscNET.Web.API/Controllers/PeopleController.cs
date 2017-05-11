@@ -109,5 +109,20 @@ namespace vvarscNET.Web.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Method to Delete Member
+        /// </summary>
+        /// <param name="id">ID of Member</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("members/{id}")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult DeleteMember([FromUri] int id)
+        {
+            var result = _peopleCommandSvc.DeleteMember(Request.GetUserContext(), id);
+
+            return Ok(result);
+        }
+
     }
 }

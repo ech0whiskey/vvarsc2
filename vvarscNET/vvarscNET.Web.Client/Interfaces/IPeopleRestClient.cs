@@ -13,5 +13,6 @@ namespace vvarscNET.Web.Client.Interfaces
         Result CreateMember(HttpContextBase Context, Member member);
         Member GetMemberByID(HttpContextBase Context, int memberID);
         Result EditMember(HttpContextBase context, Member member);
+        Result DeleteMember(HttpContextBase context, int memberID);
     }
 }

@@ -12,16 +12,16 @@ using Dapper;
 
 namespace vvarscNET.Core.Data.CommandHandlers.People
 {
-    public class UpdateMember_CH : ICommandHandler<UpdateMember_C>
+    public class DeleteMember_CH : ICommandHandler<DeleteMember_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public UpdateMember_CH(SQLConnectionFactory connFactory)
+        public DeleteMember_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, UpdateMember_C command)
+        public Result Handle(IUserContext context, DeleteMember_C command)
         {
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
             result.ItemIDs.Add(command.ID.ToString());
@@ -31,15 +31,24 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                 connection.Open();
 
                 var cmd = @"
-                    update m set
-	                    m.UserName = @UserName
-	                    ,m.RSIHandle = @RSIHandle
-	                    ,m.UserType = @UserType
-	                    ,m.RankID = @RankID
-	                    ,m.IsActive = @IsActive
-	                    ,m.ModifiedOn = @ModifiedOn
-	                    ,m.ModifiedBy = @ModifiedBy
-                    from People.Members m
+                    --Delete Credential
+                    delete c
+                    from [Authentication].[Credentials] c
+                    where c.MemberID = @MemberID
+
+                    --Delete Tokens
+                    delete t
+                    from [Authentication].[Tokens] t
+                    where t.MemberID = @MemberID
+
+                    --Delete MemberRankHistory
+                    delete h
+                    from [People].[MemberRankHistory] h
+                    where h.MemberID = @MemberID
+
+                    --Delete Member
+                    delete m
+                    from [People].[Members] m
                     where m.ID = @MemberID
                 ";
 
@@ -49,19 +58,10 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                     {
                         int rowsAffected = connection.Execute(cmd, new
                         {
-                            MemberID = command.ID,
-                            UserName = command.UserName,
-                            RSIHandle = command.RSIHandle,
-                            UserType = command.UserType,
-                            RankID = command.RankID,
-                            IsActive = command.IsActive,
-                            CreatedOn = DateTime.UtcNow,
-                            CreatedBy = context.MemberID.ToString(),
-                            ModifiedOn = DateTime.UtcNow,
-                            ModifiedBy = context.MemberID.ToString()
+                            MemberID = command.ID
                         }, transaction);
 
-                        if (rowsAffected == 1)
+                        if (rowsAffected > 0)
                         {
                             transaction.Commit();
                         }
@@ -81,7 +81,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "Member Updated Successfully!";
+                result.StatusDescription = "Member Deleted Successfully!";
                 return result;
             }
         }

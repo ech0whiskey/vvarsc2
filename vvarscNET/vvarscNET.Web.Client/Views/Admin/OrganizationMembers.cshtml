@@ -47,11 +47,8 @@
                             text-align: right;
                         ">
                             <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;"
-                                    onclick="location.href='@Url.Action("EditMember","Admin",new { id = @member.ID })'">
+                                    onclick="location.href='@Url.Action("EditMember","Admin",new { memberID = @member.ID })'">
                                 <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
-                            </button>
-                            <button class="adminButton adminButtonDelete" title="Delete Member" style="margin-left: 0px;">
-                                <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_delete.png">
                             </button>
                         </div>
                         <div style="display:table;">

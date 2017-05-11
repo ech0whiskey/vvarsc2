@@ -91,5 +91,19 @@ namespace vvarscNET.Web.Client.Services
 
             return JsonConvert.DeserializeObject<Result>(response.Content);
         }
+
+        public Result DeleteMember(HttpContextBase context, int memberID)
+        {
+            var request = new RestRequest("members/{id}", Method.DELETE) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + context.Session["AccessToken"].ToString());
+            request.AddParameter("id", memberID, ParameterType.UrlSegment);
+
+            var response = _client.Execute<Result>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<Result>(response.Content);
+        }
     }
 }

@@ -4,10 +4,15 @@
     ViewBag.Title = "Edit Member";
 }
 
-@Html.ActionLink("<-- Back to Member List", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @style="text-decoration:none;"})
+@Html.ActionLink("⇠Back to Member List", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @style="text-decoration:none;"})
 <br />
 <br />
 <h2>Update Member</h2>
+<button class="adminButton adminButtonDelete" title="Delete Member" style="margin-left: 0px;float:right"
+    onclick="location.href='@Url.Action("DeleteMember", "Admin", new { memberID = @Model.ID, organizationID = Model.OrganizationID })'">
+    <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_delete.png">
+    Delete Member
+</button>
 <article>
     @using (Html.BeginForm("EditMember", "Admin", FormMethod.Post))
     {

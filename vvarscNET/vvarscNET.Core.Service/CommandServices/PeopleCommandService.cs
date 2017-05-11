@@ -146,5 +146,22 @@ namespace vvarscNET.Core.Service.CommandServices
 
             return memResult;
         }
+
+        public Result DeleteMember(UserContext context, int memberID)
+        {
+            var memCmd = new DeleteMember_C
+            {
+                ID = memberID
+            };
+
+            var result = _commandDispatcher.Dispatch<DeleteMember_C>(context, memCmd);
+
+            if (result.Status != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception("Error Deleting Member in DB");
+            }
+
+            return result;
+        }
     }
 }
