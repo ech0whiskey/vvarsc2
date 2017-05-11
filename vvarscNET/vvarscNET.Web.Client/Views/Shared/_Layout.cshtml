@@ -5,12 +5,13 @@
     <title>@ViewBag.Title - Demo :: Consume Asp.net WebAPI using RestSharp</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/Styles/Layout.css")
-    @Styles.Render("~/Content/Styles/Shared.css")
-    @Styles.Render("~/Content/Styles/Accents.css")
-    @Styles.Render("~/Content/Styles/Responsive.css")
-    @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/Styles/Layout.css")
+        @Styles.Render("~/Content/Styles/Shared.css")
+        @Styles.Render("~/Content/Styles/Accents.css")
+        @Styles.Render("~/Content/Styles/Responsive.css")
+        @Styles.Render("~/Content/toastr")
+        @Scripts.Render("~/bundles/modernizr")
     <meta name="description" content="VVarMachine StarCitizen Fleet" />
     <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
@@ -72,8 +73,11 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/toastr")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @Html.Partial("_Toastr")
 </body>
 </html>
 

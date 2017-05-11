@@ -1,0 +1,6 @@
+﻿@using vvarscNET.Web.Client.Helper
+@if (TempData.ContainsKey("Toastr"))
+{
+    Toastr toastr = TempData["Toastr"] as Toastr;
+    @ToastrBuilder.ShowToastMessages(toastr);
+}
