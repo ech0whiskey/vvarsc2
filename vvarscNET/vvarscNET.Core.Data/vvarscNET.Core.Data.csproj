@@ -51,7 +51,7 @@
     <Compile Include="CommandHandlers\People\CreateMemberRankHistory_CH.cs" />
     <Compile Include="CommandHandlers\People\DeleteMember_CH.cs" />
     <Compile Include="CommandHandlers\People\UpdateMember_CH.cs" />
-    <Compile Include="CommandHandlers\People\CreateOrgRole_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\CreateOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\People\AddOrgRolesToPayGrade_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateRank_CH.cs" />
     <Compile Include="CommandHandlers\People\CreatePayGrade_CH.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="QueryHandlers\Authentication\GetLatestMemberAccessToken_QH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\ListRolesForOrganization_QH.cs" />
     <Compile Include="QueryHandlers\People\ListRanks_QH.cs" />
     <Compile Include="QueryHandlers\People\ListMembersForOrganization_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByID_QH.cs" />

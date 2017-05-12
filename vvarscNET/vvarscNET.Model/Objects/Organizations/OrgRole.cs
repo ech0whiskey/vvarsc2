@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using vvarscNET.Core.Interfaces;
+using vvarscNET.Model.Objects.People;
 
-namespace vvarscNET.Core.CommandModels.People
+namespace vvarscNET.Model.Objects.Organizations
 {
-    public class CreateOrgRole_C : ICommand
+    public class OrgRole
     {
+        public int ID;
         public string RoleName;
         public string RoleShortName;
         public string RoleDisplayName;
@@ -16,5 +17,10 @@ namespace vvarscNET.Core.CommandModels.People
         public int RoleOrderBy;
         public bool IsActive;
         public bool IsHidden;
+        public DateTime CreatedOn;
+        public string CreatedBy;
+        public DateTime ModifiedOn;
+        public string ModifiedBy;
+        public List<PayGrade> SupportedPayGrades;
     }
 }

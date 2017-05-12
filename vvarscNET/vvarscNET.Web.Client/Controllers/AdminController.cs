@@ -134,7 +134,8 @@ namespace vvarscNET.Web.Client.Controllers
                 };
 
                 var result = peopleRestClient.CreateMember(HttpContext, memToCreate);
-                this.AddToastMessage("Success", result.StatusDescription, ToastType.Success);
+                
+                this.AddToastMessage(result);
 
                 return RedirectToAction("OrganizationMembers", "Admin", new { id = organizationID });
             }
@@ -242,7 +243,8 @@ namespace vvarscNET.Web.Client.Controllers
                 };
                 
                 var result = peopleRestClient.EditMember(HttpContext, memToEdit);
-                this.AddToastMessage("Success", result.StatusDescription, ToastType.Success);
+
+                this.AddToastMessage(result);
 
                 return RedirectToAction("EditMember", "Admin", new { memberID = member.ID });
             }
@@ -264,7 +266,8 @@ namespace vvarscNET.Web.Client.Controllers
             try
             {
                 var result = peopleRestClient.DeleteMember(HttpContext, memberID);
-                this.AddToastMessage("Success", result.StatusDescription, ToastType.Success);
+
+                this.AddToastMessage(result);
 
                 return RedirectToAction("OrganizationMembers", "Admin", new { id = organizationID });
             }
@@ -272,6 +275,18 @@ namespace vvarscNET.Web.Client.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult OrgRoles(int organizationID)
+        {
+            var helper = new HelperFunctions(HttpContext);
+            if (!helper.CheckValidSession())
+                return RedirectToAction("Unauthorized", "Home");
+
+            if (!helper.IsAdmin())
+                return RedirectToAction("Forbidden", "Home");
+
+            return View();
         }
     }
 }

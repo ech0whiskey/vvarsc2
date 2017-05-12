@@ -77,7 +77,7 @@
     <Compile Include="CommandModels\People\DeleteMember_C.cs" />
     <Compile Include="CommandModels\People\UpdateMember_C.cs" />
     <Compile Include="CommandModels\People\CreateMember_C.cs" />
-    <Compile Include="CommandModels\People\CreateOrgRole_C.cs" />
+    <Compile Include="CommandModels\Organizations\CreateOrgRole_C.cs" />
     <Compile Include="CommandModels\People\AddOrgRolesToPayGrade_C.cs" />
     <Compile Include="CommandModels\People\CreateRank_C.cs" />
     <Compile Include="CommandModels\People\CreatePayGrade_C.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="QueryModels\Authentication\AuthenticateMember_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetAccessTokenByValue_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetLatestMemberAccessToken_Q.cs" />
+    <Compile Include="QueryModels\Organizations\ListRolesForOrganization_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationByID_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />

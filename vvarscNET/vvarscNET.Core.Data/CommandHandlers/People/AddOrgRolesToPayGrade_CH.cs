@@ -50,7 +50,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,@CreatedBy
 	                    ,@ModifiedOn
 	                    ,@ModifiedBy
-                    from [People].OrgRoles r
+                    from [Organizations].Roles r
                     where r.RoleName in @SupportedOrgRoles
                         and r.IsActive = 1
                 ";

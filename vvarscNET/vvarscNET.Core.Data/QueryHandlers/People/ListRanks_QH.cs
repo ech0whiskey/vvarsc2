@@ -2,7 +2,7 @@
 using vvarscNET.Core.QueryModels.People;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
-using vvarscNET.Model.Objects.People;
+using vvarscNET.Model.Objects.Organizations;
 using vvarscNET.Model.ResponseModels.People;
 using System;
 using System.Linq;
@@ -60,7 +60,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 						select
 							r.*
 						from People.PayGradeOrgRoleMap m
-						join People.OrgRoles r
+						join Organizations.Roles r
 							on r.ID = m.OrgRoleID
 						where m.PayGradeID = pg.ID
 					) mr

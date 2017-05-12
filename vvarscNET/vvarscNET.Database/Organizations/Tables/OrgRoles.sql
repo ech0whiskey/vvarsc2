@@ -1,4 +1,4 @@
-﻿CREATE TABLE [People].[OrgRoles] (
+﻿CREATE TABLE [Organizations].[Roles] (
 	ID int identity(1,1) NOT NULL
 	,RoleName [dbo].Name
 	,RoleShortName [dbo].Name

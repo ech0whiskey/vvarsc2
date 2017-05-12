@@ -41,6 +41,7 @@ namespace vvarscNET.Test.Helpers.Data
         #region SuperAdmin
         private static bool InitSuperAdmin(string connectionString)
         {
+            Console.WriteLine("Init SuperAdmin");
             //Create Member
             string userName = "superadmin";
             var memCmd = new CreateMember_C
@@ -91,6 +92,7 @@ namespace vvarscNET.Test.Helpers.Data
         #region Organizations
         private static bool InitOrganization(string connectionString)
         {
+            Console.WriteLine("Init Organizations");
             foreach (var t in SetupData._organizations)
             {
                 var qry = new GetOrganizationBySpectrumID_Q
@@ -125,6 +127,7 @@ namespace vvarscNET.Test.Helpers.Data
 
         private static bool InitOrgAdmins(string connectionString)
         {
+            Console.WriteLine("Init OrgAdmins");
             foreach (var org in SetupData._organizations)
             {
                 //Setup AdminUser for Each Organization
@@ -188,11 +191,41 @@ namespace vvarscNET.Test.Helpers.Data
             }
             return true;
         }
+
+        private static bool InitOrgRoles(string connectionString)
+        {
+            Console.WriteLine("Init OrgRoles");
+            foreach (var or in SetupData._orgRoles)
+            {
+                //Create OrgRole
+                var orCmd = new CreateOrgRole_C
+                {
+                    RoleName = or.RoleName,
+                    RoleShortName = or.RoleShortName,
+                    RoleDisplayName = or.RoleDisplayName,
+                    RoleType = or.RoleType,
+                    RoleOrderBy = or.RoleOrderBy,
+                    IsActive = or.IsActive,
+                    IsHidden = or.IsHidden
+                };
+
+                CreateOrgRole_CH createOrgRole_CH = new CreateOrgRole_CH(new SQLConnectionFactory(connectionString));
+                var pgResult = createOrgRole_CH.Handle(Globals.UserContext, orCmd);
+
+                if (pgResult.Status != System.Net.HttpStatusCode.OK)
+                {
+                    return false;
+                }
+                var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
+            }
+            return true;
+        }
         #endregion
 
         #region PayGrades/Ranks
         private static bool InitPayGradesAndRanks(string connectionString)
         {
+            Console.WriteLine("Init PayGradesAndRanks");
             foreach (var pg in SetupData._paygrades)
             {
                 //Create PayGrade
@@ -258,37 +291,6 @@ namespace vvarscNET.Test.Helpers.Data
                         return false;
                     }
                 }
-            }
-            return true;
-        }
-
-        #endregion
-
-        #region Roles
-        private static bool InitOrgRoles(string connectionString)
-        {
-            foreach (var or in SetupData._orgRoles)
-            {
-                //Create OrgRole
-                var orCmd = new CreateOrgRole_C
-                {
-                    RoleName = or.RoleName,
-                    RoleShortName = or.RoleShortName,
-                    RoleDisplayName = or.RoleDisplayName,
-                    RoleType = or.RoleType,
-                    RoleOrderBy = or.RoleOrderBy,
-                    IsActive = or.IsActive,
-                    IsHidden = or.IsHidden
-                };
-
-                CreateOrgRole_CH createOrgRole_CH = new CreateOrgRole_CH(new SQLConnectionFactory(connectionString));
-                var pgResult = createOrgRole_CH.Handle(Globals.UserContext, orCmd);
-
-                if (pgResult.Status != System.Net.HttpStatusCode.OK)
-                {
-                    return false;
-                }
-                var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
             }
             return true;
         }

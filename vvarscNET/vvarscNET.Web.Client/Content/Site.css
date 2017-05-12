@@ -44,9 +44,9 @@ nav, section {
 }
 
 mark {
-    text-shadow: 0px 0px 4px rgba(0,224,255,0.8),0px 0px 12px rgba(0,160,182,0.9);
-    background-color: rgba(0,0,0,0);
+    text-shadow: 0 0 4px rgba(0,224,255,0.8),0 0 12px rgba(0,160,182,0.9);
     color: #ddd;
+    background-color: rgba(0,0,0,0);
 }
 
 .float-left {
@@ -78,37 +78,37 @@ h1 {
 
 h2 {
     margin: 0;
-    padding: 8px 0px 8px 0px;
+    padding: 8px 0 8px 0;
     font-family: 'Orbitron',sans-serif;
     font-weight: normal;
     letter-spacing: .005em;
     color: #FFF;
     font-size: 20pt;
-    text-shadow: 0px 0px 4px rgba(0,224,255,0.8),0px 0px 12px rgba(0,160,182,0.9);
+    text-shadow: 0 0 4px rgba(0,224,255,0.8),0 0 12px rgba(0,160,182,0.9);
     font-variant: small-caps;
     display: inline-block;
 }
 
 h3 {
     margin: 0;
-    padding: 8px 0 8px 0px;
+    padding: 8px 0 8px 0;
     font-family: 'Electrolize',sans-serif;
     font-weight: normal;
     letter-spacing: .005em;
     color: #FFF;
     font-size: 16pt;
-    text-shadow: 0px 0px 4px #00E0FF,0px 0px 12px #00A0B6;
+    text-shadow: 0 0 4px #00E0FF,0 0 12px #00A0B6;
 }
 
 h4 {
     margin: 0;
-    padding: 8px 0 8px 0px;
+    padding: 8px 0 8px 0;
     font-family: 'Electrolize',sans-serif;
     font-weight: normal;
     letter-spacing: .005em;
     color: #FFF;
     font-size: 12pt;
-    text-shadow: 0px 0px 4px #00E0FF,0px 0px 12px #00A0B6;
+    text-shadow: 0 0 4px #00E0FF,0 0 12px #00A0B6;
     font-style: italic;
 }
 
@@ -142,7 +142,7 @@ select {
 }
 
 .featured + .main-content {
-    
+   color: #DDD; 
 }
 
 header .content-wrapper {
@@ -188,7 +188,7 @@ footer {
     text-decoration: none;
 }
 
-#login a.username {
+#login .username {
     background: none;
     margin: 0;
     padding: 0;
@@ -208,7 +208,7 @@ footer {
 
 /* menu
 ----------------------------------------------------------*/
-ul#menu {
+#menu {
     font-size: 1.3em;
     font-weight: 600;
     margin: 0 0 5px;
@@ -216,19 +216,19 @@ ul#menu {
     text-align: right;
 }
 
-ul#menu li {
+#menu li {
     display: inline;
     list-style: none;
     padding-left: 15px;
 }
 
-ul#menu li a {
+#menu li a {
     background: none;
     color: #999;
     text-decoration: none;
 }
 
-ul#menu li a:hover {
+#menu li a:hover {
     color: #FFF;
     text-decoration: none;
 }
@@ -238,7 +238,7 @@ ul#menu li a:hover {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-
+    color: #DDD;
 }
 
 .featured .content-wrapper {
@@ -444,7 +444,7 @@ label {
     color: #BBB;
 }
 
-label.checkbox {
+checkbox {
     display: inline;
 }
 
@@ -457,7 +457,7 @@ input, textarea {
     background: #fff;
     color: #333;
     font-size: 10pt;
-    margin: 0px;
+    margin: 0;
     padding: 4px;
     width: 300px;
 }
@@ -573,7 +573,7 @@ table {
 th {
     font-size: 1.2em;
     text-align: left;
-    border: none 0px;
+    border: none 0;
     padding-left: 0;
 }
 
@@ -600,7 +600,7 @@ th {
     th.asc a:after, th.desc a:after {
         display: block;
         position: absolute;
-        right: 0em;
+        right: 0;
         top: 0;
         font-size: 0.75em;
     }
@@ -614,11 +614,11 @@ th {
     }
 
 td {
-    padding: 0.25em 2em 0.25em 0em;
+    padding: 0.25em 2em 0.25em 0;
     border: 0 none;
 }
 
-tr.pager td {
+pager td {
     padding: 0 0.25em 0 0;
 }
 
@@ -676,13 +676,13 @@ tr.pager td {
         margin-bottom: 5px;
     }
 
-    ul#menu {
+    #menu {
         margin: 0;
         padding: 0;
         text-align: center;
     }
 
-        ul#menu li {
+        #menu li {
             margin: 0;
             padding: 0;
         }

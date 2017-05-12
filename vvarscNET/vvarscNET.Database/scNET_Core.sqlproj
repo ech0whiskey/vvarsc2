@@ -87,9 +87,9 @@
     <Build Include="dbo\User Defined Types\Enum.sql" />
     <Build Include="People\Tables\Ranks.sql" />
     <Build Include="People\Tables\PayGrades.sql" />
-    <Build Include="People\Tables\OrgRoles.sql" />
     <Build Include="People\Tables\RankOrgRoleMap.sql" />
     <Build Include="People\Tables\MemberRankHistory.sql" />
+    <Build Include="Organizations\Tables\OrgRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="scNET_Core.refactorlog" />

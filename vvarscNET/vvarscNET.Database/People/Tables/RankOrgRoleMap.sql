@@ -8,5 +8,5 @@
 	,ModifiedBy [dbo].ModifiedBy
 	,CONSTRAINT [PK_RankOrgRoleMap] PRIMARY KEY CLUSTERED (PayGradeID, OrgRoleID)
 	,CONSTRAINT [FK_PayGrades_PayGradeOrgRoleMap] FOREIGN KEY (PayGradeID) REFERENCES [People].[PayGrades] (ID)
-	,CONSTRAINT [FK_OrgRoles_PayGradeRoleMap] FOREIGN KEY (OrgRoleID) REFERENCES [People].[OrgRoles] (ID)
+	,CONSTRAINT [FK_OrgRoles_PayGradeRoleMap] FOREIGN KEY (OrgRoleID) REFERENCES [Organizations].[Roles] (ID)
 )

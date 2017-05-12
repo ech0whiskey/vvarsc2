@@ -65,7 +65,7 @@ namespace vvarscNET.Web.Client.Controllers
                 Session.Abandon();
                 return RedirectToAction("Logout", "Home");
             }
-            catch(Exception ex)
+            catch
             {
                 return RedirectToAction("Logout", "Home");
             }
