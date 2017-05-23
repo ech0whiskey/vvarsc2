@@ -23,6 +23,9 @@ namespace vvarscNET.Web.Client.Controllers
 
             if (!helper.IsAdmin())
                 return RedirectToAction("Forbidden", "Home");
+
+            ViewBag.OrganizationID = HttpContext.Session["OrganizationID"];
+
             return View();
         }
 
@@ -38,7 +41,7 @@ namespace vvarscNET.Web.Client.Controllers
             return View(orgRestClient.GetOrganizationByID(HttpContext, ID));
         }
 
-        public ActionResult OrganizationMembers(int ID)
+        public ActionResult OrgMembers(int ID)
         {
             var helper = new HelperFunctions(HttpContext);
             if (!helper.CheckValidSession())
@@ -158,8 +161,6 @@ namespace vvarscNET.Web.Client.Controllers
             if (member == null)
                 throw new Exception("Unable to retrive Member for Edit");
 
-            //RANKS SELECT LIST
-            var ranks = peopleRestClient.ListRanks(HttpContext);
             var model = new MemberEditModel
             {
                 ID = member.ID,
@@ -172,6 +173,9 @@ namespace vvarscNET.Web.Client.Controllers
                 Ranks = new List<SelectListItem>(),
                 UserTypes = new List<SelectListItem>()
             };
+
+            //RANKS SELECT LIST
+            var ranks = peopleRestClient.ListRanks(HttpContext);
 
             //Populate Default for SelectList
             model.Ranks.Add(new SelectListItem
@@ -286,7 +290,70 @@ namespace vvarscNET.Web.Client.Controllers
             if (!helper.IsAdmin())
                 return RedirectToAction("Forbidden", "Home");
 
-            return View();
+            return View(orgRestClient.ListRolesForOrganization(HttpContext, organizationID));
+        }
+
+        public ActionResult EditOrgRole(int roleID)
+        {
+            var helper = new HelperFunctions(HttpContext);
+            if (!helper.CheckValidSession())
+                return RedirectToAction("Unauthorized", "Home");
+
+            if (!helper.IsAdmin())
+                return RedirectToAction("Forbidden", "Home");
+
+            var orgRole = orgRestClient.GetOrgRoleByID(HttpContext, roleID);
+            if (orgRole == null)
+                throw new Exception("Unable to retrive OrgRole for Edit");
+
+            var model = new OrgRoleEditModel
+            {
+                ID = orgRole.ID,
+                OrganizationID = orgRole.OrganizationID,
+                RoleName = orgRole.RoleName,
+                RoleShortName = orgRole.RoleShortName,
+                RoleDisplayName = orgRole.RoleDisplayName,
+                RoleType = orgRole.RoleType,
+                OrderBy = orgRole.RoleOrderBy,
+                IsActive = orgRole.IsActive,
+                IsHidden = orgRole.IsHidden,
+                SupportedPayGrades = orgRole.SupportedPayGrades.Select(a => a.ID).Distinct().ToList(),
+                RoleTypes = new List<SelectListItem>(),
+                PayGrades = new List<SelectListItem>()
+            };
+
+            //PayGrades Multi-Select List
+            var payGrades = peopleRestClient.ListPayGrades(HttpContext);
+
+            foreach (var pg in payGrades)
+            {
+                bool selected = false;
+                if (model.SupportedPayGrades.Contains(pg.ID))
+                    selected = true;
+
+                model.PayGrades.Add(new SelectListItem
+                {
+                    Value = pg.ID.ToString(),
+                    Text = pg.PayGradeName,
+                    Selected = selected
+                });
+            }
+
+            //RoleType SELECT LIST
+            model.RoleTypes.Add(new SelectListItem
+            {
+                Value = "",
+                Text = "-- Select a Type --"
+            });
+            model.RoleTypes.Add(new SelectListItem
+            {
+                Value = "UnitRole",
+                Text = "Unit Role"
+            });
+
+            model.RoleTypes.Where(a => a.Value == model.RoleType).FirstOrDefault().Selected = true;
+
+            return View(model);
         }
     }
 }

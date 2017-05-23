@@ -42,5 +42,29 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
+
+        public List<OrgRole> ListRolesForOrganization(string accessToken, int organizationID)
+        {
+            var query = new ListRolesForOrganization_Q
+            {
+                OrganizationID = organizationID
+            };
+
+            var result = _queryDispatcher.Dispatch<ListRolesForOrganization_Q, List<OrgRole>>(accessToken, query);
+
+            return result;
+        }
+
+        public OrgRole GetOrgRoleByID(string accessToken, int roleID)
+        {
+            var query = new GetOrgRoleByID_Q
+            {
+                ID = roleID
+            };
+
+            var result = _queryDispatcher.Dispatch<GetOrgRoleByID_Q, OrgRole>(accessToken, query);
+
+            return result;
+        }
     }
 }

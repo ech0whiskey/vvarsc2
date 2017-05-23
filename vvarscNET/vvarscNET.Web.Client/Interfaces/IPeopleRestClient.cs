@@ -9,6 +9,7 @@ namespace vvarscNET.Web.Client.Interfaces
     public interface IPeopleRestClient
     {
         IEnumerable<ListRanks_QRM> ListRanks(HttpContextBase Context);
+        IEnumerable<PayGrade> ListPayGrades(HttpContextBase Context);
         IEnumerable<Member> ListMembersForOrganization(HttpContextBase Context, int OrganizationID);
         Result CreateMember(HttpContextBase Context, Member member);
         Member GetMemberByID(HttpContextBase Context, int memberID);

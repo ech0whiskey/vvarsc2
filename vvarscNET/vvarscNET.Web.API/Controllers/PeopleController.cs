@@ -45,6 +45,20 @@ namespace vvarscNET.Web.API.Controllers
         }
 
         /// <summary>
+        /// Method to List all PayGrades
+        /// </summary>
+        /// <returns>List of PayGrades</returns>
+        [HttpGet]
+        [Route("paygrades")]
+        [ResponseType(typeof(List<PayGrade>))]
+        public IHttpActionResult ListPayGrades()
+        {
+            var returnData = _peopleQuerySvc.ListPayGrades(Request.GetUserContext().AccessToken);
+
+            return Ok(returnData);
+        }
+
+        /// <summary>
         /// Method to list Members belonging to an Organization
         /// </summary>
         /// <param name="id">ID of Organization</param>

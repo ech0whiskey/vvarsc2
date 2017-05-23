@@ -46,5 +46,33 @@ namespace vvarscNET.Web.Client.Services
 
             return JsonConvert.DeserializeObject<Organization>(response.Content);
         }
+
+        public List<OrgRole> ListRolesForOrganization(HttpContextBase Context, int OrganizationID)
+        {
+            var request = new RestRequest("organizations/{id}/roles", Method.GET) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddParameter("id", OrganizationID, ParameterType.UrlSegment);
+
+            var response = _client.Execute<List<OrgRole>>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<List<OrgRole>>(response.Content);
+        }
+
+        public OrgRole GetOrgRoleByID(HttpContextBase Context, int RoleID)
+        {
+            var request = new RestRequest("roles/{id}", Method.GET) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddParameter("id", RoleID, ParameterType.UrlSegment);
+
+            var response = _client.Execute<OrgRole>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<OrgRole>(response.Content);
+        }
     }
 }

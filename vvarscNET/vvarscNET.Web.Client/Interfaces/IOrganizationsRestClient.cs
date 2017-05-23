@@ -9,5 +9,9 @@ namespace vvarscNET.Web.Client.Interfaces
         IEnumerable<Organization> ListOrganizations(HttpContextBase Context);
 
         Organization GetOrganizationByID(HttpContextBase Context, int OrganizationID);
+
+        List<OrgRole> ListRolesForOrganization(HttpContextBase Context, int OrganizationID);
+
+        OrgRole GetOrgRoleByID(HttpContextBase Context, int RoleID);
     }
 }

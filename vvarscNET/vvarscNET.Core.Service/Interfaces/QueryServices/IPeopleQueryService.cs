@@ -14,6 +14,8 @@ namespace vvarscNET.Core.Service.Interfaces
 
         List<ListRanks_QRM> ListRanks(string accessToken);
 
+        List<PayGrade> ListPayGrades(string accessToken);
+
         Member GetMemberByID(string accessToken, int memberID);
     }
 }

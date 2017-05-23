@@ -3,24 +3,24 @@ using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
 using vvarscNET.Model.Objects.Organizations;
-using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
+using vvarscNET.Model.Objects.People;
 using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
-    public class ListRolesForOrganization_QH : IQueryHandler<ListRolesForOrganization_Q, List<OrgRole>>
+    public class GetOrgRoleByID_QH : IQueryHandler<GetOrgRoleByID_Q, OrgRole>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public ListRolesForOrganization_QH(SQLConnectionFactory connFactory)
+        public GetOrgRoleByID_QH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public List<OrgRole> Handle(string accessTokenID, ListRolesForOrganization_Q query)
+        public OrgRole Handle(string accessTokenID, GetOrgRoleByID_Q query)
         {
             Dictionary<int, OrgRole> xRoles = new Dictionary<int, OrgRole>();
             Dictionary<int, HashSet<PayGrade>> xRolesPayGrades = new Dictionary<int, HashSet<PayGrade>>();
@@ -50,10 +50,10 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 	                    on m.OrgRoleID = r.ID
                     join People.PayGrades g
 	                    on g.ID = m.PayGradeID
-                    where r.OrganizationID = @OrganizationID           
+                    where r.ID = @roleID          
                 ";
 
-                var res = connection.Query<OrgRole, PayGrade, OrgRole>(sql, (role, paygrade) => 
+                var res = connection.Query<OrgRole, PayGrade, OrgRole>(sql, (role, paygrade) =>
                 {
                     if (!xRoles.ContainsKey(role.ID))
                         xRoles[role.ID] = role;
@@ -74,7 +74,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                     }
 
                     return role;
-                }, new { OrganizationID = query.OrganizationID }).ToList();
+                }, new { roleID = query.ID }).ToList();
 
                 foreach (var r in xRoles.Values)
                 {
@@ -84,7 +84,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                         r.SupportedPayGrades = payGrades.ToList();
                 }
 
-                return xRoles.Values.ToList();
+                return xRoles.Values.FirstOrDefault();
             }
         }
     }

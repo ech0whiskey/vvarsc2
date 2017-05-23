@@ -10,7 +10,8 @@
     </p>
     <ul id="adminNavMenu">
         <li>@Html.ActionLink("Home", "Index", "Admin")</li>
-        <li>@Html.ActionLink("Organization Details", "Organization", "Admin", new { id = Session["OrganizationID"] }, null)</li>
-        <li>@Html.ActionLink("Members", "OrganizationMembers", "Admin", new { id = Session["OrganizationID"] }, null)</li>
+        <li>@Html.ActionLink("Organization Details", "Organization", "Admin", new { id = ViewBag.OrganizationID }, null)</li>
+        <li>@Html.ActionLink("Members", "OrgMembers", "Admin", new { id = ViewBag.OrganizationID }, null)</li>
+        <li>@Html.ActionLink("Roles", "OrgRoles", "Admin", new { organizationID = ViewBag.OrganizationID }, null)</li>
     </ul>
 </article>

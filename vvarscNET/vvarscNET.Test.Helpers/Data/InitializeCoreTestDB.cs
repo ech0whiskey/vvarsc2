@@ -200,6 +200,7 @@ namespace vvarscNET.Test.Helpers.Data
                 //Create OrgRole
                 var orCmd = new CreateOrgRole_C
                 {
+                    OrganizationID = 1,
                     RoleName = or.RoleName,
                     RoleShortName = or.RoleShortName,
                     RoleDisplayName = or.RoleDisplayName,

@@ -35,6 +35,19 @@ namespace vvarscNET.Web.Client.Services
             return JsonConvert.DeserializeObject<IEnumerable<ListRanks_QRM>>(response.Content);
         }
 
+        public IEnumerable<PayGrade> ListPayGrades(HttpContextBase Context)
+        {
+            var request = new RestRequest("paygrades", Method.GET) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+
+            var response = _client.Execute<List<PayGrade>>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<IEnumerable<PayGrade>>(response.Content);
+        }
+
         public IEnumerable<Member> ListMembersForOrganization(HttpContextBase Context, int OrganizationID)
         {
             var request = new RestRequest("organizations/{id}/members", Method.GET) { RequestFormat = DataFormat.Json };

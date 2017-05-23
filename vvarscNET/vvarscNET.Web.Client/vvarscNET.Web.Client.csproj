@@ -208,6 +208,7 @@
     <Compile Include="Interfaces\IAuthenticationRestClient.cs" />
     <Compile Include="Interfaces\IServerDataRestClient.cs" />
     <Compile Include="Models\MemberEditModel.cs" />
+    <Compile Include="Models\OrgRoleEditModel.cs" />
     <Compile Include="Services\AuthenticationRestClient.cs" />
     <Compile Include="Services\PeopleRestClient.cs" />
     <Compile Include="Services\OrganizationsRestClient.cs" />
@@ -217,6 +218,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-min.css" />
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\Styles\Accents.css" />
     <Content Include="Content\Styles\Responsive.css" />
     <Content Include="Content\Styles\Shared.css" />
@@ -343,11 +346,13 @@
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Wiki\Ranks.cshtml" />
     <Content Include="Views\Admin\Organization.cshtml" />
-    <Content Include="Views\Admin\OrganizationMembers.cshtml" />
+    <Content Include="Views\Admin\OrgMembers.cshtml" />
     <Content Include="Views\Admin\CreateMember.cshtml" />
     <Content Include="Views\Admin\EditMember.cshtml" />
     <Content Include="App_Code\ToastrBuilder.cshtml" />
     <Content Include="Views\Shared\_Toastr.cshtml" />
+    <Content Include="Views\Admin\OrgRoles.cshtml" />
+    <Content Include="Views\Admin\EditOrgRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

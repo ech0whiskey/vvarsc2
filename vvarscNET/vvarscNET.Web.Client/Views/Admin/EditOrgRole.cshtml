@@ -1,0 +1,78 @@
+﻿@model  vvarscNET.Web.Client.Models.OrgRoleEditModel
+
+@{
+    ViewBag.Title = "Edit Role";
+}
+
+@Html.ActionLink("⇠Back to Role List", "OrgRoles", "Admin", new { organizationID = Model.OrganizationID }, new { @style="text-decoration:none;"})
+<br />
+<br />
+<h2>Update Role</h2>
+<button class="adminButton adminButtonDelete" title="Delete Role" style="margin-left: 0px;float:right"
+    onclick="location.href='@Url.Action("DeleteOrgRole", "Admin", new { memberID = @Model.ID, organizationID = Model.OrganizationID })'">
+    <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_delete.png">
+    Delete Role
+</button>
+<article>
+    @using (Html.BeginForm("EditOrgRole", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>OrgRole</legend>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.HiddenFor(model => model.ID)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.HiddenFor(model => model.OrganizationID)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.RoleName)
+                </div>
+                <div class="label">
+                    @Html.EditorFor(model => model.RoleName)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.RoleType)
+                </div>
+                <div class="label">
+                    @Html.DropDownListFor(model => model.RoleType, Model.RoleTypes)
+                    @Html.ValidationMessageFor(model => Model.RoleType)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
+                    @Html.LabelFor(model => model.SupportedPayGrades)
+                </div>
+                <div class="label">
+                    @Html.ListBoxFor(model => model.SupportedPayGrades, Model.PayGrades, new { @class = "listbox" })
+                    @Html.ValidationMessageFor(model => Model.PayGrades)
+                </div>
+            </div>
+
+            <br />
+            <div class="adminDialogButtonPane">
+                <input type="submit" value="Update" class="adminDialogButton dialogButtonSubmit" />
+                @Html.ActionLink("Cancel", "OrgRoles", "Admin", new { organizationID = Model.OrganizationID }, new { @class = "adminDialogButton dialogButtonCancel" })
+            </div>
+        </fieldset>
+    }
+</article>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

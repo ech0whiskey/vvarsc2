@@ -52,5 +52,14 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
+
+        public List<PayGrade> ListPayGrades(string accessToken)
+        {
+            var query = new ListPayGrades_Q { };
+
+            var result = _queryDispatcher.Dispatch<ListPayGrades_Q, List<PayGrade>>(accessToken, query);
+
+            return result;
+        }
     }
 }

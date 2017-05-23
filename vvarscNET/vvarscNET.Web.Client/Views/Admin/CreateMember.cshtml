@@ -64,7 +64,8 @@
 
             <br />
             <div class="adminDialogButtonPane">
-                <input type="submit" value="Create" class="adminDialogButton dialogButtonSubmit" />  @Html.ActionLink("Cancel", "OrganizationMembers", "Admin", new { id = Model.OrganizationID }, new { @class = "adminDialogButton dialogButtonCancel" })
+                <input type="submit" value="Create" class="adminDialogButton dialogButtonSubmit" />
+                @Html.ActionLink("Cancel", "OrgMembers", "Admin", new { id = Model.OrganizationID }, new { @class = "adminDialogButton dialogButtonCancel" })
             </div>
         </fieldset>
     }

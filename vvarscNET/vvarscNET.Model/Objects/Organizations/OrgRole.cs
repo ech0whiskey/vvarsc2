@@ -10,6 +10,7 @@ namespace vvarscNET.Model.Objects.Organizations
     public class OrgRole
     {
         public int ID;
+        public int OrganizationID;
         public string RoleName;
         public string RoleShortName;
         public string RoleDisplayName;

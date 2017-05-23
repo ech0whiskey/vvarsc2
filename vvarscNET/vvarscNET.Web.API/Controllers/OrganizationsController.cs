@@ -55,5 +55,35 @@ namespace vvarscNET.Web.API.Controllers
             return Ok(returnData);
         }
 
+        /// <summary>
+        /// Method to get list of Organization Roles
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List of OrgRole</returns>
+        [HttpGet]
+        [Route("organizations/{id}/roles")]
+        [ResponseType(typeof(List<OrgRole>))]
+        public IHttpActionResult ListRolesForOrganization([FromUri] int id)
+        {
+            var returnData = _orgService.ListRolesForOrganization(Request.GetUserContext().AccessToken, id);
+
+            return Ok(returnData);
+        }
+
+        /// <summary>
+        /// Method to get a specific Organization Role
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>OrgRole</returns>
+        [HttpGet]
+        [Route("roles/{id}")]
+        [ResponseType(typeof(OrgRole))]
+        public IHttpActionResult GetOrgRoleByID([FromUri] int id)
+        {
+            var returnData = _orgService.GetOrgRoleByID(Request.GetUserContext().AccessToken, id);
+
+            return Ok(returnData);
+        }
+
     }
 }

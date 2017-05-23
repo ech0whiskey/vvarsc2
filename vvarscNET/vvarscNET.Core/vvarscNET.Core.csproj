@@ -103,12 +103,14 @@
     <Compile Include="QueryModels\Authentication\AuthenticateMember_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetAccessTokenByValue_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetLatestMemberAccessToken_Q.cs" />
+    <Compile Include="QueryModels\Organizations\GetOrgRoleByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListRolesForOrganization_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationByID_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationBySpectrumID_Q.cs" />
+    <Compile Include="QueryModels\People\ListPayGrades_Q.cs" />
     <Compile Include="QueryModels\People\ListRanks_Q.cs" />
     <Compile Include="QueryModels\People\ListMembersForOrganization_Q.cs" />
     <Compile Include="UserContext.cs" />

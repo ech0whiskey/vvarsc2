@@ -31,7 +31,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 
                 var cmd = @"
                     INSERT INTO [Organizations].[Roles] (
-	                    RoleName
+                        OrganizationID
+                        ,RoleName
 	                    ,RoleShortName
 	                    ,RoleDisplayName
                         ,RoleType
@@ -43,7 +44,8 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,ModifiedOn
 	                    ,ModifiedBy
                     ) VALUES (
-	                    @RoleName
+                        @OrganizationID
+	                    ,@RoleName
 	                    ,@RoleShortName
 	                    ,@RoleDisplayName
                         ,@RoleType
@@ -65,6 +67,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                     {
                         int? id = connection.Query<int>(cmd, new
                         {
+                            OrganizationID = command.OrganizationID,
                             RoleName = command.RoleName,
                             RoleShortName = command.RoleShortName,
                             RoleDisplayName = command.RoleDisplayName,

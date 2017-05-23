@@ -1,0 +1,79 @@
+﻿@model List<vvarscNET.Model.Objects.People.Member>
+@{
+    ViewBag.Title = "Members";
+}
+
+@Html.ActionLink("⇠Back to Admin Home", "Index", "Admin", new { organizationID = Session["OrganizationID"] }, new { @style = "text-decoration:none;" })
+<br />
+<br />
+<h2>Member Management</h2>
+
+<div>
+    <button id="adminCreateMember" class="adminButton adminButtonCreate" title="Add New Member" style="
+		margin-left: 0px;
+		margin-bottom: 4px;
+		width: 100%;
+		text-align: right;"
+        onclick="location.href='@Url.Action("CreateMember","Admin",new { organizationID = Session["OrganizationID"] })'">
+        <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_add.png" />
+        Add New Member
+    </button>
+    <div id="AdminMemberList" class="description_container">
+        <div class="top-line">
+        </div>
+        <div class="corner4 corner-diag-blue-topLeft">
+        </div>
+        <div class="corner4 corner-diag-blue-topRight">
+        </div>
+        <div class="corner4 corner-diag-blue-bottomLeft">
+        </div>
+        <div class="corner4 corner-diag-blue-bottomRight">
+        </div>
+        <div class="description_inner" style="
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 4px;
+        ">
+            @{
+                var sortedList = Model.OrderBy(a => a.UserName);
+                foreach (var member in sortedList)
+                {
+                    <div class="table_header_block">
+                    </div>
+                    <div class="description_entry" style="
+                        margin-bottom:4px;
+                        display: block;
+                        width: auto;
+                    ">
+                        <div style="
+                            float: right;
+                            text-align: right;
+                        ">
+                            <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;"
+                                    onclick="location.href='@Url.Action("EditMember","Admin",new { memberID = @member.ID })'">
+                                <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
+                            </button>
+                        </div>
+                        <div style="display:table;">
+                            <div class="image_wrapper">
+                                <div class="image_container" style="
+                                    height: 20px;
+                                    width: 20px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                ">
+                                    <img class="rankImageSmall" src="@member.RankImage" />
+                                </div>
+                                <div class="rankImage_text">
+                                    @Html.ActionLink(@member.RankAbbr + " " + @member.UserName, "EditMember", "Admin", new { memberID = @member.ID }, null)
+                                    @*@member.RankAbbr <strong>@member.UserName</strong>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</div>

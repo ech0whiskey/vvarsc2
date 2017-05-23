@@ -9,6 +9,7 @@ namespace vvarscNET.Core.CommandModels.Organizations
 {
     public class CreateOrgRole_C : ICommand
     {
+        public int OrganizationID;
         public string RoleName;
         public string RoleShortName;
         public string RoleDisplayName;
