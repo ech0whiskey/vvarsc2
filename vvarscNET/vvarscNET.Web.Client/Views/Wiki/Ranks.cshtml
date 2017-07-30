@@ -64,7 +64,7 @@
     </div>
     <div class="corner4 corner-diag-blue-bottomRight">
     </div>
-    <h3>
+    <h3 style="padding-left:24px;">
         Enlisted Ranks
     </h3>
     <div class="description_inner">
@@ -84,11 +84,12 @@
                     <div class="table_header_block">
                     </div>
                     <div id="@pg.PayGradeName" class="description_entry">
-                        <div class="description_entry_header">
-                            <h4>
-                                @pg.PayGradeName [ @pgg.PayGradeGroup ]
-                            </h4>
-                        </div>
+                        <div class="description_entry_inner">
+                            <div class="description_entry_header">
+                                <h4>
+                                    @pg.PayGradeName [ @pgg.PayGradeGroup ]
+                                </h4>
+                            </div>
                             @{
                                 var payGradeRanks = sortedList.Where(a => a.PayGradeName == pg.PayGradeName).Select(a => new
                                 {
@@ -120,15 +121,15 @@
                                 }
                             }
                             <ul style="margin-top:0px;margin-bottom:4px;">
-                            @{ 
-                                //Display Each Rank Name + Abbreviation
-                                foreach (var pgr in payGradeRanks)
-                                {
-                                    <li style="color:#FFF; font-style:italic;">
-                                        @pgr.RankType <strong>@pgr.RankName</strong> - @pgr.RankAbbr
-                                    </li>
+                                @{
+                                    //Display Each Rank Name + Abbreviation
+                                    foreach (var pgr in payGradeRanks)
+                                    {
+                                        <li style="color:#FFF; font-style:italic;">
+                                            @pgr.RankType <strong>@pgr.RankName</strong> - @pgr.RankAbbr
+                                        </li>
+                                    }
                                 }
-                            }
                             </ul>
                             <h5 style="margin-left:8px;margin-top:4px;margin-bottom:4px;color: #DDD;">
                                 Supported Org Roles
@@ -139,7 +140,7 @@
                             <ul style="margin-top:0px;margin-bottom:8px;font-size:9pt;">
                                 @{
                                     if (orgRoleList != null && orgRoleList.Count > 0)
-                                    { 
+                                    {
                                         foreach (var r in orgRoleList)
                                         {
                                             <li style="color:#DDD; font-style:italic;">
@@ -149,12 +150,13 @@
                                     }
                                 }
                             </ul>
-                        <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
-                            @pg.PayGradeDescriptionText
-                        </p>
-                        <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
-                            @pg.PayGradeNotes
-                        </p>
+                            <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
+                                @pg.PayGradeDescriptionText
+                            </p>
+                            <p style="padding-left: 12px; padding-right:12px; font-size:10pt;">
+                                @pg.PayGradeNotes
+                            </p>
+                        </div>
                     </div>
                 }
             }

@@ -7,6 +7,7 @@ using vvarscNET.Model.Objects.Organizations;
 using RestSharp;
 using System.Web;
 using Newtonsoft.Json;
+using vvarscNET.Model.Result;
 
 namespace vvarscNET.Web.Client.Services
 {
@@ -73,6 +74,21 @@ namespace vvarscNET.Web.Client.Services
                 throw new Exception(response.ErrorMessage);
 
             return JsonConvert.DeserializeObject<OrgRole>(response.Content);
+        }
+
+        public Result EditOrgRole(HttpContextBase Context, OrgRole Role)
+        {
+            var request = new RestRequest("roles/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
+            request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
+            request.AddParameter("id", Role.ID, ParameterType.UrlSegment);
+            request.AddBody(Role);
+
+            var response = _client.Execute<Result>(request);
+
+            if (response.Content == null)
+                throw new Exception(response.ErrorMessage);
+
+            return JsonConvert.DeserializeObject<Result>(response.Content);
         }
     }
 }

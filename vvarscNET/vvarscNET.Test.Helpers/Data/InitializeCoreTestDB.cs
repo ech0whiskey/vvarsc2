@@ -32,10 +32,10 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init organization admins");
             if (!InitSuperAdmin(connectionString))
                 throw new Exception("Could not init superadmin");
-            if (!InitOrgRoles(connectionString))
-                throw new Exception("Could not init OrgRoles");
             if (!InitPayGradesAndRanks(connectionString))
                 throw new Exception("Could not init PayGrades and Ranks");
+            if (!InitOrgRoles(connectionString))
+                throw new Exception("Could not init OrgRoles");
         }
 
         #region SuperAdmin
@@ -206,7 +206,7 @@ namespace vvarscNET.Test.Helpers.Data
                     RoleDisplayName = or.RoleDisplayName,
                     RoleType = or.RoleType,
                     RoleOrderBy = or.RoleOrderBy,
-                    IsActive = or.IsActive,
+                    IsActive = true,
                     IsHidden = or.IsHidden
                 };
 
@@ -217,7 +217,29 @@ namespace vvarscNET.Test.Helpers.Data
                 {
                     return false;
                 }
-                var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
+                var roleID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
+
+                //Map PayGrades to OrgRoles
+                if (or.SupportedPayGrades != null && or.SupportedPayGrades.Count > 0)
+                {
+                    var pgrCmd = new UpdatePayGradesForOrgRole_C
+                    {
+                        OrgRoleID = roleID,
+                        SupportedPayGrades = new List<string>()
+                    };
+                    foreach (var pg in or.SupportedPayGrades)
+                    {
+                        pgrCmd.SupportedPayGrades.Add(pg.PayGradeName);
+                    }
+
+                    UpdatePayGradesForOrgRole_CH updatePayGradesForOrgRole_CH = new UpdatePayGradesForOrgRole_CH(new SQLConnectionFactory(connectionString));
+                    var pgrResult = updatePayGradesForOrgRole_CH.Handle(Globals.UserContext, pgrCmd);
+
+                    if (pgrResult.Status != System.Net.HttpStatusCode.OK)
+                    {
+                        return false;
+                    }
+                }
             }
             return true;
         }
@@ -249,24 +271,6 @@ namespace vvarscNET.Test.Helpers.Data
                     return false;
                 }
                 var pgID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
-
-                //Map Roles to PayGrade
-                if (pg.SupportedOrgRoles != null && pg.SupportedOrgRoles.Count > 0)
-                {
-                    var pgrCmd = new AddOrgRolesToPayGrade_C
-                    {
-                        PayGradeID = pgID,
-                        SupportedOrgRoles = pg.SupportedOrgRoles
-                    };
-
-                    AddOrgRolesToPayGrade_CH addOrgRolesToPayGrade_CH = new AddOrgRolesToPayGrade_CH(new SQLConnectionFactory(connectionString));
-                    var pgrResult = addOrgRolesToPayGrade_CH.Handle(Globals.UserContext, pgrCmd);
-
-                    if (pgrResult.Status != System.Net.HttpStatusCode.OK)
-                    {
-                        return false;
-                    }
-                }
 
                 var pgRanks = SetupData._ranks.Where(a => a.PayGradeID == pgID).ToList();
                 foreach (var rank in pgRanks)

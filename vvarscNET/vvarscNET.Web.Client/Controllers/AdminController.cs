@@ -7,6 +7,7 @@ using vvarscNET.Web.Client.Services;
 using vvarscNET.Web.Client.Helper;
 using vvarscNET.Web.Client.Models;
 using vvarscNET.Model.Objects.People;
+using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Web.Client.Controllers
 {
@@ -140,7 +141,7 @@ namespace vvarscNET.Web.Client.Controllers
                 
                 this.AddToastMessage(result);
 
-                return RedirectToAction("OrganizationMembers", "Admin", new { id = organizationID });
+                return RedirectToAction("OrgMembers", "Admin", new { id = organizationID });
             }
             catch
             {
@@ -354,6 +355,55 @@ namespace vvarscNET.Web.Client.Controllers
             model.RoleTypes.Where(a => a.Value == model.RoleType).FirstOrDefault().Selected = true;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditOrgRole(OrgRoleEditModel role)
+        {
+            var helper = new HelperFunctions(HttpContext);
+            if (!helper.CheckValidSession())
+                return RedirectToAction("Unauthorized", "Home");
+
+            if (!helper.IsAdmin())
+                return RedirectToAction("Forbidden", "Home");
+
+            try
+            {
+                var roleToEdit = new OrgRole
+                {
+                    ID = role.ID,
+                    OrganizationID = role.OrganizationID,
+                    RoleName = role.RoleName,
+                    RoleShortName = role.RoleShortName,
+                    RoleDisplayName = role.RoleDisplayName,
+                    RoleType = role.RoleType,
+                    RoleOrderBy = role.OrderBy,
+                    IsActive = role.IsActive,
+                    IsHidden = role.IsHidden,
+                    SupportedPayGrades = new List<PayGrade>()
+                };
+
+                foreach(var pg in role.SupportedPayGrades)
+                {
+                    roleToEdit.SupportedPayGrades.Add(
+                        new PayGrade
+                        {
+                            ID = pg
+                        }    
+                    );
+                }
+
+                var result = orgRestClient.EditOrgRole(HttpContext, roleToEdit);
+
+                this.AddToastMessage(result);
+
+                return RedirectToAction("EditOrgRole", "Admin", new { roleID = role.ID });
+            }
+            catch
+            {
+                return View();
+            }
+
         }
     }
 }

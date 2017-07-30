@@ -15,7 +15,6 @@ namespace vvarscNET.Model.Objects.People
         public string PayGradeGroup;
         public string PayGradeDescriptionText;
         public string PayGradeNotes;
-        public List<string> SupportedOrgRoles;
         public bool IsActive;
         public DateTime CreatedOn;
         public string CreatedBy;

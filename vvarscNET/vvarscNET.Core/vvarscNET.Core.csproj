@@ -73,12 +73,13 @@
     <Compile Include="CommandModels\Authentication\CreateAccessToken_C.cs" />
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrganization_C.cs" />
+    <Compile Include="CommandModels\Organizations\UpdateOrgRole_C.cs" />
+    <Compile Include="CommandModels\Organizations\UpdatePayGradesForOrgRole_C.cs" />
     <Compile Include="CommandModels\People\CreateMemberRankHistory_C.cs" />
     <Compile Include="CommandModels\People\DeleteMember_C.cs" />
     <Compile Include="CommandModels\People\UpdateMember_C.cs" />
     <Compile Include="CommandModels\People\CreateMember_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrgRole_C.cs" />
-    <Compile Include="CommandModels\People\AddOrgRolesToPayGrade_C.cs" />
     <Compile Include="CommandModels\People\CreateRank_C.cs" />
     <Compile Include="CommandModels\People\CreatePayGrade_C.cs" />
     <Compile Include="Decorators\ValidateAccessTokenPre_QH_Decorator.cs" />

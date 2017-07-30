@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using vvarscNET.Model.Objects.Organizations;
 using System.Web;
+using vvarscNET.Model.Result;
 
 namespace vvarscNET.Web.Client.Interfaces
 {
@@ -13,5 +14,7 @@ namespace vvarscNET.Web.Client.Interfaces
         List<OrgRole> ListRolesForOrganization(HttpContextBase Context, int OrganizationID);
 
         OrgRole GetOrgRoleByID(HttpContextBase Context, int RoleID);
+
+        Result EditOrgRole(HttpContextBase Context, OrgRole Role);
     }
 }

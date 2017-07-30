@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandServices\OrganizationCommandService.cs" />
     <Compile Include="CommandServices\PeopleCommandService.cs" />
+    <Compile Include="Interfaces\CommandServices\IOrganizationCommandService.cs" />
     <Compile Include="Interfaces\CommandServices\IPeopleCommandService.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IService.cs" />

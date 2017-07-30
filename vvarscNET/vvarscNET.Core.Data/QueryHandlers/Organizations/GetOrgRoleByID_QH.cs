@@ -46,7 +46,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 	                    ,g.PayGradeGroup
 	                    ,g.IsActive
                     from Organizations.Roles r
-                    join People.PayGradeOrgRoleMap m
+                    join Organizations.PayGradeOrgRoleMap m
 	                    on m.OrgRoleID = r.ID
                     join People.PayGrades g
 	                    on g.ID = m.PayGradeID

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [People].[PayGradeOrgRoleMap] (
+﻿CREATE TABLE [Organizations].[PayGradeOrgRoleMap] (
 	PayGradeID int NOT NULL
 	,OrgRoleID int NOT NULL
 	,IsActive bit

@@ -11,7 +11,7 @@
 
 .description_container2 {
     height: 100%;
-    padding: 8px,6px,8px,6px;
+    padding: 8px;
     border-top: 1px solid rgba(0,153,170,0.9);
     border-bottom: 1px solid rgba(0,153,170,0.9);
     background-color: rgba(0,0,0,0.65);
@@ -34,6 +34,7 @@
     background-repeat: repeat-y;
     background-position: left bottom;
     padding-left: 28px;
+    margin-right: 8px;
 }
 
 .description_entry {
@@ -43,8 +44,13 @@
     display: table;
     text-align: left;
     background-color: rgba(0,0,0,0.65);
-    padding: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+}
+
+.description_entry_inner {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
 }
 
 .description_text {

@@ -68,6 +68,7 @@ namespace vvarscNET.Web.API.App_Start
 
             // Command Services
             container.Register<IPeopleCommandService, PeopleCommandService>(Lifestyle.Scoped);
+            container.Register<IOrganizationCommandService, OrganizationCommandService>(Lifestyle.Scoped);
         }
 
         private static void RegisterQueries(Container container)

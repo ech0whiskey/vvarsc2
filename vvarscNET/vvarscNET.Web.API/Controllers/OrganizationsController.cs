@@ -6,8 +6,7 @@ using System.Net;
 using System.Collections.Generic;
 using vvarscNET.Core.Service.Interfaces;
 using vvarscNET.Model.Objects.Organizations;
-//
-using vvarscNET.Model.Objects.People;
+using vvarscNET.Model.Result;
 
 namespace vvarscNET.Web.API.Controllers
 {
@@ -16,15 +15,17 @@ namespace vvarscNET.Web.API.Controllers
     /// </summary>
     public class OrganizationsController : ApiController
     {
-        private IOrganizationQueryService _orgService;
+        private IOrganizationQueryService _orgQueryService;
+        private IOrganizationCommandService _orgCmdService;
 
         /// <summary>
         /// Constructor for Organizations Controller
         /// </summary>
-        /// <param name="orgService"></param>
-        public OrganizationsController(IOrganizationQueryService orgService)
+        /// <param name="orgQueryService"></param>
+        public OrganizationsController(IOrganizationQueryService orgQueryService, IOrganizationCommandService orgCmdService)
         {
-            _orgService = orgService;
+            _orgQueryService = orgQueryService;
+            _orgCmdService = orgCmdService;
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(List<Organization>))]
         public IHttpActionResult ListOrganizations()
         {
-            var returnData = _orgService.ListOrganizations(Request.GetUserContext().AccessToken);
+            var returnData = _orgQueryService.ListOrganizations(Request.GetUserContext().AccessToken);
 
             return Ok(returnData);
         }
@@ -50,7 +51,7 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(Organization))]
         public IHttpActionResult GetOrganizationByID([FromUri] int id)
         {
-            var returnData = _orgService.GetOrganizationByID(Request.GetUserContext().AccessToken, id);
+            var returnData = _orgQueryService.GetOrganizationByID(Request.GetUserContext().AccessToken, id);
 
             return Ok(returnData);
         }
@@ -65,7 +66,7 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(List<OrgRole>))]
         public IHttpActionResult ListRolesForOrganization([FromUri] int id)
         {
-            var returnData = _orgService.ListRolesForOrganization(Request.GetUserContext().AccessToken, id);
+            var returnData = _orgQueryService.ListRolesForOrganization(Request.GetUserContext().AccessToken, id);
 
             return Ok(returnData);
         }
@@ -80,10 +81,29 @@ namespace vvarscNET.Web.API.Controllers
         [ResponseType(typeof(OrgRole))]
         public IHttpActionResult GetOrgRoleByID([FromUri] int id)
         {
-            var returnData = _orgService.GetOrgRoleByID(Request.GetUserContext().AccessToken, id);
+            var returnData = _orgQueryService.GetOrgRoleByID(Request.GetUserContext().AccessToken, id);
 
             return Ok(returnData);
         }
 
+        /// <summary>
+        /// Method to Update Organization Role
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="role"></param>
+        /// <returns>Result</returns>
+        [HttpPut]
+        [Route("roles/{id}")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult UpdateOrgRole([FromUri] int id, [FromBody] OrgRole role)
+        {
+            //Ensure that Role Object in Route is the same as Body
+            if (id != role.ID)
+                return BadRequest();
+
+            var result = _orgCmdService.UpdateOrgRole(Request.GetUserContext(), role);
+
+            return Ok(result);
+        }
     }
 }

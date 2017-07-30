@@ -1,4 +1,4 @@
-﻿using vvarscNET.Core.CommandModels.People;
+﻿using vvarscNET.Core.CommandModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,22 +10,19 @@ using vvarscNET.Core.Factories;
 using System.Net;
 using Dapper;
 
-namespace vvarscNET.Core.Data.CommandHandlers.People
+namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 {
-    public class AddOrgRolesToPayGrade_CH : ICommandHandler<AddOrgRolesToPayGrade_C>
+    public class UpdateOrgRole_CH : ICommandHandler<UpdateOrgRole_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public AddOrgRolesToPayGrade_CH(SQLConnectionFactory connFactory)
+        public UpdateOrgRole_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, AddOrgRolesToPayGrade_C command)
+        public Result Handle(IUserContext context, UpdateOrgRole_C command)
         {
-            if (command.SupportedOrgRoles == null || command.SupportedOrgRoles.Count < 1)
-                throw new ArgumentNullException(nameof(command.SupportedOrgRoles));
-
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
 
             using (var connection = _connFactory.GetConnection())
@@ -33,26 +30,19 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                 connection.Open();
 
                 var cmd = @"
-                    INSERT INTO [People].[PayGradeOrgRoleMap] (
-	                    PayGradeID
-	                    ,OrgRoleID
-	                    ,IsActive
-	                    ,CreatedOn
-	                    ,CreatedBy
-	                    ,ModifiedOn
-	                    ,ModifiedBy
-                    )
-                    select
-	                    @PayGradeID
-	                    ,r.ID
-	                    ,1 [IsActive]
-	                    ,@CreatedOn
-	                    ,@CreatedBy
-	                    ,@ModifiedOn
-	                    ,@ModifiedBy
-                    from [Organizations].Roles r
-                    where r.RoleName in @SupportedOrgRoles
-                        and r.IsActive = 1
+                    update r set
+	                    r.OrganizationID = @OrganizationID
+	                    ,r.RoleName = @RoleName
+	                    ,r.RoleShortName = @RoleShortName
+	                    ,r.RoleDisplayName = @RoleDisplayName
+	                    ,r.RoleType = @RoleType
+	                    ,r.RoleOrderBy = @RoleOrderBy
+	                    ,r.IsActive = @IsActive
+	                    ,r.IsHidden = @IsHidden
+	                    ,r.ModifiedOn = @ModifiedOn
+	                    ,r.ModifiedBy = @ModifiedBy
+                    from Organizations.Roles r
+                    where r.ID = @RoleID
                 ";
 
                 using (var transaction = connection.BeginTransaction())
@@ -61,16 +51,20 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                     {
                         int rowsAffected = connection.Execute(cmd, new
                         {
-                            PayGradeID = command.PayGradeID,
-                            SupportedOrgRoles = command.SupportedOrgRoles,
+                            RoleID = command.ID,
+                            OrganizationID = command.OrganizationID,
+                            RoleName = command.RoleName,
+                            RoleShortName = command.RoleShortName,
+                            RoleDisplayName = command.RoleDisplayName,
+                            RoleType = command.RoleType,
+                            RoleOrderBy = command.RoleOrderBy,
                             IsActive = command.IsActive,
-                            CreatedOn = DateTime.UtcNow,
-                            CreatedBy = context.MemberID.ToString(),
+                            IsHidden = command.IsHidden,
                             ModifiedOn = DateTime.UtcNow,
                             ModifiedBy = context.MemberID.ToString()
                         }, transaction);
-                        
-                        if (rowsAffected == command.SupportedOrgRoles.Count)
+
+                        if (rowsAffected == 1)
                         {
                             transaction.Commit();
                         }
@@ -90,7 +84,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "PayGrade OrgRoles Added Successfully!";
+                result.StatusDescription = "OrgRole Updated Successfully!";
                 return result;
             }
         }
