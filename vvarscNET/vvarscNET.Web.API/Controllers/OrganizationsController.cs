@@ -22,6 +22,7 @@ namespace vvarscNET.Web.API.Controllers
         /// Constructor for Organizations Controller
         /// </summary>
         /// <param name="orgQueryService"></param>
+        /// <param name="orgCmdService"></param>
         public OrganizationsController(IOrganizationQueryService orgQueryService, IOrganizationCommandService orgCmdService)
         {
             _orgQueryService = orgQueryService;
@@ -45,6 +46,7 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to Get a Specific Organizations
         /// </summary>
+        /// <param name="id">ID of Organization</param>
         /// <returns>Organization</returns>
         [HttpGet]
         [Route("organizations/{id}")]
@@ -59,7 +61,7 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to get list of Organization Roles
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of OrgRole</param>
         /// <returns>List of OrgRole</returns>
         [HttpGet]
         [Route("organizations/{id}/roles")]
@@ -74,7 +76,7 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to get a specific Organization Role
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID of OrgRole</param>
         /// <returns>OrgRole</returns>
         [HttpGet]
         [Route("roles/{id}")]
@@ -89,8 +91,8 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to Update Organization Role
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="role"></param>
+        /// <param name="id">ID of OrgRole</param>
+        /// <param name="role">OrgRole Object to Update</param>
         /// <returns>Result</returns>
         [HttpPut]
         [Route("roles/{id}")]

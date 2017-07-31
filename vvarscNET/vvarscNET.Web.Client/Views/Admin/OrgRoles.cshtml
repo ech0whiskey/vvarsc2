@@ -46,19 +46,21 @@
                         display: block;
                         width: auto;
                     ">
-                        <div style="
-                            float: right;
-                            text-align: right;
-                        ">
-                            <button class="adminButton adminButtonEdit" title="Edit Role" style="margin-right: 0px;"
-                                    onclick="location.href='@Url.Action("EditOrgRole","Admin",new { roleID = @role.ID })'">
-                                <img style="height:20px;" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
-                            </button>
-                        </div>
-                        <div style="display:table;">
-                            <div class="image_wrapper" style="height:24px;">
-                                <div class="rankImage_text">
-                                    @Html.ActionLink("[" + @role.RoleOrderBy + "] " + @role.RoleName, "EditOrgRole", "Admin", new { roleID = @role.ID }, null)
+                        <div class="description_entry_inner">
+                            <div style="
+                                float: right;
+                                text-align: right;
+                            ">
+                                <button class="adminButton adminButtonEdit" title="Edit Role" style="margin-right: 0px;"
+                                        onclick="location.href='@Url.Action("EditOrgRole","Admin",new { roleID = @role.ID })'">
+                                    <img style="height:20px;" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
+                                </button>
+                            </div>
+                            <div style="display:table;">
+                                <div class="image_wrapper" style="height:24px;">
+                                    <div class="rankImage_text">
+                                        @Html.ActionLink("[" + @role.RoleOrderBy + "] " + @role.RoleName, "EditOrgRole", "Admin", new { roleID = @role.ID }, null)
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -45,28 +45,30 @@
                         display: block;
                         width: auto;
                     ">
-                        <div style="
-                            float: right;
-                            text-align: right;
-                        ">
-                            <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;"
-                                    onclick="location.href='@Url.Action("EditMember","Admin",new { memberID = @member.ID })'">
-                                <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
-                            </button>
-                        </div>
-                        <div style="display:table;">
-                            <div class="image_wrapper">
-                                <div class="image_container" style="
+                        <div class="description_entry_inner">
+                            <div style="
+                                float: right;
+                                text-align: right;
+                            ">
+                                <button class="adminButton adminButtonEdit" title="Edit Member" style="margin-right: 0px;"
+                                        onclick="location.href='@Url.Action("EditMember","Admin",new { memberID = @member.ID })'">
+                                    <img height="20px" class="adminButtonImage" src="http://sc.vvarmachine.com/images/misc/button_edit.png">
+                                </button>
+                            </div>
+                            <div style="display:table;">
+                                <div class="image_wrapper">
+                                    <div class="image_container" style="
                                     height: 20px;
                                     width: 20px;
                                     padding-left: 0px;
                                     padding-right: 0px;
                                 ">
-                                    <img class="rankImageSmall" src="@member.RankImage" />
-                                </div>
-                                <div class="rankImage_text">
-                                    @Html.ActionLink(@member.RankAbbr + " " + @member.UserName, "EditMember", "Admin", new { memberID = @member.ID }, null)
-                                    @*@member.RankAbbr <strong>@member.UserName</strong>*@
+                                        <img class="rankImageSmall" src="@member.RankImage" />
+                                    </div>
+                                    <div class="rankImage_text">
+                                        @Html.ActionLink(@member.RankAbbr + " " + @member.UserName, "EditMember", "Admin", new { memberID = @member.ID }, null)
+                                        @*@member.RankAbbr <strong>@member.UserName</strong>*@
+                                    </div>
                                 </div>
                             </div>
                         </div>
