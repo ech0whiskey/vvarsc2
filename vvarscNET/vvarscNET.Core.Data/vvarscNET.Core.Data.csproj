@@ -49,6 +49,7 @@
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\UpdateOrgRole_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\InitPayGradesForOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateMemberRankHistory_CH.cs" />
     <Compile Include="CommandHandlers\People\DeleteMember_CH.cs" />
     <Compile Include="CommandHandlers\People\UpdateMember_CH.cs" />
@@ -60,7 +61,7 @@
     <Compile Include="QueryHandlers\Authentication\GetAccessTokenByValue_QH.cs" />
     <Compile Include="QueryHandlers\Authentication\GetLatestMemberAccessToken_QH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryHandlers\Organizations\UpdatePayGradesForOrgRole_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\UpdatePayGradesForOrgRole_CH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetOrgRoleByID_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListRolesForOrganization_QH.cs" />

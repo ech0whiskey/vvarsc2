@@ -62,11 +62,11 @@ namespace vvarscNET.Core.Service.CommandServices
             var pgCmd = new UpdatePayGradesForOrgRole_C
             {
                 OrgRoleID = role.ID,
-                SupportedPayGrades = new List<string>()
+                SupportedPayGrades = new List<int>()
             };
             foreach (var pg in role.SupportedPayGrades)
             {
-                pgCmd.SupportedPayGrades.Add(pg.ID.ToString());
+                pgCmd.SupportedPayGrades.Add(pg.ID);
             }
 
             var pgResult = _commandDispatcher.Dispatch<UpdatePayGradesForOrgRole_C>(context, pgCmd);

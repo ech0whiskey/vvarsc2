@@ -59,7 +59,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 					outer apply (
 						select
 							r.*
-						from People.PayGradeOrgRoleMap m
+						from Organizations.PayGradeOrgRoleMap m
 						join Organizations.Roles r
 							on r.ID = m.OrgRoleID
 						where m.PayGradeID = pg.ID

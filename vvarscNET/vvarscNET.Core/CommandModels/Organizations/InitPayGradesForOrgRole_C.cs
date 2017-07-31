@@ -7,9 +7,9 @@ using vvarscNET.Core.Interfaces;
 
 namespace vvarscNET.Core.CommandModels.Organizations
 {
-    public class UpdatePayGradesForOrgRole_C : ICommand
+    public class InitPayGradesForOrgRole_C : ICommand
     {
         public int OrgRoleID;
-        public List<int> SupportedPayGrades;
+        public List<String> SupportedPayGrades;
     }
 }

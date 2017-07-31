@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\StatusEnum.cs" />
+    <Compile Include="Enums\UnitTypeEnum.cs" />
     <Compile Include="Enums\UserTypeEnum.cs" />
+    <Compile Include="Objects\Organizations\Division.cs" />
     <Compile Include="Objects\Organizations\Organization.cs" />
+    <Compile Include="Objects\Organizations\Unit.cs" />
     <Compile Include="Objects\People\Member.cs" />
     <Compile Include="Objects\Organizations\OrgRole.cs" />
     <Compile Include="Objects\People\PayGrade.cs" />

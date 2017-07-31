@@ -55,6 +55,16 @@
 
             <div class="formFieldGroup">
                 <div class="label">
+                    @Html.LabelFor(model => model.OrderBy)
+                </div>
+                <div class="label">
+                    @Html.TextBoxFor(model => model.OrderBy)
+                    @Html.ValidationMessageFor(model => model.OrderBy)
+                </div>
+            </div>
+
+            <div class="formFieldGroup">
+                <div class="label">
                     @Html.LabelFor(model => model.SupportedPayGrades)
                 </div>
                 <div class="label">

@@ -222,7 +222,7 @@ namespace vvarscNET.Test.Helpers.Data
                 //Map PayGrades to OrgRoles
                 if (or.SupportedPayGrades != null && or.SupportedPayGrades.Count > 0)
                 {
-                    var pgrCmd = new UpdatePayGradesForOrgRole_C
+                    var pgrCmd = new InitPayGradesForOrgRole_C
                     {
                         OrgRoleID = roleID,
                         SupportedPayGrades = new List<string>()
@@ -232,8 +232,8 @@ namespace vvarscNET.Test.Helpers.Data
                         pgrCmd.SupportedPayGrades.Add(pg.PayGradeName);
                     }
 
-                    UpdatePayGradesForOrgRole_CH updatePayGradesForOrgRole_CH = new UpdatePayGradesForOrgRole_CH(new SQLConnectionFactory(connectionString));
-                    var pgrResult = updatePayGradesForOrgRole_CH.Handle(Globals.UserContext, pgrCmd);
+                    InitPayGradesForOrgRole_CH initPayGradesForOrgRole_CH = new InitPayGradesForOrgRole_CH(new SQLConnectionFactory(connectionString));
+                    var pgrResult = initPayGradesForOrgRole_CH.Handle(Globals.UserContext, pgrCmd);
 
                     if (pgrResult.Status != System.Net.HttpStatusCode.OK)
                     {
