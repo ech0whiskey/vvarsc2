@@ -6,6 +6,7 @@ using vvarscNET.Model.Objects.Organizations;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
@@ -25,7 +26,20 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                 connection.Open();
 
                 var sql = @"
-                    select
+                    ;with units as (
+	                    select
+		                    u.*
+	                    from [Organizations].Units u
+	                    where u.ID = @UnitID
+	                    union all
+	                    select
+		                    u.*
+	                    from [Organizations].Units u
+	                    join units tu
+		                    on tu.ID = u.ParentUnitID
+                    )
+
+                    select distinct
 	                    u.ID
 	                    ,u.ParentUnitID
 	                    ,u.UnitName
@@ -39,14 +53,19 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 	                    ,u.CreatedBy
 	                    ,u.ModifiedOn
 	                    ,u.ModifiedBy
-                    from Organizations.Units u
-                    where u.ID = @UnitID
+                    from units u
                 ";
 
-                var res = connection.Query<Unit>(sql, new { UnitID = query.ID }).FirstOrDefault();
+                var flatResult = connection.Query<Unit>(sql, new { UnitID = query.ID }).ToList();
 
-                return res;
+                return BuildTree(flatResult, query.ID).FirstOrDefault();
             }
+        }
+
+        private static IEnumerable<Unit> BuildTree(List<Unit> units, int queryID)
+        {
+            units.ForEach(i => i.ChildUnits = units.Where(a => a.ParentUnitID == i.ID).ToList());
+            return units.Where(a => a.ID == queryID);
         }
     }
 }
