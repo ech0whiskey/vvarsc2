@@ -144,6 +144,7 @@ namespace vvarscNET.DataSetupTool
             catch (Exception e)
             {
                 pgm.LogInfo("KeyboardThread: " + e.Message);
+                pgm.LogInfo("KeyboardThread: " + e.InnerException);
             }
 
             pgm.LogInfo("KeyboardThread Stopped");
