@@ -293,7 +293,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 5,
                 RankName = "Colonel",
-                RankAbbr = "COL",
+                RankAbbr = "Col",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O6.png",
                 RankGroupName = "Senior Officer",
@@ -315,7 +315,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 6,
                 RankName = "Lieutenant Colonel",
-                RankAbbr = "LTCOL",
+                RankAbbr = "LtCol",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O5.png",
                 RankGroupName = "Senior Officer",
@@ -337,7 +337,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 7,
                 RankName = "Major",
-                RankAbbr = "MAJ",
+                RankAbbr = "Maj",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O4.png",
                 RankGroupName = "Senior Officer",
@@ -360,7 +360,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 8,
                 RankName = "Captain",
-                RankAbbr = "CAPT",
+                RankAbbr = "Capt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O3.png",
                 RankGroupName = "Officer",
@@ -382,7 +382,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 9,
                 RankName = "First Lieutenant",
-                RankAbbr = "1LT",
+                RankAbbr = "1stLt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O2.png",
                 RankGroupName = "Officer",
@@ -404,7 +404,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 10,
                 RankName = "Second Lieutenant",
-                RankAbbr = "2LT",
+                RankAbbr = "2ndLt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Common/O1.png",
                 RankGroupName = "Officer",
@@ -450,7 +450,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 13,
                 RankName = "Sergeant Major",
-                RankAbbr = "SGM",
+                RankAbbr = "SgtMaj",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E9-SGM.png",
                 RankGroupName = "Senior NCO",
@@ -472,7 +472,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 14,
                 RankName = "First Sergeant",
-                RankAbbr = "1SG",
+                RankAbbr = "1stSgt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E8-1SG.png",
                 RankGroupName = "Senior NCO",
@@ -494,7 +494,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 15,
                 RankName = "Gunnery Sergeant",
-                RankAbbr = "GYSGT",
+                RankAbbr = "GySgt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E7.png",
                 RankGroupName = "Senior NCO",
@@ -517,7 +517,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 16,
                 RankName = "Staff Sergeant",
-                RankAbbr = "SSGT",
+                RankAbbr = "SSgt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E6.png",
                 RankGroupName = "NCO",
@@ -539,7 +539,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 17,
                 RankName = "Sergeant",
-                RankAbbr = "SGT",
+                RankAbbr = "Sgt",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E5.png",
                 RankGroupName = "NCO",
@@ -561,7 +561,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 18,
                 RankName = "Corporal",
-                RankAbbr = "CPL",
+                RankAbbr = "Cpl",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E4.png",
                 RankGroupName = "NCO",
@@ -584,7 +584,7 @@ namespace vvarscNET.Test.Helpers.Data
             {
                 PayGradeID = 19,
                 RankName = "Lance Corporal",
-                RankAbbr = "LCPL",
+                RankAbbr = "LCpl",
                 RankType = "Marine",
                 RankImage = "https://sc.vvarmachine.com/images/ranks/USMC/E3.png",
                 RankGroupName = "Member",
@@ -638,102 +638,142 @@ namespace vvarscNET.Test.Helpers.Data
             },
             new OrgRole {
                 RoleOrderBy = 102,
-                RoleName = "Fleet Senior Enlisted Advisor",
+                RoleName = "Chief of Naval Operations",
+                RoleShortName = "CNO",
+                RoleDisplayName = "Chief of Naval Operations",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-8" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 105,
+                RoleName = "Fleet Senior Enlisted Adviser",
                 RoleShortName = "Fleet Adviser",
+                RoleDisplayName = "Senior Enlisted Adviser",
                 RoleType = "UnitRole",
                 SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9 (Special)" } }
             },
-
-            //Division HQ
             new OrgRole {
-                RoleOrderBy = 111,
-                RoleName = "Military Division Commanding Officer",
-                RoleShortName = "Division CO", RoleDisplayName = "Commanding Officer",
-                RoleType = "UnitRole",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-8" }, new PayGrade { PayGradeName = "O-7"} }
-            },
-            new OrgRole {
-                RoleOrderBy = 111,
-                RoleName = "Economy Division Commanding Officer",
-                RoleShortName = "Division CO", RoleDisplayName = "Commanding Officer",
-                RoleType = "UnitRole",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-7" }, new PayGrade { PayGradeName = "O-6"} }
-            },
-            new OrgRole {
-                RoleOrderBy = 112,
-                RoleName = "Military Division Executive Officer",
-                RoleShortName = "Division XO",
-                RoleDisplayName = "Executive Officer",
-                RoleType = "UnitRole",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-7" }, new PayGrade { PayGradeName = "O-6"} }
-            },
-            new OrgRole {
-                RoleOrderBy = 112,
-                RoleName = "Economy Division Executive Officer",
-                RoleShortName = "Division XO",
-                RoleDisplayName = "Executive Officer",
-                RoleType = "UnitRole",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-6" }, new PayGrade { PayGradeName = "O-5"} }
-            },
-            new OrgRole {
-                RoleOrderBy = 113,
-                RoleName = "Division Senior Enlisted Advisor",
-                RoleShortName = "Division Adviser",
+                RoleOrderBy = 106,
+                RoleName = "Fleet Enlisted Adviser",
+                RoleShortName = "Fleet Adviser",
+                RoleDisplayName = "Enlisted Adviser",
                 RoleType = "UnitRole",
                 SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9" } }
             },
-            
-            //WARCOM HQ
-            new OrgRole { RoleOrderBy = 121, RoleName = "Warfare Command Commanding Officer", RoleShortName = "WARCOM CO", RoleDisplayName = "Commanding Officer", RoleType = "UnitRole", IsActive = true },
-            new OrgRole { RoleOrderBy = 122, RoleName = "Warfare Command Executive Officer", RoleShortName = "WARCOM XO", RoleDisplayName = "Executive Officer", RoleType = "UnitRole", IsActive = true },
-            new OrgRole { RoleOrderBy = 123, RoleName = "Command Senior Enlisted Advisor", RoleShortName = "Command Adviser", RoleType = "UnitRole", IsActive = true },
-            
-            ////AIRWING & COMBAT TEAM HQ
-            //new OrgRole{ RoleOrderBy = 141, RoleName = "Air Wing Commanding Officer", RoleShortName = "Air Wing CO", RoleDisplayName = "Commanding Officer", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 141, RoleName = "Team Commanding Officer", RoleShortName = "Team CO", RoleDisplayName = "Commanding Officer", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 142, RoleName = "Air Wing Senior Enlisted Advisor", RoleShortName = "Adviser", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 142, RoleName = "Team Senior Enlisted Advisor", RoleShortName = "Adviser", RoleType = "UnitRole", IsActive = true },
-            
-            ////SQUADRON & PLATOON LEADERSHIP
-            //new OrgRole{ RoleOrderBy = 151, RoleName = "Squadron Commanding Officer", RoleShortName = "Squadron CO", RoleDisplayName = "Commanding Officer", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 152, RoleName = "Platoon Leader", RoleShortName = "Platoon Lead", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 153, RoleName = "QRF Leader", RoleShortName = "QRF Lead", RoleType = "UnitRole", IsActive = true },
 
-            ////OIT
-            //new OrgRole{ RoleOrderBy = 154, RoleName = "Officer-in-Training", RoleShortName = "OIT", RoleType = "UnitRole", IsActive = true },
+            //NAVCOM HQ
+            new OrgRole {
+                RoleOrderBy = 110,
+                RoleName = "Naval Command Commanding Officer",
+                RoleShortName = "NAVCOM CO",
+                RoleDisplayName = "Commanding Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-7" }, new PayGrade { PayGradeName = "O-6"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 111,
+                RoleName = "Naval Command Executive Officer",
+                RoleShortName = "NAVCOM XO",
+                RoleDisplayName = "Executive Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-5" }, new PayGrade { PayGradeName = "O-6"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 112,
+                RoleName = "Naval Command Senior Enlisted Adviser",
+                RoleShortName = "NAVCOM Adviser",
+                RoleDisplayName = "Senior Enlisted Adviser",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9" } }
+            },
 
-            ////SQUADRON & PLATOON SENIOR NCO ROLES
-            //new OrgRole{ RoleOrderBy = 155, RoleName = "Squadron Chief", RoleDisplayName = "Squadron Chief / ASL", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 156, RoleName = "Platoon Sergeant", RoleShortName = "Squadron Chief / APL", RoleType = "UnitRole", IsActive = true },
+            //AIR WING HQ
+            new OrgRole {
+                RoleOrderBy = 120,
+                RoleName = "Air Wing Commanding Officer",
+                RoleShortName = "Air Wing CO",
+                RoleDisplayName = "Commanding Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 121,
+                RoleName = "Air Wing Executive Officer",
+                RoleShortName = "Air Wing XO",
+                RoleDisplayName = "Executive Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-3" }, new PayGrade { PayGradeName = "O-4"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 122,
+                RoleName = "Air Wing Chief",
+                RoleShortName = "Air Wing Chief",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-8" } }
+            },
 
-            ////SQUADRON & PLATOON NCO ROLES
-            //new OrgRole{ RoleOrderBy = 157, RoleName = "Assistant Squadron Leader", RoleShortName = "Asst. Squadron Lead", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 158, RoleName = "Assistant Platoon Leader", RoleShortName = "Asst. Platoon Lead", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 161, RoleName = "Flight Leader", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 162, RoleName = "Squad Leader", RoleType = "UnitRole", IsActive = true },
+            //Combat Team HQ
+            new OrgRole {
+                RoleOrderBy = 130,
+                RoleName = "Combat Team Commanding Officer",
+                RoleShortName = "Combat Team CO",
+                RoleDisplayName = "Commanding Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 131,
+                RoleName = "Combat Team Executive Officer",
+                RoleShortName = "Combat Team XO",
+                RoleDisplayName = "Executive Officer",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-3" }, new PayGrade { PayGradeName = "O-4"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 132,
+                RoleName = "Combat Team Sergeant",
+                RoleShortName = "Team Sergeant",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-8" } }
+            },
 
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Bomber Pilot", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Combat Search & Rescue Pilot", RoleShortName = "CSAR Pilot", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Combat Transport Pilot", RoleShortName = "COMTRANS Pilot", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Command Pilot", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Corpsman", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Fighter Pilot", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Marksman", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Reconnaissance Operator", RoleShortName = "Recon Operator", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Rifleman", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Strike Pilot", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 170, RoleName = "Combat Engineer", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
+            //Squadron & Platoon Leadership
+            new OrgRole {
+                RoleOrderBy = 140,
+                RoleName = "Squadron Leader",
+                RoleShortName = "Squadron Lead",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-1" }, new PayGrade { PayGradeName = "O-2" }, new PayGrade { PayGradeName = "O-3"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 141,
+                RoleName = "Platoon Leader",
+                RoleShortName = "Platoon Lead",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-1" }, new PayGrade { PayGradeName = "O-2" }, new PayGrade { PayGradeName = "O-3"} }
+            },
+            new OrgRole {
+                RoleOrderBy = 141,
+                RoleName = "Officer-in-Training",
+                RoleShortName = "OIT",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "OC" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 145,
+                RoleName = "Squadron Chief",
+                RoleShortName = "Squadron Chief",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 146,
+                RoleName = "Platoon Sergeant",
+                RoleShortName = "Platoon Sgt.",
+                RoleType = "UnitRole",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
+            },
 
-            ////ECONOMY ROLES
-            //new OrgRole{ RoleOrderBy = 180, RoleName = "Commerce Pilot", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 180, RoleName = "Crewmember", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 180, RoleName = "Engineer", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 180, RoleName = "Exploration Pilot", RoleShortName = "Explorer", RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 180, RoleName = "Turret Gunner", RoleShortName = "Gunner", RoleType = "UnitRole", IsActive = true },
-
-            ////ENTRY-LEVEL ROLES
-            //new OrgRole{ RoleOrderBy = 190, RoleName = "Trainee", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
-            //new OrgRole{ RoleOrderBy = 190, RoleName = "Recruit", RoleShortName = null, RoleType = "UnitRole", IsActive = true },
 
         };
 
