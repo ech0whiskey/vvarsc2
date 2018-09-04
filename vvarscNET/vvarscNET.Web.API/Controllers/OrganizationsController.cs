@@ -107,5 +107,34 @@ namespace vvarscNET.Web.API.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// Method to Retrieve List of Units
+        /// </summary>
+        /// <returns>Unit</returns>
+        [HttpGet]
+        [Route("units")]
+        [ResponseType(typeof(List<Unit>))]
+        public IHttpActionResult ListUnits()
+        {
+            var result = _orgQueryService.ListUnits(Request.GetUserContext().AccessToken);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method to Retrive Single Unit, Including Children within Object
+        /// </summary>
+        /// <param name="id">ID of Unit</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("units/{id}")]
+        [ResponseType(typeof(Unit))]
+        public IHttpActionResult GetUnitByID([FromUri] int id)
+        {
+            var result = _orgQueryService.GetUnitByID(Request.GetUserContext().AccessToken, id);
+
+            return Ok(result);
+        }
     }
 }

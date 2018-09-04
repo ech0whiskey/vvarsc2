@@ -93,6 +93,8 @@ namespace vvarscNET.Web.API.App_Start
             JsonSerializerSettings jsonSetting = new JsonSerializerSettings();
             jsonSetting.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
             config.Formatters.JsonFormatter.SerializerSettings = jsonSetting;
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
         }
     }
 }

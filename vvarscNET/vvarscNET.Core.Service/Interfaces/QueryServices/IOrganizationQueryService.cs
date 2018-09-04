@@ -13,5 +13,7 @@ namespace vvarscNET.Core.Service.Interfaces
         Organization GetOrganizationByID(string accessToken, int organizationID);
         List<OrgRole> ListRolesForOrganization(string accessToken, int organizationID);
         OrgRole GetOrgRoleByID(string accessToken, int roleID);
+        List<Unit> ListUnits(string accessToken);
+        Unit GetUnitByID(string accessToken, int UnitID);
     }
 }

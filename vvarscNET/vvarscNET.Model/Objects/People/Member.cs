@@ -13,7 +13,6 @@ namespace vvarscNET.Model.Objects.People
         public string RSIHandle;
         public int OrganizationID;
         public string UserType;
-        public string ModifiedBy;
         public int PayGradeID;
         public string PayGradeName;
         public string PayGradeDisplayName;
@@ -31,5 +30,6 @@ namespace vvarscNET.Model.Objects.People
         public DateTime CreatedOn;
         public string CreatedBy;
         public DateTime ModifiedOn;
+        public string ModifiedBy;
     }
 }
