@@ -10,13 +10,12 @@ namespace vvarscNET.Model.Enums
     public enum UnitTypeEnum
     {
         Fleet = 1,
-        Division = 2,
-        Command = 3,
-        Wing = 4,
-        Team = 5,
-        Squadron = 6,
-        Platoon = 7,
-        Office = 8,
-        Generic = 9
+        Command = 2,
+        Wing = 3,
+        Team = 4,
+        Squadron = 5,
+        Platoon = 6,
+        Office = 7,
+        Generic = 8
     };
 }

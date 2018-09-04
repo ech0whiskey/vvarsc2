@@ -90,7 +90,6 @@
     <Build Include="People\Tables\MemberRankHistory.sql" />
     <Build Include="Organizations\Tables\OrgRoles.sql" />
     <Build Include="Organizations\Tables\PayGradeOrgRoleMap.sql" />
-    <Build Include="Organizations\Tables\Divisions.sql" />
     <Build Include="Organizations\Tables\Units.sql" />
   </ItemGroup>
   <ItemGroup>

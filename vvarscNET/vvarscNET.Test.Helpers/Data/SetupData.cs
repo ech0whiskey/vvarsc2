@@ -779,5 +779,32 @@ namespace vvarscNET.Test.Helpers.Data
 
         #endregion
 
+        #region Units
+        public static List<Unit> _units = new List<Unit>()
+        {
+            new Unit
+            {
+                UnitName = "Fleet Headquarters",
+                ParentUnitName = null,
+                UnitDescription = @"Fleet Headquarters, also know as Fleet Command (FLEETCOM), is the command unit for the entire VVarMachine StarCitizen Fleet. Members of this unit and its reporting offices are responsible for the long-term strategic planning of Fleet Operations, Public Relations, coordination with other Organizations in the StarCitizen universe (including Alliance Member Fleet Organizations), and ongoing management of the Technology Resources serving the needs of VVarMachine personnel.",
+                UnitCallsign = "Castle",
+                UnitType = Model.Enums.UnitTypeEnum.Fleet,
+                IsHidden = false,
+                IsActive = true
+            },
+            new Unit
+            {
+                UnitName = "Naval Air Forces Command",
+                ParentUnitName = "Fleet Headquarters",
+                UnitDescription = @"Naval Air Forces Command (NAVAIRFORCOM) is the headquarters responsible for organizing and maintaining the Fleet's tactical air combat units. Officers and Senior NCOs assigned to this unit provide oversight in operational planning, mission execution, training, and ongoing management for the units under their authority. Each Air Wing within the Command is responsible for operations in a specific area of the air combat portfolio, and may include distinct methods for implementing the points listed above.",
+                UnitCallsign = "Eagle",
+                UnitType = Model.Enums.UnitTypeEnum.Command,
+                IsHidden = false,
+                IsActive = true
+            }
+        };
+
+        #endregion
+
     }
 }

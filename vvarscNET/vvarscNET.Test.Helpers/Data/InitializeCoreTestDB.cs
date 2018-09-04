@@ -36,6 +36,8 @@ namespace vvarscNET.Test.Helpers.Data
                 throw new Exception("Could not init PayGrades and Ranks");
             if (!InitOrgRoles(connectionString))
                 throw new Exception("Could not init OrgRoles");
+            if (!InitUnits(connectionString))
+                throw new Exception("Could not init Units");
         }
 
         #region SuperAdmin
@@ -296,6 +298,40 @@ namespace vvarscNET.Test.Helpers.Data
                         return false;
                     }
                 }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Units
+        private static bool InitUnits(string connectionString)
+        {
+            Console.WriteLine("Init Units");
+            foreach (var u in SetupData._units)
+            {
+                //Create Unit
+                var unitCmd = new CreateUnit_C
+                {
+                    ParentUnitName = u.ParentUnitName,
+                    UnitName = u.UnitName,
+                    UnitFullName = u.UnitFullName,
+                    UnitDesignation = u.UnitDesignation,
+                    UnitDescription = u.UnitDescription,
+                    UnitCallsign = u.UnitCallsign,
+                    UnitType = u.UnitType.ToString(),
+                    IsHidden = u.IsHidden,
+                    IsActive = u.IsActive
+                };
+
+                CreateUnit_CH createUnit_CH = new CreateUnit_CH(new SQLConnectionFactory(connectionString));
+                var unitResult = createUnit_CH.Handle(Globals.UserContext, unitCmd);
+
+                if (unitResult.Status != System.Net.HttpStatusCode.OK)
+                {
+                    return false;
+                }
+                var unitID = Convert.ToInt32(unitResult.ItemIDs.FirstOrDefault());
             }
             return true;
         }

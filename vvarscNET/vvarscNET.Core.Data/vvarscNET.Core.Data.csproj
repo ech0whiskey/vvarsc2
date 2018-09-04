@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +47,7 @@
     <Compile Include="CommandHandlers\Authentication\CreateAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\CreateUnit_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\UpdateOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\InitPayGradesForOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateMemberRankHistory_CH.cs" />

@@ -10,13 +10,14 @@ namespace vvarscNET.Model.Objects.Organizations
     public class Unit
     {
         public int ID;
-        public int OrganizationID;
+        public int ParentUnitID;
+        public string ParentUnitName;
         public string UnitName;
         public string UnitFullName;
         public string UnitDesignation;
         public string UnitDescription;
+        public string UnitCallsign;
         public UnitTypeEnum UnitType;
-        public int DivisionID;
         public List<Unit> ChildUnits;
         public bool IsHidden;
         public bool IsActive;
