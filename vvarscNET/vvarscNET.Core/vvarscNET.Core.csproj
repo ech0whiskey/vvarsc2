@@ -99,6 +99,8 @@
     <Compile Include="QueryModels\Authentication\AuthenticateMember_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetAccessTokenByValue_Q.cs" />
     <Compile Include="QueryModels\Authentication\GetLatestMemberAccessToken_Q.cs" />
+    <Compile Include="QueryModels\Organizations\ListUnits_Q.cs" />
+    <Compile Include="QueryModels\Organizations\GetUnitByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrgRoleByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListRolesForOrganization_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />

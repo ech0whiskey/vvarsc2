@@ -46,7 +46,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,ModifiedBy
                     )
                     VALUES (
-	                    (select UnitID from [Organizations].[Units] u where u.UnitName = @ParentUnitName)
+	                    (select ID from [Organizations].[Units] u where u.UnitName = @ParentUnitName)
 	                    ,@UnitName
 	                    ,@UnitFullName
 	                    ,@UnitDesignation
