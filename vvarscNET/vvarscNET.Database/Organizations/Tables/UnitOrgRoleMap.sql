@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Organizations].[UnitOrgRoles] (
+﻿CREATE TABLE [Organizations].[UnitOrgRoleMap] (
 	ID int identity NOT NULL
 	,UnitID int NOT NULL
 	,OrgRoleID int NOT NULL

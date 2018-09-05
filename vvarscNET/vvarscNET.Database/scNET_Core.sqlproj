@@ -91,7 +91,7 @@
     <Build Include="Organizations\Tables\OrgRoles.sql" />
     <Build Include="Organizations\Tables\PayGradeOrgRoleMap.sql" />
     <Build Include="Organizations\Tables\Units.sql" />
-    <Build Include="Organizations\Tables\UnitOrgRoles.sql" />
+    <Build Include="Organizations\Tables\UnitOrgRoleMap.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="scNET_Core.refactorlog" />

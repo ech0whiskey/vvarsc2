@@ -7,7 +7,7 @@ using vvarscNET.Core.Interfaces;
 
 namespace vvarscNET.Core.CommandModels.Organizations
 {
-    public class CreateUnitOrgRole_C : ICommand
+    public class AddOrgRoleToUnit_C : ICommand
     {
         public int UnitID;
         public int OrgRoleID;

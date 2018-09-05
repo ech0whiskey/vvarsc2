@@ -47,6 +47,8 @@
     <Compile Include="CommandHandlers\Authentication\CreateAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\AddOrgRoleToUnit_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\RemoveOrgRoleFromUnit_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\UpdateUnit_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\DeleteUnitRecursive_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\DeleteUnit_CH.cs" />
