@@ -12,5 +12,5 @@
 	,ModifiedBy [dbo].ModifiedBy
 	,CONSTRAINT [PK_Members] PRIMARY KEY CLUSTERED (ID)
 	,CONSTRAINT [FK_Organizations_Members] FOREIGN KEY (OrganizationID) REFERENCES [Organizations].[Organizations](ID)
-	,CONSTRAINT [FK_Ranks_Members] FOREIGN KEY (RankID) REFERENCES [People].[Ranks](ID)
+	,CONSTRAINT [FK_Ranks_Members] FOREIGN KEY (RankID) REFERENCES [Organizations].[Ranks](ID)
 )

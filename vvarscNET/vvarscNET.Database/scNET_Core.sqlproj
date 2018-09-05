@@ -85,13 +85,14 @@
     <Build Include="Authentication\Tables\Token.sql" />
     <Build Include="Authentication\Tables\Credentials.sql" />
     <Build Include="dbo\User Defined Types\Enum.sql" />
-    <Build Include="People\Tables\Ranks.sql" />
-    <Build Include="People\Tables\PayGrades.sql" />
     <Build Include="People\Tables\MemberRankHistory.sql" />
     <Build Include="Organizations\Tables\OrgRoles.sql" />
-    <Build Include="Organizations\Tables\PayGradeOrgRoleMap.sql" />
+    <Build Include="Organizations\Tables\RankOrgRoleMap.sql" />
     <Build Include="Organizations\Tables\Units.sql" />
     <Build Include="Organizations\Tables\UnitOrgRoleMap.sql" />
+    <Build Include="Organizations\Tables\Ranks.sql" />
+    <Build Include="Organizations\Tables\PayGrades.sql" />
+    <Build Include="Organizations\Tables\RankUnitOrgRoleMap.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="scNET_Core.refactorlog" />

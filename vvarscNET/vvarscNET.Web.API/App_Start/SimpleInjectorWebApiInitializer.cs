@@ -67,8 +67,9 @@ namespace vvarscNET.Web.API.App_Start
             //container.Register<ICommandHandler<UpdateMember_C>, UpdateMember_CH>();
 
             // Command Services
-            container.Register<IPeopleCommandService, PeopleCommandService>(Lifestyle.Scoped);
             container.Register<IOrganizationCommandService, OrganizationCommandService>(Lifestyle.Scoped);
+            container.Register<IPeopleCommandService, PeopleCommandService>(Lifestyle.Scoped);
+            container.Register<IUnitCommandService, UnitCommandService>(Lifestyle.Scoped);
         }
 
         private static void RegisterQueries(Container container)
@@ -96,6 +97,7 @@ namespace vvarscNET.Web.API.App_Start
             // Query Services
             container.Register<IOrganizationQueryService, OrganizationQueryService>(Lifestyle.Scoped);
             container.Register<IPeopleQueryService, PeopleQueryService>(Lifestyle.Scoped);
+            container.Register<IUnitQueryService, UnitQueryService>(Lifestyle.Scoped);
         }
 
         /// <summary>Initialize the container and register it as Web API Dependency Resolver.</summary>

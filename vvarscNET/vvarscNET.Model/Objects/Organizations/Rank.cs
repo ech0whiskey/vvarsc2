@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace vvarscNET.Model.Objects.People
+namespace vvarscNET.Model.Objects.Organizations
 {
     public class Rank
     {

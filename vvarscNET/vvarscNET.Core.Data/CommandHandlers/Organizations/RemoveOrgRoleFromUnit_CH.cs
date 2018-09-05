@@ -36,17 +36,30 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    and m.OrgRoleID = @OrgRoleID
                 ";
 
+                var cmd2 = @"
+                    delete m
+                    from Organizations.RankUnitOrgRoleMap m
+                    where m.UnitID = @UnitID
+	                    and m.OrgRoleID = @OrgRoleID
+                ";
+
                 using (var transaction = connection.BeginTransaction())
                 {
                     try
                     {
+                        int rowsAffected2 = connection.Execute(cmd2, new
+                        {
+                            UnitID = command.UnitID,
+                            OrgRoleID = command.OrgRoleID
+                        }, transaction);
+
                         int rowsAffected = connection.Execute(cmd, new
                         {
                             UnitID = command.UnitID,
                             OrgRoleID = command.OrgRoleID
                         }, transaction);
 
-                        if (rowsAffected == 1)
+                        if (rowsAffected > 0)
                         {
                             transaction.Commit();
                         }

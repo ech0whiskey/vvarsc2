@@ -12,85 +12,78 @@ using Dapper;
 
 namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 {
-    public class CreateOrgRole_CH : ICommandHandler<CreateOrgRole_C>
+    public class UpdateRanksForOrgRole_CH : ICommandHandler<UpdateRanksForOrgRole_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public CreateOrgRole_CH(SQLConnectionFactory connFactory)
+        public UpdateRanksForOrgRole_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, CreateOrgRole_C command)
+        public Result Handle(IUserContext context, UpdateRanksForOrgRole_C command)
         {
+            if (command.SupportedRanks == null || command.SupportedRanks.Count < 1)
+                throw new ArgumentNullException(nameof(command.SupportedRanks));
+
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
 
             using (var connection = _connFactory.GetConnection())
             {
                 connection.Open();
 
+                var cmd0 = @"
+                    DELETE m
+                    from Organizations.RankOrgRoleMap m
+                    where m.OrgRoleID = @OrgRoleID;
+                ";
+
                 var cmd = @"
-                    INSERT INTO [Organizations].[OrgRoles] (
-                        OrganizationID
-                        ,RoleName
-	                    ,RoleShortName
-	                    ,RoleDisplayName
-                        ,RoleType
-                        ,RoleOrderBy
-                        ,RatingCode
-                        ,IsUnitLeadership
+                    INSERT INTO [Organizations].[RankOrgRoleMap] (
+	                    RankID
+	                    ,OrgRoleID
 	                    ,IsActive
-	                    ,IsHidden
 	                    ,CreatedOn
 	                    ,CreatedBy
 	                    ,ModifiedOn
 	                    ,ModifiedBy
-                    ) VALUES (
-                        @OrganizationID
-	                    ,@RoleName
-	                    ,@RoleShortName
-	                    ,@RoleDisplayName
-                        ,@RoleType
-                        ,@RoleOrderBy
-                        ,@RatingCode
-                        ,@IsUnitLeadership
-	                    ,@IsActive
-	                    ,@IsHidden
+                    )
+                    select
+	                    r.ID
+	                    ,@OrgRoleID
+	                    ,1 [IsActive]
 	                    ,@CreatedOn
 	                    ,@CreatedBy
 	                    ,@ModifiedOn
 	                    ,@ModifiedBy
-                    )
-
-                    SELECT CAST(SCOPE_IDENTITY() as int)
+                    from [Organizations].[Ranks] r
+                    where r.ID in @SupportedRanks
+                        and r.IsActive = 1
                 ";
 
                 using (var transaction = connection.BeginTransaction())
                 {
                     try
                     {
-                        int? id = connection.Query<int>(cmd, new
+                        int rowsAffected0 = connection.Execute(cmd0, new
                         {
-                            OrganizationID = command.OrganizationID,
-                            RoleName = command.RoleName,
-                            RoleShortName = command.RoleShortName,
-                            RoleDisplayName = command.RoleDisplayName,
-                            RoleType = command.RoleType,
-                            RoleOrderBy = command.RoleOrderBy,
-                            RatingCode = command.RatingCode,
-                            IsUnitLeadership = command.IsUnitLeadership,
-                            IsActive = command.IsActive,
-                            IsHidden = command.IsHidden,
+                            OrgRoleID = command.OrgRoleID
+                        }, transaction);
+
+                        int rowsAffected = connection.Execute(cmd, new
+                        {
+                            OrgRoleID = command.OrgRoleID,
+                            SupportedRanks = command.SupportedRanks,
+                            IsActive = true,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),
                             ModifiedOn = DateTime.UtcNow,
                             ModifiedBy = context.MemberID.ToString()
-                        }, transaction).FirstOrDefault();
-
-                        if (id != null)
+                        }, transaction);
+                        
+                        if (rowsAffected == command.SupportedRanks.Count)
                         {
                             transaction.Commit();
-                            result.ItemIDs.Add(id.ToString());
                         }
                         else
                         {
@@ -108,7 +101,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "OrgRole Created Successfully!";
+                result.StatusDescription = "PayGrade OrgRoles Added Successfully!";
                 return result;
             }
         }

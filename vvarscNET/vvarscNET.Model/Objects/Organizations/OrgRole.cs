@@ -17,12 +17,13 @@ namespace vvarscNET.Model.Objects.Organizations
         public string RoleType;
         public int RoleOrderBy;
         public string RatingCode;
+        public bool IsUnitLeadership;
+        public List<Rank> SupportedRanks;
         public bool IsActive;
         public bool IsHidden;
         public DateTime CreatedOn;
         public string CreatedBy;
         public DateTime ModifiedOn;
         public string ModifiedBy;
-        public List<PayGrade> SupportedPayGrades;
     }
 }

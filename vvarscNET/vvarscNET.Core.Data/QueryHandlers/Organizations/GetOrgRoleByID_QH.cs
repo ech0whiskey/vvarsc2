@@ -23,7 +23,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
         public OrgRole Handle(string accessTokenID, GetOrgRoleByID_Q query)
         {
             Dictionary<int, OrgRole> xRoles = new Dictionary<int, OrgRole>();
-            Dictionary<int, HashSet<PayGrade>> xRolesPayGrades = new Dictionary<int, HashSet<PayGrade>>();
+            Dictionary<int, HashSet<Rank>> xRolesRanks = new Dictionary<int, HashSet<Rank>>();
 
             using (var connection = _connFactory.GetConnection())
             {
@@ -39,37 +39,46 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 	                    ,r.RoleOrderBy
 	                    ,r.IsActive
 	                    ,r.IsHidden
-	                    ,g.ID
-	                    ,g.PayGradeName
-	                    ,g.PayGradeDisplayName
-	                    ,g.PayGradeOrderBy
-	                    ,g.PayGradeGroup
-	                    ,g.IsActive
+	                    ,r2.ID
+	                    ,r2.PayGradeID
+	                    ,r2.RankName
+	                    ,r2.RankAbbr
+	                    ,r2.RankType
+                        ,r2.RankImage
+                        ,r2.RankGroupName
+                        ,r2.RankGroupImage
+                        ,r2.RatingCodeSuffix
+	                    ,r2.IsActive
                     from Organizations.OrgRoles r
                     join Organizations.PayGradeOrgRoleMap m
 	                    on m.OrgRoleID = r.ID
-                    join People.PayGrades g
+                    join Organizations.Ranks r2
+                        on r2.RankID = m.RankID 
 	                    on g.ID = m.PayGradeID
                     where r.ID = @roleID          
                 ";
 
-                var res = connection.Query<OrgRole, PayGrade, OrgRole>(sql, (role, paygrade) =>
+                var res = connection.Query<OrgRole, Rank, OrgRole>(sql, (role, rank) =>
                 {
                     if (!xRoles.ContainsKey(role.ID))
                         xRoles[role.ID] = role;
 
-                    if (paygrade != null)
+                    if (rank != null)
                     {
-                        if (!xRolesPayGrades.ContainsKey(role.ID))
-                            xRolesPayGrades[role.ID] = new HashSet<PayGrade>();
-                        xRolesPayGrades[role.ID].Add(new PayGrade
+                        if (!xRolesRanks.ContainsKey(role.ID))
+                            xRolesRanks[role.ID] = new HashSet<Rank>();
+                        xRolesRanks[role.ID].Add(new Rank
                         {
-                            ID = paygrade.ID,
-                            PayGradeName = paygrade.PayGradeName,
-                            PayGradeDisplayName = paygrade.PayGradeDisplayName,
-                            PayGradeOrderBy = paygrade.PayGradeOrderBy,
-                            PayGradeGroup = paygrade.PayGradeGroup,
-                            IsActive = paygrade.IsActive
+                            ID = rank.ID,
+                            PayGradeID = rank.PayGradeID,
+                            RankName = rank.RankName,
+                            RankAbbr = rank.RankAbbr,
+                            RankType = rank.RankType,
+                            RankImage = rank.RankImage,
+                            RankGroupName = rank.RankGroupName,
+                            RankGroupImage = rank.RankGroupImage,
+                            RatingCodeSuffix = rank.RatingCodeSuffix,
+                            IsActive = rank.IsActive
                         });
                     }
 
@@ -78,10 +87,10 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 
                 foreach (var r in xRoles.Values)
                 {
-                    HashSet<PayGrade> payGrades = null;
-                    xRolesPayGrades.TryGetValue(r.ID, out payGrades);
-                    if (payGrades != null)
-                        r.SupportedPayGrades = payGrades.ToList();
+                    HashSet<Rank> ranks = null;
+                    xRolesRanks.TryGetValue(r.ID, out ranks);
+                    if (ranks != null)
+                        r.SupportedRanks = ranks.ToList();
                 }
 
                 return xRoles.Values.FirstOrDefault();

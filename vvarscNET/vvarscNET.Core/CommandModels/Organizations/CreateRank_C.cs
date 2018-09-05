@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vvarscNET.Core.Interfaces;
 
-namespace vvarscNET.Core.CommandModels.People
+namespace vvarscNET.Core.CommandModels.Organizations
 {
     public class CreateRank_C : ICommand
     {

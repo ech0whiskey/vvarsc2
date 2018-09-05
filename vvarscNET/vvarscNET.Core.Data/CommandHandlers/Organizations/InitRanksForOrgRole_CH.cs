@@ -16,19 +16,19 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
     /// Special Version of Handler that Uses Strings to look-up
     /// PayGrades instead of int (as would be passed-in from client)
     /// </summary>
-    public class InitPayGradesForOrgRole_CH : ICommandHandler<InitPayGradesForOrgRole_C>
+    public class InitRanksForOrgRole_CH : ICommandHandler<InitRanksForOrgRole_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public InitPayGradesForOrgRole_CH(SQLConnectionFactory connFactory)
+        public InitRanksForOrgRole_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, InitPayGradesForOrgRole_C command)
+        public Result Handle(IUserContext context, InitRanksForOrgRole_C command)
         {
-            if (command.SupportedPayGrades == null || command.SupportedPayGrades.Count < 1)
-                throw new ArgumentNullException(nameof(command.SupportedPayGrades));
+            if (command.SupportedRanks == null || command.SupportedRanks.Count < 1)
+                throw new ArgumentNullException(nameof(command.SupportedRanks));
 
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
 
@@ -38,13 +38,13 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 
                 var cmd0 = @"
                     DELETE m
-                    from Organizations.PayGradeOrgRoleMap m
+                    from Organizations.RankOrgRoleMap m
                     where m.OrgRoleID = @OrgRoleID;
                 ";
 
                 var cmd = @"
-                    INSERT INTO [Organizations].[PayGradeOrgRoleMap] (
-	                    PayGradeID
+                    INSERT INTO [Organizations].[RankOrgRoleMap] (
+	                    RankID
 	                    ,OrgRoleID
 	                    ,IsActive
 	                    ,CreatedOn
@@ -53,16 +53,15 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,ModifiedBy
                     )
                     select
-	                    pg.ID
+	                    r.ID
 	                    ,@OrgRoleID
 	                    ,1 [IsActive]
 	                    ,@CreatedOn
 	                    ,@CreatedBy
 	                    ,@ModifiedOn
 	                    ,@ModifiedBy
-                    from [People].[PayGrades] pg
-                    where pg.PayGradeName in @SupportedPayGrades
-                        and pg.IsActive = 1
+                    from [Organizations].[Ranks] r
+                    where r.ID in @SupportedRanks
                 ";
 
                 using (var transaction = connection.BeginTransaction())
@@ -77,7 +76,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                         int rowsAffected = connection.Execute(cmd, new
                         {
                             OrgRoleID = command.OrgRoleID,
-                            SupportedPayGrades = command.SupportedPayGrades,
+                            SupportedRanks = command.SupportedRanks,
                             IsActive = true,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),
@@ -85,7 +84,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             ModifiedBy = context.MemberID.ToString()
                         }, transaction);
                         
-                        if (rowsAffected == command.SupportedPayGrades.Count)
+                        if (rowsAffected == command.SupportedRanks.Count)
                         {
                             transaction.Commit();
                         }
@@ -105,7 +104,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "PayGrade OrgRoles Added Successfully!";
+                result.StatusDescription = "OrgRole Ranks Added Successfully!";
                 return result;
             }
         }

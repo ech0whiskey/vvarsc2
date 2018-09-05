@@ -18,5 +18,6 @@ namespace vvarscNET.Core.CommandModels.Organizations
         public string RatingCode;
         public bool IsActive;
         public bool IsHidden;
+        public bool IsUnitLeadership;
     }
 }

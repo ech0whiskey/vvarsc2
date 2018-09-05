@@ -43,11 +43,11 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public List<OrgRole> ListRoles(string accessToken)
+        public List<OrgRole> ListOrgRoles(string accessToken)
         {
-            var query = new ListRoles_Q();
+            var query = new ListOrgRoles_Q();
 
-            var result = _queryDispatcher.Dispatch<ListRoles_Q, List<OrgRole>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListOrgRoles_Q, List<OrgRole>>(accessToken, query);
 
             return result;
         }
@@ -64,24 +64,20 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public List<Unit> ListUnits(string accessToken)
+        public List<ListRanks_QRM> ListRanks(string accessToken)
         {
-            var query = new ListUnits_Q();
+            var query = new ListRanks_Q();
 
-            var result = _queryDispatcher.Dispatch<ListUnits_Q, List<Unit>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<ListRanks_QRM>>(accessToken, query);
 
             return result;
         }
 
-        public Unit GetUnitByID(string accessToken, int UnitID, bool includeChildren)
+        public List<PayGrade> ListPayGrades(string accessToken)
         {
-            var query = new GetUnitByID_Q
-            {
-                ID = UnitID,
-                IncludeChildren = includeChildren
-            };
+            var query = new ListPayGrades_Q { };
 
-            var result = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListPayGrades_Q, List<PayGrade>>(accessToken, query);
 
             return result;
         }

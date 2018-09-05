@@ -1,4 +1,4 @@
-﻿using vvarscNET.Core.CommandModels.People;
+﻿using vvarscNET.Core.CommandModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using vvarscNET.Core.Factories;
 using System.Net;
 using Dapper;
 
-namespace vvarscNET.Core.Data.CommandHandlers.People
+namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 {
     public class CreateRank_CH : ICommandHandler<CreateRank_C>
     {
@@ -30,7 +30,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                 connection.Open();
 
                 var cmd = @"
-                    INSERT INTO [People].[Ranks] (
+                    INSERT INTO [Organizations].[Ranks] (
 	                    PayGradeID
 	                    ,RankName
 	                    ,RankAbbr

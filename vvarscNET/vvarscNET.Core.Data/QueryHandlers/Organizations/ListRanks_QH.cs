@@ -1,15 +1,15 @@
 ﻿using Dapper;
-using vvarscNET.Core.QueryModels.People;
+using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
 using vvarscNET.Model.Objects.Organizations;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.ResponseModels.Organizations;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-namespace vvarscNET.Core.Data.QueryHandlers.People
+namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
     public class ListRanks_QH : IQueryHandler<ListRanks_Q, List<ListRanks_QRM>>
     {
@@ -45,8 +45,8 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 	                    ,r.RankImage
 	                    ,r.RankGroupName
 	                    ,r.RankGroupImage
-                    from People.Ranks r
-                    join People.PayGrades pg
+                    from Organizations.Ranks r
+                    join Organizations.PayGrades pg
 	                    on pg.ID = r.PayGradeID
                     order by
 	                    pg.PayGradeOrderBy        
