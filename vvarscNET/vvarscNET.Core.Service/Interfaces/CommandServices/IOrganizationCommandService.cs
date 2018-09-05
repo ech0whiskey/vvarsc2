@@ -11,9 +11,5 @@ namespace vvarscNET.Core.Service.Interfaces
     public interface IOrganizationCommandService
     {
         Result UpdateOrgRole(UserContext context, OrgRole role);
-        Result CreateUnit(UserContext context, Unit unit);
-        Result UpdateUnit(UserContext context, Unit unit);
-        Result DeleteUnit(UserContext context, int unitID);
-        Result DeleteUnitRecursive(UserContext context, int unitID);
     }
 }

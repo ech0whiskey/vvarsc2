@@ -77,6 +77,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                         int rowsAffected = connection.Execute(cmd, new
                         {
                             OrgRoleID = command.OrgRoleID,
+                            UnitID = command.UnitID,
                             SupportedRanks = command.SupportedRanks,
                             IsActive = true,
                             CreatedOn = DateTime.UtcNow,
@@ -105,7 +106,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "PayGrade OrgRoles Added Successfully!";
+                result.StatusDescription = "UnitOrgRole Ranks Updated Successfully!";
                 return result;
             }
         }

@@ -38,6 +38,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                         ,RoleType
                         ,RoleOrderBy
                         ,RatingCode
+                        ,IsUnitLeadership
 	                    ,IsActive
 	                    ,IsHidden
 	                    ,CreatedOn
@@ -52,6 +53,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                         ,@RoleType
                         ,@RoleOrderBy
                         ,@RatingCode
+                        ,@IsUnitLeadership
 	                    ,@IsActive
 	                    ,@IsHidden
 	                    ,@CreatedOn
@@ -76,6 +78,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             RoleType = command.RoleType,
                             RoleOrderBy = command.RoleOrderBy,
                             RatingCode = command.RatingCode,
+                            IsUnitLeadership = command.IsUnitLeadership,
                             IsActive = command.IsActive,
                             IsHidden = command.IsHidden,
                             CreatedOn = DateTime.UtcNow,

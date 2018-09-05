@@ -70,6 +70,7 @@
     <Compile Include="CommandHandlers\Organizations\UpdateRanksForOrgRole_CH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetUnitByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetOrgRoleByID_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\ListOrgRolesForUnit_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListUnits_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListOrgRoles_QH.cs" />

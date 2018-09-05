@@ -7,6 +7,7 @@
 	,RoleType [dbo].Enum NULL
 	,RoleOrderBy int NOT NULL
 	,RatingCode nvarchar(10)
+	,IsUnitLeadership bit
 	,IsActive bit
 	,IsHidden bit
 	,CreatedOn [dbo].CreatedOn

@@ -2,7 +2,6 @@
 	ID int identity NOT NULL
 	,UnitID int NOT NULL
 	,OrgRoleID int NOT NULL
-	,IsUnitLeadership bit
 	,RatingCodeOverride nvarchar(10)
 	,IsActive bit
 	,CreatedOn [dbo].CreatedOn

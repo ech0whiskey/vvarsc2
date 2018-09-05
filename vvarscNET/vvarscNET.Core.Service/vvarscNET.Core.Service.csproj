@@ -46,15 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandServices\UnitCommandService.cs" />
     <Compile Include="CommandServices\OrganizationCommandService.cs" />
     <Compile Include="CommandServices\PeopleCommandService.cs" />
+    <Compile Include="Interfaces\CommandServices\IUnitCommandService.cs" />
     <Compile Include="Interfaces\CommandServices\IOrganizationCommandService.cs" />
     <Compile Include="Interfaces\CommandServices\IPeopleCommandService.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\QueryServices\IUnitQueryService.cs" />
     <Compile Include="Interfaces\QueryServices\IPeopleQueryService.cs" />
     <Compile Include="Interfaces\QueryServices\IOrganizationQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryServices\UnitQueryService.cs" />
     <Compile Include="QueryServices\PeopleQueryService.cs" />
     <Compile Include="QueryServices\OrganizationQueryService.cs" />
     <Compile Include="Security\AuthenticationService.cs" />

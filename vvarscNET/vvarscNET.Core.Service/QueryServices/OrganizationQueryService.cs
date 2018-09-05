@@ -81,27 +81,5 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
-
-        public List<Unit> ListUnits(string accessToken)
-        {
-            var query = new ListUnits_Q();
-
-            var result = _queryDispatcher.Dispatch<ListUnits_Q, List<Unit>>(accessToken, query);
-
-            return result;
-        }
-
-        public Unit GetUnitByID(string accessToken, int UnitID, bool includeChildren)
-        {
-            var query = new GetUnitByID_Q
-            {
-                ID = UnitID,
-                IncludeChildren = includeChildren
-            };
-
-            var result = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(accessToken, query);
-
-            return result;
-        }
     }
 }

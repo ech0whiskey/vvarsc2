@@ -3,26 +3,26 @@ using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
 using vvarscNET.Model.Objects.Organizations;
+using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
-using vvarscNET.Model.Objects.People;
 using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
-    public class GetOrgRoleByID_QH : IQueryHandler<GetOrgRoleByID_Q, OrgRole>
+    public class ListOrgRolesForUnit_QH : IQueryHandler<ListOrgRolesForUnit_Q, List<UnitOrgRole>>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public GetOrgRoleByID_QH(SQLConnectionFactory connFactory)
+        public ListOrgRolesForUnit_QH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public OrgRole Handle(string accessTokenID, GetOrgRoleByID_Q query)
+        public List<UnitOrgRole> Handle(string accessTokenID, ListOrgRolesForUnit_Q query)
         {
-            Dictionary<int, OrgRole> xRoles = new Dictionary<int, OrgRole>();
+            Dictionary<int, UnitOrgRole> xRoles = new Dictionary<int, UnitOrgRole>();
             Dictionary<int, HashSet<Rank>> xRolesRanks = new Dictionary<int, HashSet<Rank>>();
 
             using (var connection = _connFactory.GetConnection())
@@ -31,13 +31,16 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 
                 var sql = @"
                     select
-	                    r.ID
-	                    ,r.OrganizationID
+	                    um.ID
+	                    ,um.UnitID
+	                    ,um.OrgRoleID
 	                    ,r.RoleName
+	                    ,r.RoleShortName
 	                    ,r.RoleDisplayName
 	                    ,r.RoleType
-	                    ,r.RoleOrderBy
-	                    ,r.IsActive
+	                    ,um.RatingCodeOverride
+	                    ,r.IsUnitLeadership
+	                    ,um.IsActive
 	                    ,r.IsHidden
 	                    ,r2.ID
 	                    ,r2.PayGradeID
@@ -49,16 +52,17 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                         ,r2.RankGroupImage
                         ,r2.RatingCodeSuffix
 	                    ,r2.IsActive
-                    from Organizations.OrgRoles r
-                    join Organizations.PayGradeOrgRoleMap m
-	                    on m.OrgRoleID = r.ID
+                    from Organizations.UnitOrgRoleMap um
+                    join Organizations.OrgRoles r
+	                    on r.ID = um.OrgRoleID
+                    join Organizations.RankOrgRoleMap m2
+	                    on m2.OrgRoleID = r.ID
                     join Organizations.Ranks r2
-                        on r2.RankID = m.RankID 
-	                    on g.ID = m.PayGradeID
-                    where r.ID = @roleID          
+                        on r2.ID = m2.RankID 
+                    where um.UnitID = @UnitID       
                 ";
 
-                var res = connection.Query<OrgRole, Rank, OrgRole>(sql, (role, rank) =>
+                var res = connection.Query<UnitOrgRole, Rank, UnitOrgRole>(sql, (role, rank) => 
                 {
                     if (!xRoles.ContainsKey(role.ID))
                         xRoles[role.ID] = role;
@@ -83,7 +87,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                     }
 
                     return role;
-                }, new { roleID = query.ID }).ToList();
+                }, new { UnitID = query.UnitID }).ToList();
 
                 foreach (var r in xRoles.Values)
                 {
@@ -93,7 +97,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                         r.SupportedRanks = ranks.ToList();
                 }
 
-                return xRoles.Values.FirstOrDefault();
+                return xRoles.Values.ToList();
             }
         }
     }

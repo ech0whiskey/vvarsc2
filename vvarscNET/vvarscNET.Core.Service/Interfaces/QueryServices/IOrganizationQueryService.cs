@@ -16,7 +16,5 @@ namespace vvarscNET.Core.Service.Interfaces
         OrgRole GetOrgRoleByID(string accessToken, int roleID);
         List<ListRanks_QRM> ListRanks(string accessToken);
         List<PayGrade> ListPayGrades(string accessToken);
-        List<Unit> ListUnits(string accessToken);
-        Unit GetUnitByID(string accessToken, int UnitID, bool includeChildren);
     }
 }

@@ -12,9 +12,16 @@ namespace vvarscNET.Model.Objects.Organizations
         public int ID;
         public int UnitID;
         public int OrgRoleID;
+        public string RoleName;
+        public string RoleShortName;
+        public string RoleDisplayName;
+        public string RoleType;
+        public int RoleOrderBy;
+        public string RatingCodeOverride;
         public bool IsUnitLeadership;
         public bool IsActive;
-        public List<PayGrade> SupportedPayGrades;
+        public bool IsHidden;
+        public List<Rank> SupportedRanks;
         public DateTime CreatedOn;
         public string CreatedBy;
         public DateTime ModifiedOn;
