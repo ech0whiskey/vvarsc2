@@ -208,6 +208,7 @@ namespace vvarscNET.Test.Helpers.Data
                     RoleDisplayName = or.RoleDisplayName,
                     RoleType = or.RoleType,
                     RoleOrderBy = or.RoleOrderBy,
+                    RatingCode = or.RatingCode,
                     IsActive = true,
                     IsHidden = or.IsHidden
                 };

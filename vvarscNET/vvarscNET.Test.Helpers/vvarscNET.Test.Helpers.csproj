@@ -70,6 +70,10 @@
   <ItemGroup>
     <Compile Include="Data\InitializeCoreTestDB.cs" />
     <Compile Include="Data\SetupData.cs" />
+    <Compile Include="Data\SetupData\OrgRoles.cs" />
+    <Compile Include="Data\SetupData\PayGrades.cs" />
+    <Compile Include="Data\SetupData\Ranks.cs" />
+    <Compile Include="Data\SetupData\Units.cs" />
     <Compile Include="Data\TestDB.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Program.cs" />
