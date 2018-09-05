@@ -287,6 +287,7 @@ namespace vvarscNET.Test.Helpers.Data
                         RankImage = rank.RankImage,
                         RankGroupName = rank.RankGroupName,
                         RankGroupImage = rank.RankGroupImage,
+                        RatingCodeSuffix = rank.RatingCodeSuffix,
                         IsActive = true
                     };
 

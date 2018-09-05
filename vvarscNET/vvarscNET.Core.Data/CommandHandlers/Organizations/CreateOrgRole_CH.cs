@@ -30,13 +30,14 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 connection.Open();
 
                 var cmd = @"
-                    INSERT INTO [Organizations].[Roles] (
+                    INSERT INTO [Organizations].[OrgRoles] (
                         OrganizationID
                         ,RoleName
 	                    ,RoleShortName
 	                    ,RoleDisplayName
                         ,RoleType
                         ,RoleOrderBy
+                        ,RatingCode
 	                    ,IsActive
 	                    ,IsHidden
 	                    ,CreatedOn
@@ -50,6 +51,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,@RoleDisplayName
                         ,@RoleType
                         ,@RoleOrderBy
+                        ,@RatingCode
 	                    ,@IsActive
 	                    ,@IsHidden
 	                    ,@CreatedOn
@@ -73,6 +75,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             RoleDisplayName = command.RoleDisplayName,
                             RoleType = command.RoleType,
                             RoleOrderBy = command.RoleOrderBy,
+                            RatingCode = command.RatingCode,
                             IsActive = command.IsActive,
                             IsHidden = command.IsHidden,
                             CreatedOn = DateTime.UtcNow,

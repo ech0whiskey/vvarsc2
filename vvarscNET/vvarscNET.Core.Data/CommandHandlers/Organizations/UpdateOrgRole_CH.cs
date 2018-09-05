@@ -37,11 +37,12 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,r.RoleDisplayName = @RoleDisplayName
 	                    ,r.RoleType = @RoleType
 	                    ,r.RoleOrderBy = @RoleOrderBy
+                        ,r.RatingCode = @RatingCode
 	                    ,r.IsActive = @IsActive
 	                    ,r.IsHidden = @IsHidden
 	                    ,r.ModifiedOn = @ModifiedOn
 	                    ,r.ModifiedBy = @ModifiedBy
-                    from Organizations.Roles r
+                    from Organizations.OrgRoles r
                     where r.ID = @RoleID
                 ";
 
@@ -58,6 +59,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             RoleDisplayName = command.RoleDisplayName,
                             RoleType = command.RoleType,
                             RoleOrderBy = command.RoleOrderBy,
+                            RatingCode = command.RatingCode,
                             IsActive = command.IsActive,
                             IsHidden = command.IsHidden,
                             ModifiedOn = DateTime.UtcNow,

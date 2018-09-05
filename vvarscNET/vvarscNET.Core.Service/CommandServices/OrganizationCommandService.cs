@@ -49,6 +49,7 @@ namespace vvarscNET.Core.Service.CommandServices
                 RoleDisplayName = role.RoleDisplayName,
                 RoleType = role.RoleType,
                 RoleOrderBy = role.RoleOrderBy,
+                RatingCode = role.RatingCode,
                 IsActive = role.IsActive,
                 IsHidden = role.IsHidden
             };

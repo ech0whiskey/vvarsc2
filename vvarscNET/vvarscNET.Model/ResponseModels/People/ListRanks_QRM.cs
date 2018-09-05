@@ -23,6 +23,5 @@ namespace vvarscNET.Model.ResponseModels.People
         public string RankImage;
         public string RankGroupName;
         public string RankGroupImage;
-        public List<OrgRole> SupportedOrgRoles;
     }
 }

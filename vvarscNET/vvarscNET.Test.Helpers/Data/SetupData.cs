@@ -444,6 +444,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E9_GC.png",
                 RankGroupName = "Senior NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E7_GC.png",
+                RatingCodeSuffix = "CM",
                 IsActive = true
             },
             new Rank
@@ -466,6 +467,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E8_GC.png",
                 RankGroupName = "Senior NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E7_GC.png",
+                RatingCodeSuffix = "CS",
                 IsActive = true
             },
             new Rank
@@ -488,6 +490,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E7_GC.png",
                 RankGroupName = "Senior NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E7_GC.png",
+                RatingCodeSuffix = "C",
                 IsActive = true
             },
             new Rank
@@ -511,6 +514,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E6.png",
                 RankGroupName = "NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E4.png",
+                RatingCodeSuffix = "1",
                 IsActive = true
             },
             new Rank
@@ -533,6 +537,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E5.png",
                 RankGroupName = "NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E4.png",
+                RatingCodeSuffix = "2",
                 IsActive = true
             },
             new Rank
@@ -555,6 +560,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RankImage = "https://sc.vvarmachine.com/images/ranks/Navy/E4.png",
                 RankGroupName = "NCO",
                 RankGroupImage = "https://sc.vvarmachine.com/images/ranks/Navy/E4.png",
+                RatingCodeSuffix = "3",
                 IsActive = true
             },
             new Rank
@@ -764,6 +770,7 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Squadron Chief",
                 RoleShortName = "Squadron Chief",
                 RoleType = "UnitRole",
+                RatingCode = "AP",
                 SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
             },
             new OrgRole {
@@ -773,6 +780,73 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleType = "UnitRole",
                 SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
             },
+
+            //Aviation Roles
+            new OrgRole {
+                RoleOrderBy = 150,
+                RoleName = "Flight Leader",
+                RoleShortName = "Flight Lead",
+                RoleType = "UnitRole",
+                RatingCode = "AP",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 151,
+                RoleName = "Crew Chief",
+                RoleShortName = "Crew Chief",
+                RoleType = "UnitRole",
+                RatingCode = "AW",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Fighter Pilot",
+                RoleType = "UnitRole",
+                RatingCode = "AP",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Attack Pilot",
+                RoleType = "UnitRole",
+                RatingCode = "AP",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Reconaissance Operator",
+                RoleType = "UnitRole",
+                RatingCode = "SO",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Combat Search & Rescue Operator",
+                RoleShortName = "CSAR Operator",
+                RoleType = "UnitRole",
+                RatingCode = "AW",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Combat Transport Pilot",
+                RoleShortName = "ComTrans Operator",
+                RoleType = "UnitRole",
+                RatingCode = "AP",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+            new OrgRole {
+                RoleOrderBy = 152,
+                RoleName = "Combat Search & Rescue Pilot",
+                RoleShortName = "CSAR Pilot",
+                RoleType = "UnitRole",
+                RatingCode = "AP",
+                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-5" } }
+            },
+
+            
+
+            //Marine Roles
 
 
         };

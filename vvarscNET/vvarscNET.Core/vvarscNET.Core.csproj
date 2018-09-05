@@ -65,6 +65,7 @@
     <Compile Include="CommandModels\Authentication\CreateCredential_C.cs" />
     <Compile Include="CommandModels\Authentication\CreateAccessToken_C.cs" />
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
+    <Compile Include="CommandModels\Organizations\CreateUnitOrgRole_C.cs" />
     <Compile Include="CommandModels\Organizations\UpdateUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\DeleteUnitRecursive_C.cs" />
     <Compile Include="CommandModels\Organizations\DeleteUnit_C.cs" />

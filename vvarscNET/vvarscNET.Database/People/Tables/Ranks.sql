@@ -7,6 +7,7 @@
 	,RankImage [dbo].Name
 	,RankGroupName [dbo].Name
 	,RankGroupImage [dbo].Name
+	,RatingCodeSuffix nvarchar(10)
 	,IsActive bit
 	,CreatedOn [dbo].CreatedOn
 	,CreatedBy [dbo].CreatedBy

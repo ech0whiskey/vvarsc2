@@ -16,6 +16,7 @@ namespace vvarscNET.Core.CommandModels.Organizations
         public string RoleDisplayName;
         public string RoleType;
         public int RoleOrderBy;
+        public string RatingCode;
         public bool IsActive;
         public bool IsHidden;
     }

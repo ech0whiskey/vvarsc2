@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Organizations].[Roles] (
+﻿CREATE TABLE [Organizations].[OrgRoles] (
 	ID int identity(1,1) NOT NULL
 	,OrganizationID int NOT NULL
 	,RoleName [dbo].Name
@@ -6,6 +6,7 @@
 	,RoleDisplayName [dbo].Name
 	,RoleType [dbo].Enum NULL
 	,RoleOrderBy int NOT NULL
+	,RatingCode nvarchar(10)
 	,IsActive bit
 	,IsHidden bit
 	,CreatedOn [dbo].CreatedOn

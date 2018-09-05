@@ -16,6 +16,7 @@ namespace vvarscNET.Model.Objects.Organizations
         public string RoleDisplayName;
         public string RoleType;
         public int RoleOrderBy;
+        public string RatingCode;
         public bool IsActive;
         public bool IsHidden;
         public DateTime CreatedOn;

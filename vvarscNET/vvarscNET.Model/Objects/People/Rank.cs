@@ -16,6 +16,7 @@ namespace vvarscNET.Model.Objects.People
         public string RankImage;
         public string RankGroupName;
         public string RankGroupImage;
+        public string RatingCodeSuffix;
         public bool IsActive;
         public DateTime CreatedOn;
         public string CreatedBy;

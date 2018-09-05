@@ -38,6 +38,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,RankImage
 	                    ,RankGroupName
 	                    ,RankGroupImage
+                        ,RatingCodeSuffix
 	                    ,IsActive
 	                    ,CreatedOn
 	                    ,CreatedBy
@@ -51,6 +52,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
 	                    ,@RankImage
 	                    ,@RankGroupName
 	                    ,@RankGroupImage
+                        ,@RatingCodeSuffix
 	                    ,@IsActive
 	                    ,@CreatedOn
 	                    ,@CreatedBy
@@ -74,6 +76,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.People
                             RankImage = command.RankImage,
                             RankGroupName = command.RankGroupName,
                             RankGroupImage = command.RankGroupImage,
+                            RatingCodeSuffix = command.RatingCodeSuffix,
                             IsActive = command.IsActive,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),

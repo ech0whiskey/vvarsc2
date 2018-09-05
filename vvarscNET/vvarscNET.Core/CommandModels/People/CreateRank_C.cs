@@ -16,6 +16,7 @@ namespace vvarscNET.Core.CommandModels.People
         public string RankImage;
         public string RankGroupName;
         public string RankGroupImage;
+        public string RatingCodeSuffix;
         public bool IsActive;
     }
 }

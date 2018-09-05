@@ -48,6 +48,7 @@
     <Compile Include="Enums\UnitTypeEnum.cs" />
     <Compile Include="Enums\UserTypeEnum.cs" />
     <Compile Include="Objects\Organizations\Organization.cs" />
+    <Compile Include="Objects\Organizations\UnitOrgRole.cs" />
     <Compile Include="Objects\Organizations\Unit.cs" />
     <Compile Include="Objects\People\Member.cs" />
     <Compile Include="Objects\Organizations\OrgRole.cs" />
@@ -68,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ResponseModels\People\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
