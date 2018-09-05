@@ -5,7 +5,7 @@ using vvarscNET.Model.Objects.People;
 
 namespace vvarscNET.Core.QueryModels.Organizations
 {
-    public class ListRolesForOrganization_Q : IQuery<List<OrgRole>>
+    public class ListRoles_Q : IQuery<List<OrgRole>>
     {
         public int OrganizationID;
     }

@@ -12,16 +12,16 @@ using Dapper;
 
 namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 {
-    public class CreateUnit_CH : ICommandHandler<CreateUnit_C>
+    public class UpdateUnit_CH : ICommandHandler<UpdateUnit_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public CreateUnit_CH(SQLConnectionFactory connFactory)
+        public UpdateUnit_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, CreateUnit_C command)
+        public Result Handle(IUserContext context, UpdateUnit_C command)
         {
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
 
@@ -30,50 +30,30 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 connection.Open();
 
                 var cmd = @"
-                    insert into [Organizations].Units (
-	                    ParentUnitID
-	                    ,UnitName
-	                    ,UnitFullName
-	                    ,UnitDesignation
-	                    ,UnitDescription
-	                    ,UnitCallsign
-	                    ,UnitType
-	                    ,IsHidden
-	                    ,IsActive
-	                    ,CreatedOn
-	                    ,CreatedBy
-	                    ,ModifiedOn
-	                    ,ModifiedBy
-                    )
-                    select
-	                    case
-                            when @ParentUnitID is null then (select top 1 ID from [Organizations].[Units] u where u.UnitName = @ParentUnitName)
-                            else @ParentUnitID
-                        end
-	                    ,@UnitName
-	                    ,@UnitFullName
-	                    ,@UnitDesignation
-	                    ,@UnitDescription
-	                    ,@UnitCallsign
-	                    ,@UnitType
-	                    ,@IsHidden
-	                    ,@IsActive
-	                    ,@CreatedOn
-	                    ,@CreatedBy
-	                    ,@ModifiedOn
-	                    ,@ModifiedBy
-
-                    SELECT CAST(SCOPE_IDENTITY() as int)
+                    update u set
+	                    u.ParentUnitID = @ParentUnitID
+	                    ,u.UnitName = @UnitName
+	                    ,u.UnitFullName = @UnitFullName
+	                    ,u.UnitDesignation = @UnitDesignation
+	                    ,u.UnitDescription = @UnitDescription
+	                    ,u.UnitCallsign = @UnitCallsign
+	                    ,u.UnitType = @UnitType
+	                    ,u.IsHidden = @IsHidden
+	                    ,u.IsActive = @IsActive
+	                    ,u.ModifiedOn = @ModifiedOn
+	                    ,u.ModifiedBy = @ModifiedBy
+                    from Organizations.Units u
+                    where u.UnitID = @UnitID
                 ";
 
                 using (var transaction = connection.BeginTransaction())
                 {
                     try
                     {
-                        int? id = connection.Query<int>(cmd, new
+                        int rowsAffected = connection.Execute(cmd, new
                         {
+                            UnitID = command.UnitID,
                             ParentUnitID = command.ParentUnitID,
-                            ParentUnitName = command.ParentUnitName,
                             UnitName = command.UnitName,
                             UnitFullName = command.UnitFullName,
                             UnitDesignation = command.UnitDesignation,
@@ -82,16 +62,14 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             UnitType = command.UnitType,
                             IsHidden = command.IsHidden,
                             IsActive = command.IsActive,
-                            CreatedOn = DateTime.UtcNow,
-                            CreatedBy = context.MemberID.ToString(),
                             ModifiedOn = DateTime.UtcNow,
                             ModifiedBy = context.MemberID.ToString()
-                        }, transaction).FirstOrDefault();
+                        }, transaction);
 
-                        if (id != null)
+                        if (rowsAffected == 1)
                         {
                             transaction.Commit();
-                            result.ItemIDs.Add(id.ToString());
+                            result.ItemIDs.Add(command.UnitID.ToString());
                         }
                         else
                         {
@@ -109,7 +87,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                 }
 
                 result.Status = HttpStatusCode.OK;
-                result.StatusDescription = "Unit Created Successfully!";
+                result.StatusDescription = "Unit Updated Successfully!";
                 return result;
             }
         }

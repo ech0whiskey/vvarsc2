@@ -10,16 +10,16 @@ using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.People
 {
-    public class ListMembersForOrganization_QH : IQueryHandler<ListMembersForOrganization_Q, List<Member>>
+    public class ListMembers_QH : IQueryHandler<ListMembers_Q, List<Member>>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public ListMembersForOrganization_QH(SQLConnectionFactory connFactory)
+        public ListMembers_QH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public List<Member> Handle(string accessTokenID, ListMembersForOrganization_Q query)
+        public List<Member> Handle(string accessTokenID, ListMembers_Q query)
         {
             using (var connection = _connFactory.GetConnection())
             {
@@ -52,11 +52,10 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
                     join People.Ranks r1
 	                    on r1.ID = m.RankID
                     join People.PayGrades pg
-	                    on pg.ID = r1.PayGradeID
-                    where m.OrganizationID = @OrganizationID            
+	                    on pg.ID = r1.PayGradeID          
                 ";
 
-                var res = connection.Query<Member>(sql, new { OrganizationID = query.OrganizationID }).ToList();
+                var res = connection.Query<Member>(sql).ToList();
 
                 return res;
             }

@@ -43,14 +43,11 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public List<OrgRole> ListRolesForOrganization(string accessToken, int organizationID)
+        public List<OrgRole> ListRoles(string accessToken)
         {
-            var query = new ListRolesForOrganization_Q
-            {
-                OrganizationID = organizationID
-            };
+            var query = new ListRoles_Q();
 
-            var result = _queryDispatcher.Dispatch<ListRolesForOrganization_Q, List<OrgRole>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListRoles_Q, List<OrgRole>>(accessToken, query);
 
             return result;
         }
@@ -76,11 +73,12 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public Unit GetUnitByID(string accessToken, int UnitID)
+        public Unit GetUnitByID(string accessToken, int UnitID, bool includeChildren)
         {
             var query = new GetUnitByID_Q
             {
-                ID = UnitID
+                ID = UnitID,
+                IncludeChildren = includeChildren
             };
 
             var result = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(accessToken, query);

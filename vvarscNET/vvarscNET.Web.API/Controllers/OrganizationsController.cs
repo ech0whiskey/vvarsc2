@@ -61,14 +61,13 @@ namespace vvarscNET.Web.API.Controllers
         /// <summary>
         /// Method to get list of Organization Roles
         /// </summary>
-        /// <param name="id">ID of OrgRole</param>
         /// <returns>List of OrgRole</returns>
         [HttpGet]
-        [Route("organizations/{id}/roles")]
+        [Route("roles")]
         [ResponseType(typeof(List<OrgRole>))]
-        public IHttpActionResult ListRolesForOrganization([FromUri] int id)
+        public IHttpActionResult ListRoles()
         {
-            var returnData = _orgQueryService.ListRolesForOrganization(Request.GetUserContext().AccessToken, id);
+            var returnData = _orgQueryService.ListRoles(Request.GetUserContext().AccessToken);
 
             return Ok(returnData);
         }
@@ -123,16 +122,73 @@ namespace vvarscNET.Web.API.Controllers
         }
 
         /// <summary>
-        /// Method to Retrive Single Unit, Including Children within Object
+        /// Method to Retrive Single Unit
         /// </summary>
         /// <param name="id">ID of Unit</param>
+        /// <param name="includeChildren">If set to true, child units will be included in the returned object.</param>
         /// <returns></returns>
         [HttpGet]
         [Route("units/{id}")]
         [ResponseType(typeof(Unit))]
-        public IHttpActionResult GetUnitByID([FromUri] int id)
+        public IHttpActionResult GetUnitByID([FromUri] int id, [FromUri] bool includeChildren)
         {
-            var result = _orgQueryService.GetUnitByID(Request.GetUserContext().AccessToken, id);
+            var result = _orgQueryService.GetUnitByID(Request.GetUserContext().AccessToken, id, includeChildren);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method to Create a new Unit
+        /// </summary>
+        /// <param name="unit">Unit Object to Create</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("units")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult CreateUnit([FromBody] Unit unit)
+        {
+            var result = _orgCmdService.CreateUnit(Request.GetUserContext(), unit);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method to Update Unit
+        /// </summary>
+        /// <param name="id">ID of Unit</param>
+        /// <param name="unit">Unit Object</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("units/{id}")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult UpdateUnit([FromUri] int id, [FromBody] Unit unit)
+        {
+            //Ensure that Unit Object in Route is the same as Body
+            if (id != unit.ID)
+                return BadRequest();
+
+            var result = _orgCmdService.UpdateUnit(Request.GetUserContext(), unit);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method To Delete Unit
+        /// </summary>
+        /// <param name="id">ID of Unit</param>
+        /// <param name="deleteChildren">If set to true, child units will be deleted.</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("units/{id}")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult DeleteUnit([FromUri] int id, [FromUri] bool deleteChildren)
+        {
+            Result result;
+
+            if (deleteChildren)
+                result = _orgCmdService.DeleteUnit(Request.GetUserContext(), id);
+            else
+                result = _orgCmdService.DeleteUnitRecursive(Request.GetUserContext(), id);
 
             return Ok(result);
         }

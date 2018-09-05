@@ -11,9 +11,9 @@ namespace vvarscNET.Core.Service.Interfaces
     {
         List<Organization> ListOrganizations(string accessToken);
         Organization GetOrganizationByID(string accessToken, int organizationID);
-        List<OrgRole> ListRolesForOrganization(string accessToken, int organizationID);
+        List<OrgRole> ListRoles(string accessToken);
         OrgRole GetOrgRoleByID(string accessToken, int roleID);
         List<Unit> ListUnits(string accessToken);
-        Unit GetUnitByID(string accessToken, int UnitID);
+        Unit GetUnitByID(string accessToken, int UnitID, bool includeChildren);
     }
 }

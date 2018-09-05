@@ -47,6 +47,9 @@
     <Compile Include="CommandHandlers\Authentication\CreateAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Authentication\ExpireAccessToken_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrganization_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\UpdateUnit_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\DeleteUnitRecursive_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\DeleteUnit_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateUnit_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\UpdateOrgRole_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\InitPayGradesForOrgRole_CH.cs" />
@@ -66,10 +69,10 @@
     <Compile Include="QueryHandlers\Organizations\GetOrgRoleByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListUnits_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
-    <Compile Include="QueryHandlers\Organizations\ListRolesForOrganization_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\ListRoles_QH.cs" />
     <Compile Include="QueryHandlers\People\ListPayGrades_QH.cs" />
     <Compile Include="QueryHandlers\People\ListRanks_QH.cs" />
-    <Compile Include="QueryHandlers\People\ListMembersForOrganization_QH.cs" />
+    <Compile Include="QueryHandlers\People\ListMembers_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListOrganizations_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\GetOrganizationByID_QH.cs" />

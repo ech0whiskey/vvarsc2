@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace vvarscNET.Core.QueryModels.People
 {
-    public class ListMembersForOrganization_Q : IQuery<List<Member>>
+    public class ListMembers_Q : IQuery<List<Member>>
     {
-        public int OrganizationID;
     }
 }

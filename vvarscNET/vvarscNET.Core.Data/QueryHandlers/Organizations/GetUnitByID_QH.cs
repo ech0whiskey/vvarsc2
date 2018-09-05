@@ -25,7 +25,9 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
             {
                 connection.Open();
 
-                var sql = @"
+                if (query.IncludeChildren)
+                {
+                    var sql = @"
                     ;with units as (
 	                    select
 		                    u.*
@@ -56,9 +58,35 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                     from units u
                 ";
 
-                var flatResult = connection.Query<Unit>(sql, new { UnitID = query.ID }).ToList();
+                    var flatResult = connection.Query<Unit>(sql, new { UnitID = query.ID }).ToList();
 
-                return BuildTree(flatResult, query.ID).FirstOrDefault();
+                    return BuildTree(flatResult, query.ID).FirstOrDefault();
+                }
+                else
+                {
+                    var sql = @"
+                        select
+	                        u.ID
+	                        ,u.ParentUnitID
+	                        ,u.UnitName
+	                        ,u.UnitFullName
+	                        ,u.UnitDesignation
+	                        ,u.UnitDescription
+	                        ,u.UnitCallsign
+	                        ,u.IsHidden
+	                        ,u.IsActive
+	                        ,u.CreatedOn
+	                        ,u.CreatedBy
+	                        ,u.ModifiedOn
+	                        ,u.ModifiedBy
+                        from [Organizations].[Units] u
+                        where u.ID = @UnitID
+                    ";
+
+                    var result = connection.Query<Unit>(sql, new { UnitID = query.ID }).FirstOrDefault();
+
+                    return result;
+                }
             }
         }
 

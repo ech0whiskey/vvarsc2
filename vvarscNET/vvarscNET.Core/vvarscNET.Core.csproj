@@ -65,6 +65,9 @@
     <Compile Include="CommandModels\Authentication\CreateCredential_C.cs" />
     <Compile Include="CommandModels\Authentication\CreateAccessToken_C.cs" />
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
+    <Compile Include="CommandModels\Organizations\UpdateUnit_C.cs" />
+    <Compile Include="CommandModels\Organizations\DeleteUnitRecursive_C.cs" />
+    <Compile Include="CommandModels\Organizations\DeleteUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrganization_C.cs" />
     <Compile Include="CommandModels\Organizations\UpdateOrgRole_C.cs" />
@@ -102,7 +105,7 @@
     <Compile Include="QueryModels\Organizations\ListUnits_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetUnitByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrgRoleByID_Q.cs" />
-    <Compile Include="QueryModels\Organizations\ListRolesForOrganization_Q.cs" />
+    <Compile Include="QueryModels\Organizations\ListRoles_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationByID_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />
@@ -110,7 +113,7 @@
     <Compile Include="QueryModels\Organizations\GetOrganizationBySpectrumID_Q.cs" />
     <Compile Include="QueryModels\People\ListPayGrades_Q.cs" />
     <Compile Include="QueryModels\People\ListRanks_Q.cs" />
-    <Compile Include="QueryModels\People\ListMembersForOrganization_Q.cs" />
+    <Compile Include="QueryModels\People\ListMembers_Q.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="Logger\ApiLogEntry.cs" />
     <Compile Include="Logger\LogEntry.cs" />

@@ -6,5 +6,6 @@ namespace vvarscNET.Core.QueryModels.Organizations
     public class GetUnitByID_Q : IQuery<Unit>
     {
         public int ID;
+        public bool IncludeChildren;
     }
 }

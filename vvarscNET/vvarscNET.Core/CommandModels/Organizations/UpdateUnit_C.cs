@@ -9,10 +9,10 @@ using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Core.CommandModels.Organizations
 {
-    public class CreateUnit_C : ICommand
+    public class UpdateUnit_C : ICommand
     {
+        public int UnitID;
         public int ParentUnitID;
-        public string ParentUnitName;
         public string UnitName;
         public string UnitFullName;
         public string UnitDesignation;

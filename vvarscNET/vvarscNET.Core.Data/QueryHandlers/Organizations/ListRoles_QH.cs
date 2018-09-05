@@ -11,16 +11,16 @@ using System.Collections.Generic;
 
 namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
-    public class ListRolesForOrganization_QH : IQueryHandler<ListRolesForOrganization_Q, List<OrgRole>>
+    public class ListRoles_QH : IQueryHandler<ListRoles_Q, List<OrgRole>>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public ListRolesForOrganization_QH(SQLConnectionFactory connFactory)
+        public ListRoles_QH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public List<OrgRole> Handle(string accessTokenID, ListRolesForOrganization_Q query)
+        public List<OrgRole> Handle(string accessTokenID, ListRoles_Q query)
         {
             Dictionary<int, OrgRole> xRoles = new Dictionary<int, OrgRole>();
             Dictionary<int, HashSet<PayGrade>> xRolesPayGrades = new Dictionary<int, HashSet<PayGrade>>();
@@ -49,8 +49,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                     join Organizations.PayGradeOrgRoleMap m
 	                    on m.OrgRoleID = r.ID
                     join People.PayGrades g
-	                    on g.ID = m.PayGradeID
-                    where r.OrganizationID = @OrganizationID           
+	                    on g.ID = m.PayGradeID         
                 ";
 
                 var res = connection.Query<OrgRole, PayGrade, OrgRole>(sql, (role, paygrade) => 
@@ -74,7 +73,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.Organizations
                     }
 
                     return role;
-                }, new { OrganizationID = query.OrganizationID }).ToList();
+                }).ToList();
 
                 foreach (var r in xRoles.Values)
                 {

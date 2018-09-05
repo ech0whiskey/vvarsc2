@@ -48,11 +48,10 @@ namespace vvarscNET.Web.Client.Services
             return JsonConvert.DeserializeObject<IEnumerable<PayGrade>>(response.Content);
         }
 
-        public IEnumerable<Member> ListMembersForOrganization(HttpContextBase Context, int OrganizationID)
+        public IEnumerable<Member> ListMembers(HttpContextBase Context)
         {
             var request = new RestRequest("organizations/{id}/members", Method.GET) { RequestFormat = DataFormat.Json };
             request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
-            request.AddParameter("id", OrganizationID, ParameterType.UrlSegment);
 
             var response = _client.Execute<List<Member>>(request);
 

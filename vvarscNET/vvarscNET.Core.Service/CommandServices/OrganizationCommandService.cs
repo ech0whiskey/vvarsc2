@@ -26,6 +26,7 @@ namespace vvarscNET.Core.Service.CommandServices
             _commandDispatcher = commandDispatcher;
         }
 
+        //Roles
         public Result UpdateOrgRole(UserContext context, OrgRole role)
         {
             //Get Existing OrgRole
@@ -76,6 +77,120 @@ namespace vvarscNET.Core.Service.CommandServices
             }
 
             return roleResult;
+        }
+
+        //Units
+        public Result CreateUnit(UserContext context, Unit unit)
+        {
+            var cmd = new CreateUnit_C
+            {
+                ParentUnitID = unit.ParentUnitID,
+                ParentUnitName = unit.ParentUnitName,
+                UnitName = unit.UnitName,
+                UnitFullName = unit.UnitFullName,
+                UnitDesignation = unit.UnitDesignation,
+                UnitDescription = unit.UnitDescription,
+                UnitCallsign = unit.UnitCallsign,
+                UnitType = unit.UnitType.ToString(),
+                IsHidden = unit.IsHidden,
+                IsActive = unit.IsActive
+            };
+
+            var result = _commandDispatcher.Dispatch<CreateUnit_C>(context, cmd);
+            if (result.Status != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception("Error Creating Unit in DB");
+            }
+
+            return result;
+        }
+
+        public Result UpdateUnit(UserContext context, Unit unit)
+        {
+            //get existing unit
+            var query = new GetUnitByID_Q
+            {
+                ID = unit.ID
+            };
+
+            var existingUnit = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(context.AccessToken, query);
+            if (existingUnit == null)
+                throw new Exception("Unable to retrive Unit for Update Request");
+
+            var cmd = new UpdateUnit_C
+            {
+                ParentUnitID = unit.ParentUnitID,
+                UnitName = unit.UnitName,
+                UnitFullName = unit.UnitFullName,
+                UnitDesignation = unit.UnitDesignation,
+                UnitDescription = unit.UnitDescription,
+                UnitCallsign = unit.UnitCallsign,
+                UnitType = unit.UnitType.ToString(),
+                IsHidden = unit.IsHidden,
+                IsActive = unit.IsActive
+            };
+
+            var unitResult = _commandDispatcher.Dispatch<UpdateUnit_C>(context, cmd);
+            if (unitResult.Status != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception("Error updating Unit in DB");
+            }
+
+            return unitResult;
+        }
+
+        public Result DeleteUnit(UserContext context, int unitID)
+        {
+            //get existing unit
+            var query = new GetUnitByID_Q
+            {
+                ID = unitID
+            };
+
+            var existingUnit = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(context.AccessToken, query);
+            if (existingUnit == null)
+                throw new Exception("Unable to retrive Unit for Delete Request");
+
+            //delete unit
+            var cmd = new DeleteUnit_C
+            {
+                UnitID = unitID
+            };
+
+            var result = _commandDispatcher.Dispatch<DeleteUnit_C>(context, cmd);
+            if (result.Status != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception("Error Deleting Unit in DB");
+            }
+
+            return result;
+        }
+
+        public Result DeleteUnitRecursive(UserContext context, int unitID)
+        {
+            //get existing unit
+            var query = new GetUnitByID_Q
+            {
+                ID = unitID
+            };
+
+            var existingUnit = _queryDispatcher.Dispatch<GetUnitByID_Q, Unit>(context.AccessToken, query);
+            if (existingUnit == null)
+                throw new Exception("Unable to retrive Unit for Delete Request");
+
+            //delete unit
+            var cmd = new DeleteUnitRecursive_C
+            {
+                UnitID = unitID
+            };
+
+            var result = _commandDispatcher.Dispatch<DeleteUnitRecursive_C>(context, cmd);
+            if (result.Status != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception("Error Deleting Unit in DB");
+            }
+
+            return result;
         }
     }
 }

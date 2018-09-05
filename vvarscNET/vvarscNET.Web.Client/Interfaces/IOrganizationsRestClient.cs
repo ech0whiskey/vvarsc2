@@ -11,7 +11,7 @@ namespace vvarscNET.Web.Client.Interfaces
 
         Organization GetOrganizationByID(HttpContextBase Context, int OrganizationID);
 
-        List<OrgRole> ListRolesForOrganization(HttpContextBase Context, int OrganizationID);
+        List<OrgRole> ListRoles(HttpContextBase Context);
 
         OrgRole GetOrgRoleByID(HttpContextBase Context, int RoleID);
 

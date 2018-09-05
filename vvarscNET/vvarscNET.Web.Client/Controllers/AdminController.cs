@@ -51,7 +51,7 @@ namespace vvarscNET.Web.Client.Controllers
             if (!helper.IsAdmin())
                 return RedirectToAction("Forbidden", "Home");
 
-            return View(peopleRestClient.ListMembersForOrganization(HttpContext, ID));
+            return View(peopleRestClient.ListMembers(HttpContext));
         }
 
         public ActionResult CreateMember(int organizationID)
@@ -291,7 +291,7 @@ namespace vvarscNET.Web.Client.Controllers
             if (!helper.IsAdmin())
                 return RedirectToAction("Forbidden", "Home");
 
-            return View(orgRestClient.ListRolesForOrganization(HttpContext, organizationID));
+            return View(orgRestClient.ListRoles(HttpContext));
         }
 
         public ActionResult EditOrgRole(int roleID)

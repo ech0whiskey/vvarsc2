@@ -59,33 +59,17 @@ namespace vvarscNET.Web.API.Controllers
         }
 
         /// <summary>
-        /// Method to list Members belonging to an Organization
+        /// Method to list Members
         /// </summary>
-        /// <param name="id">ID of Organization</param>
         /// <returns>List of Members</returns>
         [HttpGet]
-        [Route("organizations/{id}/members")]
+        [Route("members")]
         [ResponseType(typeof(List<Member>))]
-        public IHttpActionResult ListMembersForOrganization([FromUri] int id)
+        public IHttpActionResult ListMembers()
         {
-            var returnData = _peopleQuerySvc.ListMembersForOrganization(Request.GetUserContext().AccessToken, id);
+            var returnData = _peopleQuerySvc.ListMembers(Request.GetUserContext().AccessToken);
 
             return Ok(returnData);
-        }
-
-        /// <summary>
-        /// Method to Create a New Member
-        /// </summary>
-        /// <param name="member">Member Object to be Created</param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("members")]
-        [ResponseType(typeof(Result))]
-        public IHttpActionResult CreateMember([FromBody] Member member)
-        {
-            var result = _peopleCommandSvc.CreateMember(Request.GetUserContext(), member);
-
-            return Ok(result);
         }
 
         /// <summary>
@@ -99,6 +83,21 @@ namespace vvarscNET.Web.API.Controllers
         public IHttpActionResult GetMember([FromUri] int id)
         {
             var result = _peopleQuerySvc.GetMemberByID(Request.GetUserContext().AccessToken, id);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Method to Create a New Member
+        /// </summary>
+        /// <param name="member">Member Object to be Created</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("members")]
+        [ResponseType(typeof(Result))]
+        public IHttpActionResult CreateMember([FromBody] Member member)
+        {
+            var result = _peopleCommandSvc.CreateMember(Request.GetUserContext(), member);
 
             return Ok(result);
         }

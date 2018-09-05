@@ -20,14 +20,11 @@ namespace vvarscNET.Core.Service.QueryServices
             _queryDispatcher = queryDispatcher;
         }
 
-        public List<Member> ListMembersForOrganization(string accessToken, int organizationID)
+        public List<Member> ListMembers(string accessToken)
         {
-            var query = new ListMembersForOrganization_Q
-            {
-                OrganizationID = organizationID
-            };
+            var query = new ListMembers_Q();
 
-            var result = _queryDispatcher.Dispatch<ListMembersForOrganization_Q, List<Member>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListMembers_Q, List<Member>>(accessToken, query);
 
             return result;
         }

@@ -48,11 +48,10 @@ namespace vvarscNET.Web.Client.Services
             return JsonConvert.DeserializeObject<Organization>(response.Content);
         }
 
-        public List<OrgRole> ListRolesForOrganization(HttpContextBase Context, int OrganizationID)
+        public List<OrgRole> ListRoles(HttpContextBase Context)
         {
-            var request = new RestRequest("organizations/{id}/roles", Method.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest("roles", Method.GET) { RequestFormat = DataFormat.Json };
             request.AddHeader("Authorization", "access " + Context.Session["AccessToken"].ToString());
-            request.AddParameter("id", OrganizationID, ParameterType.UrlSegment);
 
             var response = _client.Execute<List<OrgRole>>(request);
 

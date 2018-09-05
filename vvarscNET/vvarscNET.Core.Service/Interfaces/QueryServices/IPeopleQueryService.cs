@@ -10,7 +10,7 @@ namespace vvarscNET.Core.Service.Interfaces
 {
     public interface IPeopleQueryService
     {
-        List<Member> ListMembersForOrganization(string accessToken, int organizationID);
+        List<Member> ListMembers(string accessToken);
 
         List<ListRanks_QRM> ListRanks(string accessToken);
 
