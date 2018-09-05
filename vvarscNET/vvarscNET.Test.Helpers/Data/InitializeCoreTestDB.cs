@@ -194,9 +194,17 @@ namespace vvarscNET.Test.Helpers.Data
             return true;
         }
 
+        #endregion
+
+        #region OrgRoles
         private static bool InitOrgRoles(string connectionString)
         {
             Console.WriteLine("Init OrgRoles");
+
+            //List Ranks
+            ListRanks_QH listRanks_QH = new ListRanks_QH(new SQLConnectionFactory(connectionString));
+            var _ranks = listRanks_QH.Handle(Globals.AuthHandlerToken, new ListRanks_Q());
+
             foreach (var or in SetupData._orgRoles)
             {
                 //Create OrgRole
@@ -222,21 +230,29 @@ namespace vvarscNET.Test.Helpers.Data
                 }
                 var roleID = Convert.ToInt32(pgResult.ItemIDs.FirstOrDefault());
 
-                //Map PayGrades to OrgRoles
-                if (or.SupportedPayGrades != null && or.SupportedPayGrades.Count > 0)
+                //Map Ranks to OrgRole
+                if (or.SupportedRanks != null && or.SupportedRanks.Count > 0)
                 {
-                    var pgrCmd = new InitPayGradesForOrgRole_C
+                    var rCmd = new InitRanksForOrgRole_C
                     {
                         OrgRoleID = roleID,
-                        SupportedPayGrades = new List<string>()
+                        SupportedRanks = new List<int>()
                     };
-                    foreach (var pg in or.SupportedPayGrades)
+
+                    foreach (var r in or.SupportedRanks)
                     {
-                        pgrCmd.SupportedPayGrades.Add(pg.PayGradeName);
+                        //find this rank in full list
+                        var localRank = _ranks.Where(a => a.RankName == r.RankName && a.RankType == r.RankType).FirstOrDefault();
+
+                        //add to local cmd
+                        if (localRank != null)
+                            rCmd.SupportedRanks.Add(localRank.RankID);
+                        else
+                            throw new Exception("Error Mapping Ranks to OrgRoles in InitializeCoreTestDB");
                     }
 
-                    InitPayGradesForOrgRole_CH initPayGradesForOrgRole_CH = new InitPayGradesForOrgRole_CH(new SQLConnectionFactory(connectionString));
-                    var pgrResult = initPayGradesForOrgRole_CH.Handle(Globals.UserContext, pgrCmd);
+                    InitRanksForOrgRole_CH initPayGradesForOrgRole_CH = new InitRanksForOrgRole_CH(new SQLConnectionFactory(connectionString));
+                    var pgrResult = initPayGradesForOrgRole_CH.Handle(Globals.UserContext, rCmd);
 
                     if (pgrResult.Status != System.Net.HttpStatusCode.OK)
                     {

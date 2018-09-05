@@ -45,9 +45,9 @@ namespace vvarscNET.Core.Service.QueryServices
 
         public List<OrgRole> ListOrgRoles(string accessToken)
         {
-            var query = new ListRoles_Q();
+            var query = new ListOrgRoles_Q();
 
-            var result = _queryDispatcher.Dispatch<ListRoles_Q, List<OrgRole>>(accessToken, query);
+            var result = _queryDispatcher.Dispatch<ListOrgRoles_Q, List<OrgRole>>(accessToken, query);
 
             return result;
         }

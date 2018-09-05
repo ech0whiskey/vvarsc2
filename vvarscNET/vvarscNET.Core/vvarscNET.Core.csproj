@@ -67,14 +67,15 @@
     <Compile Include="CommandModels\Authentication\ExpireAccessToken_C.cs" />
     <Compile Include="CommandModels\Organizations\RemoveOrgRoleFromUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\AddOrgRoleToUnit_C.cs" />
+    <Compile Include="CommandModels\Organizations\UpdateRanksForUnitOrgRole_C.cs" />
     <Compile Include="CommandModels\Organizations\UpdateUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\DeleteUnitRecursive_C.cs" />
     <Compile Include="CommandModels\Organizations\DeleteUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateUnit_C.cs" />
     <Compile Include="CommandModels\Organizations\CreateOrganization_C.cs" />
     <Compile Include="CommandModels\Organizations\UpdateOrgRole_C.cs" />
-    <Compile Include="CommandModels\Organizations\InitPayGradesForOrgRole_C.cs" />
-    <Compile Include="CommandModels\Organizations\UpdatePayGradesForOrgRole_C.cs" />
+    <Compile Include="CommandModels\Organizations\InitRanksForOrgRole_C.cs" />
+    <Compile Include="CommandModels\Organizations\UpdateRanksForOrgRole_C.cs" />
     <Compile Include="CommandModels\People\CreateMemberRankHistory_C.cs" />
     <Compile Include="CommandModels\People\DeleteMember_C.cs" />
     <Compile Include="CommandModels\People\UpdateMember_C.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="QueryModels\Organizations\ListUnits_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetUnitByID_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrgRoleByID_Q.cs" />
-    <Compile Include="QueryModels\Organizations\ListRoles_Q.cs" />
+    <Compile Include="QueryModels\Organizations\ListOrgRoles_Q.cs" />
     <Compile Include="QueryModels\Organizations\ListOrganizations_Q.cs" />
     <Compile Include="QueryModels\Organizations\GetOrganizationByID_Q.cs" />
     <Compile Include="QueryModels\People\GetMemberByAccessToken_Q.cs" />

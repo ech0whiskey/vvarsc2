@@ -60,21 +60,21 @@ namespace vvarscNET.Core.Service.CommandServices
                 throw new Exception("Error updating Organization Role in DB");
             }
 
-            //Update Mapped PayGrades
-            var pgCmd = new UpdatePayGradesForOrgRole_C
+            //Update Mapped Ranks
+            var pgCmd = new UpdateRanksForOrgRole_C
             {
                 OrgRoleID = role.ID,
-                SupportedPayGrades = new List<int>()
+                SupportedRanks = new List<int>()
             };
-            foreach (var pg in role.SupportedPayGrades)
+            foreach (var r in role.SupportedRanks)
             {
-                pgCmd.SupportedPayGrades.Add(pg.ID);
+                pgCmd.SupportedRanks.Add(r.ID);
             }
 
-            var pgResult = _commandDispatcher.Dispatch<UpdatePayGradesForOrgRole_C>(context, pgCmd);
+            var pgResult = _commandDispatcher.Dispatch<UpdateRanksForOrgRole_C>(context, pgCmd);
             if (pgResult.Status != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception("Error updating Organization Role - PayGrade Mapping in DB");
+                throw new Exception("Error updating Organization Role - Rank Mapping in DB");
             }
 
             return roleResult;

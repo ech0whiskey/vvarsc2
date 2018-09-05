@@ -23,6 +23,6 @@ namespace vvarscNET.Model.Objects.Organizations
         public string CreatedBy;
         public DateTime ModifiedOn;
         public string ModifiedBy;
-        public List<PayGrade> SupportedPayGrades;
+        public List<Rank> SupportedRanks;
     }
 }

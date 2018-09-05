@@ -19,7 +19,9 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Fleet CO",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "FLEETCOM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-10" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" }
+                }
             },
             new OrgRole {
                 RoleOrderBy = 101,
@@ -27,7 +29,9 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Fleet XO",
                 RoleDisplayName = "Executive Officer",
                 RoleType = "FLEETCOM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-9" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" }
+                }
             },
             new OrgRole {
                 RoleOrderBy = 102,
@@ -35,7 +39,9 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "CNO",
                 RoleDisplayName = "Chief of Naval Operations",
                 RoleType = "FLEETCOM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-8" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" }
+                }
             },
             new OrgRole {
                 RoleOrderBy = 105,
@@ -43,7 +49,9 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Fleet Adviser",
                 RoleDisplayName = "Senior Enlisted Adviser",
                 RoleType = "FLEETCOM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9 (Special)" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Fleet Master Chief Petty Officer", RankType = "Navy" }
+                }
             },
             new OrgRole {
                 RoleOrderBy = 106,
@@ -51,7 +59,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Fleet Adviser",
                 RoleDisplayName = "Enlisted Adviser",
                 RoleType = "FLEETCOM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Sergeant Major", RankType = "Marine" },
+                }
             },
 
             //NAVCOM HQ
@@ -61,7 +72,12 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "NAVCOM CO",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "NAVCOM HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-7" }, new PayGrade { PayGradeName = "O-6"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Brigadier General", RankType = "Marine" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Colonel", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 111,
@@ -69,7 +85,12 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "NAVCOM XO",
                 RoleDisplayName = "Executive Officer",
                 RoleType = "NAVCOM HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-5" }, new PayGrade { PayGradeName = "O-6"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Colonel", RankType = "Marine" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Colonel", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 112,
@@ -77,7 +98,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "NAVCOM Adviser",
                 RoleDisplayName = "Senior Enlisted Adviser",
                 RoleType = "NAVCOM HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-9" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Sergeant Major", RankType = "Marine" },
+                }
             },
 
             //Office Leadership
@@ -87,7 +111,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Senior Tech Officer",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Office Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 116,
@@ -95,7 +122,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Senior Intel Officer",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Office Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 117,
@@ -103,7 +133,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Senior Financier",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Office Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 118,
@@ -111,7 +144,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Senior PR Officer",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Office Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 119,
@@ -119,7 +155,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Senior Diplomat",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Office Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
 
             //AIR WING HQ
@@ -129,7 +168,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Air Wing CO",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Air Wing HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 121,
@@ -137,14 +179,20 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Air Wing XO",
                 RoleDisplayName = "Executive Officer",
                 RoleType = "Air Wing HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-3" }, new PayGrade { PayGradeName = "O-4"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 122,
                 RoleName = "Air Wing Chief",
                 RoleShortName = "Air Wing Chief",
                 RoleType = "Air Wing HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-8" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                }
             },
 
             //Combat Team HQ
@@ -154,7 +202,10 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Combat Team CO",
                 RoleDisplayName = "Commanding Officer",
                 RoleType = "Combat Team HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-4" }, new PayGrade { PayGradeName = "O-5"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Lieutenant Colonel", RankType = "Marine" },
+                    new Rank { RankName = "Major", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 131,
@@ -162,14 +213,20 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Combat Team XO",
                 RoleDisplayName = "Executive Officer",
                 RoleType = "Combat Team HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-3" }, new PayGrade { PayGradeName = "O-4"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Major", RankType = "Marine" },
+                    new Rank { RankName = "Captain", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 132,
                 RoleName = "Combat Team Sergeant",
                 RoleShortName = "Team Sergeant",
                 RoleType = "Combat Team HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-8" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "First Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Gunnery Sergeant", RankType = "Marine" },
+                }
             },
 
             //Squadron & Platoon Leadership
@@ -177,20 +234,30 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleOrderBy = 140,
                 RoleName = "Squadron Leader",
                 RoleType = "Squadron HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-1" }, new PayGrade { PayGradeName = "O-2" }, new PayGrade { PayGradeName = "O-3"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 141,
                 RoleName = "Platoon Leader",
                 RoleType = "Platoon HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "O-1" }, new PayGrade { PayGradeName = "O-2" }, new PayGrade { PayGradeName = "O-3"} }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Captain", RankType = "Marine" },
+                    new Rank { RankName = "First Lieutenant", RankType = "Marine" },
+                    new Rank { RankName = "Second Lieutenant", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 141,
                 RoleName = "Officer-in-Training",
                 RoleShortName = "OIT",
                 RoleType = "OIT",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "OC" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Midshipman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 145,
@@ -198,34 +265,49 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Squadron Chief",
                 RoleType = "Squadron HQ",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 146,
                 RoleName = "Platoon Sergeant",
                 RoleShortName = "Platoon Sgt.",
                 RoleType = "Platoon HQ",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Gunnery Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Staff Sergeant", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 147,
                 RoleName = "Flight Leader",
                 RoleType = "Tactical Flight Leadership",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 148,
                 RoleName = "Crew Chief",
                 RoleType = "Tactical Flight Leadership",
                 RatingCode = "AW",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 148,
                 RoleName = "Squad Leader",
                 RoleType = "Tactical Marine Leadership",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Staff Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Sergeant", RankType = "Marine" },
+                }
             },
 
             //Squadron Specialist & Support
@@ -235,7 +317,11 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Intel Specialist",
                 RoleType = "Flight",
                 RatingCode = "IS",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" }, new PayGrade { PayGradeName = "E-7" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                }
             },
 
             //Aviation Roles
@@ -244,14 +330,22 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Airlift Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Attack Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -259,7 +353,11 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "CSAR Operator",
                 RoleType = "Flight",
                 RatingCode = "AW",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -267,7 +365,11 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "CSAR Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -275,7 +377,11 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "ComTrans Operator",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -283,7 +389,11 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "EWAR Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -291,35 +401,55 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "EWAR Tech",
                 RoleType = "Flight",
                 RatingCode = "ET",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Exploration Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Fighter Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Flight Engineer",
                 RoleType = "Flight",
                 RatingCode = "AD",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Loadmaster",
                 RoleType = "Flight",
                 RatingCode = "AW",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
@@ -327,29 +457,42 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Ops Specialist",
                 RoleType = "Flight",
                 RatingCode = "AW",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
-                RoleName = "Reconaissance Operator",
+                RoleName = "Reconnaissance Operator",
                 RoleShortName = "Recon Operator",
                 RoleType = "Flight",
                 RatingCode = "SO",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-5" }, new PayGrade { PayGradeName = "E-6" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 150,
                 RoleName = "Strike Pilot",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 159,
                 RoleName = "Flight Trainee",
                 RoleType = "Flight",
                 RatingCode = "AP",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             
             //Marine Roles
@@ -358,39 +501,61 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Corpsman",
                 RoleType = "Marine",
                 RatingCode = "HM",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 160,
                 RoleName = "Demolitions Specialist",
                 RoleShortName = "Demo Specialist",
                 RoleType = "Marine",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Corporal", RankType = "Marine" },
+                    new Rank { RankName = "Lance Corporal", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 160,
                 RoleName = "Heavy Weapons Operator",
                 RoleShortName = "Weapons Operator",
                 RoleType = "Marine",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Corporal", RankType = "Marine" },
+                    new Rank { RankName = "Lance Corporal", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 160,
                 RoleName = "Marksman",
                 RoleType = "Marine",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Corporal", RankType = "Marine" },
+                    new Rank { RankName = "Lance Corporal", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 160,
                 RoleName = "Rifleman",
                 RoleType = "Marine",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" }, new PayGrade { PayGradeName = "E-4" }, new PayGrade { PayGradeName = "E-5" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Sergeant", RankType = "Marine" },
+                    new Rank { RankName = "Corporal", RankType = "Marine" },
+                    new Rank { RankName = "Lance Corporal", RankType = "Marine" },
+                }
             },
             new OrgRole {
                 RoleOrderBy = 160,
                 RoleName = "Infantry Trainee",
                 RoleType = "Marine",
-                SupportedPayGrades = new List<PayGrade> { new PayGrade { PayGradeName = "E-3" } }
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Lance Corporal", RankType = "Marine" },
+                }
             },
 
             //Office Roles - Officers
@@ -399,17 +564,17 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Technology Officer",
                 RoleShortName = "Tech Officer",
                 RoleType = "Office",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "O-1" },
-                    new PayGrade { PayGradeName = "O-2" },
-                    new PayGrade { PayGradeName = "O-3" },
-                    new PayGrade { PayGradeName = "O-4" },
-                    new PayGrade { PayGradeName = "O-5" },
-                    new PayGrade { PayGradeName = "O-6" },
-                    new PayGrade { PayGradeName = "O-7" },
-                    new PayGrade { PayGradeName = "O-8" },
-                    new PayGrade { PayGradeName = "O-9" },
-                    new PayGrade { PayGradeName = "O-10" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -417,17 +582,17 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Intelligence Officer",
                 RoleShortName = "Intel Officer",
                 RoleType = "Office",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "O-1" },
-                    new PayGrade { PayGradeName = "O-2" },
-                    new PayGrade { PayGradeName = "O-3" },
-                    new PayGrade { PayGradeName = "O-4" },
-                    new PayGrade { PayGradeName = "O-5" },
-                    new PayGrade { PayGradeName = "O-6" },
-                    new PayGrade { PayGradeName = "O-7" },
-                    new PayGrade { PayGradeName = "O-8" },
-                    new PayGrade { PayGradeName = "O-9" },
-                    new PayGrade { PayGradeName = "O-10" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -435,17 +600,17 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Finance Officer",
                 RoleShortName = "Financier",
                 RoleType = "Office",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "O-1" },
-                    new PayGrade { PayGradeName = "O-2" },
-                    new PayGrade { PayGradeName = "O-3" },
-                    new PayGrade { PayGradeName = "O-4" },
-                    new PayGrade { PayGradeName = "O-5" },
-                    new PayGrade { PayGradeName = "O-6" },
-                    new PayGrade { PayGradeName = "O-7" },
-                    new PayGrade { PayGradeName = "O-8" },
-                    new PayGrade { PayGradeName = "O-9" },
-                    new PayGrade { PayGradeName = "O-10" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -453,17 +618,17 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Public Relations Officer",
                 RoleShortName = "PR Officer",
                 RoleType = "Office",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "O-1" },
-                    new PayGrade { PayGradeName = "O-2" },
-                    new PayGrade { PayGradeName = "O-3" },
-                    new PayGrade { PayGradeName = "O-4" },
-                    new PayGrade { PayGradeName = "O-5" },
-                    new PayGrade { PayGradeName = "O-6" },
-                    new PayGrade { PayGradeName = "O-7" },
-                    new PayGrade { PayGradeName = "O-8" },
-                    new PayGrade { PayGradeName = "O-9" },
-                    new PayGrade { PayGradeName = "O-10" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -471,17 +636,17 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleName = "Diplomacy Officer",
                 RoleShortName = "Diplomat",
                 RoleType = "Office",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "O-1" },
-                    new PayGrade { PayGradeName = "O-2" },
-                    new PayGrade { PayGradeName = "O-3" },
-                    new PayGrade { PayGradeName = "O-4" },
-                    new PayGrade { PayGradeName = "O-5" },
-                    new PayGrade { PayGradeName = "O-6" },
-                    new PayGrade { PayGradeName = "O-7" },
-                    new PayGrade { PayGradeName = "O-8" },
-                    new PayGrade { PayGradeName = "O-9" },
-                    new PayGrade { PayGradeName = "O-10" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Vice Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral", RankType = "Navy" },
+                    new Rank { RankName = "Rear Admiral (Lower Half)", RankType = "Navy" },
+                    new Rank { RankName = "Captain", RankType = "Navy" },
+                    new Rank { RankName = "Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant Commander", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant", RankType = "Navy" },
+                    new Rank { RankName = "Lieutenant (Junior Grade)", RankType = "Navy" },
+                    new Rank { RankName = "Ensign", RankType = "Navy" },
                 }
             },
 
@@ -492,14 +657,14 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Tech Specialist",
                 RoleType = "Office",
                 RatingCode = "IT",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "E-3" },
-                    new PayGrade { PayGradeName = "E-4" },
-                    new PayGrade { PayGradeName = "E-5" },
-                    new PayGrade { PayGradeName = "E-6" },
-                    new PayGrade { PayGradeName = "E-7" },
-                    new PayGrade { PayGradeName = "E-8" },
-                    new PayGrade { PayGradeName = "E-9" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -508,14 +673,14 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Intel Specialist",
                 RoleType = "Office",
                 RatingCode = "IS",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "E-3" },
-                    new PayGrade { PayGradeName = "E-4" },
-                    new PayGrade { PayGradeName = "E-5" },
-                    new PayGrade { PayGradeName = "E-6" },
-                    new PayGrade { PayGradeName = "E-7" },
-                    new PayGrade { PayGradeName = "E-8" },
-                    new PayGrade { PayGradeName = "E-9" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -524,14 +689,14 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Finance  Spc.",
                 RoleType = "Office",
                 RatingCode = "YF",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "E-3" },
-                    new PayGrade { PayGradeName = "E-4" },
-                    new PayGrade { PayGradeName = "E-5" },
-                    new PayGrade { PayGradeName = "E-6" },
-                    new PayGrade { PayGradeName = "E-7" },
-                    new PayGrade { PayGradeName = "E-8" },
-                    new PayGrade { PayGradeName = "E-9" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -540,14 +705,14 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "PR  Specialist",
                 RoleType = "Office",
                 RatingCode = "MC",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "E-3" },
-                    new PayGrade { PayGradeName = "E-4" },
-                    new PayGrade { PayGradeName = "E-5" },
-                    new PayGrade { PayGradeName = "E-6" },
-                    new PayGrade { PayGradeName = "E-7" },
-                    new PayGrade { PayGradeName = "E-8" },
-                    new PayGrade { PayGradeName = "E-9" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
                 }
             },
             new OrgRole {
@@ -556,14 +721,14 @@ namespace vvarscNET.Test.Helpers.Data
                 RoleShortName = "Diplomacy Spc.",
                 RoleType = "Office",
                 RatingCode = "YD",
-                SupportedPayGrades = new List<PayGrade> {
-                    new PayGrade { PayGradeName = "E-3" },
-                    new PayGrade { PayGradeName = "E-4" },
-                    new PayGrade { PayGradeName = "E-5" },
-                    new PayGrade { PayGradeName = "E-6" },
-                    new PayGrade { PayGradeName = "E-7" },
-                    new PayGrade { PayGradeName = "E-8" },
-                    new PayGrade { PayGradeName = "E-9" },
+                SupportedRanks = new List<Rank>{
+                    new Rank { RankName = "Master Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Senior Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Chief Petty Officer", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 1st Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 2nd Class", RankType = "Navy" },
+                    new Rank { RankName = "Petty Officer 3rd Class", RankType = "Navy" },
+                    new Rank { RankName = "Airman", RankType = "Navy" },
                 }
             },
 

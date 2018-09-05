@@ -12,23 +12,19 @@ using Dapper;
 
 namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 {
-    /// <summary>
-    /// Special Version of Handler that Uses Strings to look-up
-    /// PayGrades instead of int (as would be passed-in from client)
-    /// </summary>
-    public class InitPayGradesForOrgRole_CH : ICommandHandler<InitPayGradesForOrgRole_C>
+    public class UpdateRanksForUnitOrgRole_CH : ICommandHandler<UpdateRanksForUnitOrgRole_C>
     {
         private readonly SQLConnectionFactory _connFactory;
 
-        public InitPayGradesForOrgRole_CH(SQLConnectionFactory connFactory)
+        public UpdateRanksForUnitOrgRole_CH(SQLConnectionFactory connFactory)
         {
             _connFactory = connFactory;
         }
 
-        public Result Handle(IUserContext context, InitPayGradesForOrgRole_C command)
+        public Result Handle(IUserContext context, UpdateRanksForUnitOrgRole_C command)
         {
-            if (command.SupportedPayGrades == null || command.SupportedPayGrades.Count < 1)
-                throw new ArgumentNullException(nameof(command.SupportedPayGrades));
+            if (command.SupportedRanks == null || command.SupportedRanks.Count < 1)
+                throw new ArgumentNullException(nameof(command.SupportedRanks));
 
             Result result = new Result() { Status = HttpStatusCode.BadRequest };
 
@@ -38,14 +34,16 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 
                 var cmd0 = @"
                     DELETE m
-                    from Organizations.PayGradeOrgRoleMap m
-                    where m.OrgRoleID = @OrgRoleID;
+                    from Organizations.RankUnitOrgRoleMap m
+                    where m.OrgRoleID = @OrgRoleID
+                        and m.UnitID = @UnitID
                 ";
 
                 var cmd = @"
-                    INSERT INTO [Organizations].[PayGradeOrgRoleMap] (
-	                    PayGradeID
+                    INSERT INTO [Organizations].[RankUnitOrgRoleMap] (
+	                    RankID
 	                    ,OrgRoleID
+                        ,UnitID
 	                    ,IsActive
 	                    ,CreatedOn
 	                    ,CreatedBy
@@ -53,16 +51,17 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,ModifiedBy
                     )
                     select
-	                    pg.ID
+	                    r.ID
 	                    ,@OrgRoleID
+                        ,@UnitID
 	                    ,1 [IsActive]
 	                    ,@CreatedOn
 	                    ,@CreatedBy
 	                    ,@ModifiedOn
 	                    ,@ModifiedBy
-                    from [Organizations].[PayGrades] pg
-                    where pg.PayGradeName in @SupportedPayGrades
-                        and pg.IsActive = 1
+                    from [Organizations].[Ranks] r
+                    where r.IsActive = 1
+                        and r.ID in @SupportedRanks
                 ";
 
                 using (var transaction = connection.BeginTransaction())
@@ -71,13 +70,14 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                     {
                         int rowsAffected0 = connection.Execute(cmd0, new
                         {
-                            OrgRoleID = command.OrgRoleID
+                            OrgRoleID = command.OrgRoleID,
+                            UnitID = command.UnitID
                         }, transaction);
 
                         int rowsAffected = connection.Execute(cmd, new
                         {
                             OrgRoleID = command.OrgRoleID,
-                            SupportedPayGrades = command.SupportedPayGrades,
+                            SupportedRanks = command.SupportedRanks,
                             IsActive = true,
                             CreatedOn = DateTime.UtcNow,
                             CreatedBy = context.MemberID.ToString(),
@@ -85,7 +85,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
                             ModifiedBy = context.MemberID.ToString()
                         }, transaction);
                         
-                        if (rowsAffected == command.SupportedPayGrades.Count)
+                        if (rowsAffected == command.SupportedRanks.Count)
                         {
                             transaction.Commit();
                         }
