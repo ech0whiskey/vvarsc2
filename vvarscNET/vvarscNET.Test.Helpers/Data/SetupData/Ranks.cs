@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using vvarscNET.Model.Objects.People;
+using vvarscNET.Model.Objects.Organizations;
 
 namespace vvarscNET.Test.Helpers.Data
 {

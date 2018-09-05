@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using vvarscNET.Model.Objects.People;
-using vvarscNET.Model.ResponseModels.People;
+using vvarscNET.Model.Objects.Organizations;
+using vvarscNET.Model.ResponseModels.Organizations;
 using System.Web;
 using vvarscNET.Model.Result;
 

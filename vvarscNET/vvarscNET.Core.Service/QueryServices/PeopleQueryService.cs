@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Service.Interfaces;
 using vvarscNET.Model.Objects.People;
-using vvarscNET.Model.ResponseModels.People;
 using vvarscNET.Core.QueryModels.People;
 
 namespace vvarscNET.Core.Service.QueryServices
@@ -28,16 +27,7 @@ namespace vvarscNET.Core.Service.QueryServices
 
             return result;
         }
-
-        public List<ListRanks_QRM> ListRanks(string accessToken)
-        {
-            var query = new ListRanks_Q();
-
-            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<ListRanks_QRM>>(accessToken, query);
-
-            return result;
-        }
-
+        
         public Member GetMemberByID(string accessToken, int memberID)
         {
             var query = new GetMemberByID_Q
@@ -46,15 +36,6 @@ namespace vvarscNET.Core.Service.QueryServices
             };
 
             var result = _queryDispatcher.Dispatch<GetMemberByID_Q, Member>(accessToken, query);
-
-            return result;
-        }
-
-        public List<PayGrade> ListPayGrades(string accessToken)
-        {
-            var query = new ListPayGrades_Q { };
-
-            var result = _queryDispatcher.Dispatch<ListPayGrades_Q, List<PayGrade>>(accessToken, query);
 
             return result;
         }

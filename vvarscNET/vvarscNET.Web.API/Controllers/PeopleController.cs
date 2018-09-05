@@ -6,7 +6,6 @@ using System.Net;
 using System.Collections.Generic;
 using vvarscNET.Core.Service.Interfaces;
 using vvarscNET.Model.Objects.People;
-using vvarscNET.Model.ResponseModels.People;
 using vvarscNET.Model.Result;
 
 namespace vvarscNET.Web.API.Controllers
@@ -28,34 +27,6 @@ namespace vvarscNET.Web.API.Controllers
         {
             _peopleQuerySvc = peopleQuerySvc;
             _peopleCommandSvc = peopleCommandSvc;
-        }
-
-        /// <summary>
-        /// Method to List all Ranks
-        /// </summary>
-        /// <returns>List of Ranks</returns>
-        [HttpGet]
-        [Route("ranks")]
-        [ResponseType(typeof(List<ListRanks_QRM>))]
-        public IHttpActionResult ListRanks()
-        {
-            var returnData = _peopleQuerySvc.ListRanks(Request.GetUserContext().AccessToken);
-
-            return Ok(returnData);
-        }
-
-        /// <summary>
-        /// Method to List all PayGrades
-        /// </summary>
-        /// <returns>List of PayGrades</returns>
-        [HttpGet]
-        [Route("paygrades")]
-        [ResponseType(typeof(List<PayGrade>))]
-        public IHttpActionResult ListPayGrades()
-        {
-            var returnData = _peopleQuerySvc.ListPayGrades(Request.GetUserContext().AccessToken);
-
-            return Ok(returnData);
         }
 
         /// <summary>

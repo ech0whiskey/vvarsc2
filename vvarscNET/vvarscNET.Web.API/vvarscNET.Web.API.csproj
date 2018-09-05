@@ -216,7 +216,6 @@
     <Compile Include="Controllers\UnitsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
-    <Compile Include="Controllers\ServerDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,7 +225,6 @@
     <Compile Include="Infrastructure\Exceptions\UnhandledExceptionLogger.cs" />
     <Compile Include="Infrastructure\Extensions\AppBuilderExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\HttpRequestMessageExtension.cs" />
-    <Compile Include="Models\ServerDataModel.cs" />
     <Compile Include="OwinMiddlewares\ApiAuthenticationMiddleware.cs" />
     <Compile Include="OwinMiddlewares\Configuration\ApiAuthenticationOptions.cs" />
     <Compile Include="OwinMiddlewares\Configuration\GlobalExceptionOptions.cs" />
@@ -267,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vvarscNET.Core.Data\vvarscNET.Core.Data.csproj">

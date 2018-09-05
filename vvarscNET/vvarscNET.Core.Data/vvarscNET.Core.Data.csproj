@@ -59,8 +59,8 @@
     <Compile Include="CommandHandlers\People\DeleteMember_CH.cs" />
     <Compile Include="CommandHandlers\People\UpdateMember_CH.cs" />
     <Compile Include="CommandHandlers\Organizations\CreateOrgRole_CH.cs" />
-    <Compile Include="CommandHandlers\People\CreateRank_CH.cs" />
-    <Compile Include="CommandHandlers\People\CreatePayGrade_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\CreateRank_CH.cs" />
+    <Compile Include="CommandHandlers\Organizations\CreatePayGrade_CH.cs" />
     <Compile Include="CommandHandlers\People\CreateMember_CH.cs" />
     <Compile Include="QueryHandlers\Authentication\AuthenticateMember_QH.cs" />
     <Compile Include="QueryHandlers\Authentication\GetAccessTokenByValue_QH.cs" />
@@ -72,8 +72,8 @@
     <Compile Include="QueryHandlers\Organizations\ListUnits_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByAccessToken_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListRoles_QH.cs" />
-    <Compile Include="QueryHandlers\People\ListPayGrades_QH.cs" />
-    <Compile Include="QueryHandlers\People\ListRanks_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\ListPayGrades_QH.cs" />
+    <Compile Include="QueryHandlers\Organizations\ListRanks_QH.cs" />
     <Compile Include="QueryHandlers\People\ListMembers_QH.cs" />
     <Compile Include="QueryHandlers\People\GetMemberByID_QH.cs" />
     <Compile Include="QueryHandlers\Organizations\ListOrganizations_QH.cs" />

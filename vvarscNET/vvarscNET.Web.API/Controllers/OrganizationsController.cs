@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net;
 using System.Collections.Generic;
 using vvarscNET.Core.Service.Interfaces;
+using vvarscNET.Model.ResponseModels.Organizations;
 using vvarscNET.Model.Objects.Organizations;
 using vvarscNET.Model.Result;
 
@@ -59,15 +60,43 @@ namespace vvarscNET.Web.API.Controllers
         }
 
         /// <summary>
+        /// Method to List all Ranks
+        /// </summary>
+        /// <returns>List of Ranks</returns>
+        [HttpGet]
+        [Route("ranks")]
+        [ResponseType(typeof(List<ListRanks_QRM>))]
+        public IHttpActionResult ListRanks()
+        {
+            var returnData = _orgQueryService.ListRanks(Request.GetUserContext().AccessToken);
+
+            return Ok(returnData);
+        }
+
+        /// <summary>
+        /// Method to List all PayGrades
+        /// </summary>
+        /// <returns>List of PayGrades</returns>
+        [HttpGet]
+        [Route("paygrades")]
+        [ResponseType(typeof(List<PayGrade>))]
+        public IHttpActionResult ListPayGrades()
+        {
+            var returnData = _orgQueryService.ListPayGrades(Request.GetUserContext().AccessToken);
+
+            return Ok(returnData);
+        }
+
+        /// <summary>
         /// Method to get list of Organization Roles
         /// </summary>
         /// <returns>List of OrgRole</returns>
         [HttpGet]
         [Route("roles")]
         [ResponseType(typeof(List<OrgRole>))]
-        public IHttpActionResult ListRoles()
+        public IHttpActionResult ListOrgRoles()
         {
-            var returnData = _orgQueryService.ListRoles(Request.GetUserContext().AccessToken);
+            var returnData = _orgQueryService.ListOrgRoles(Request.GetUserContext().AccessToken);
 
             return Ok(returnData);
         }

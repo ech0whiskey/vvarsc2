@@ -43,7 +43,7 @@ namespace vvarscNET.Core.Service.QueryServices
             return result;
         }
 
-        public List<OrgRole> ListRoles(string accessToken)
+        public List<OrgRole> ListOrgRoles(string accessToken)
         {
             var query = new ListRoles_Q();
 
@@ -60,6 +60,24 @@ namespace vvarscNET.Core.Service.QueryServices
             };
 
             var result = _queryDispatcher.Dispatch<GetOrgRoleByID_Q, OrgRole>(accessToken, query);
+
+            return result;
+        }
+
+        public List<ListRanks_QRM> ListRanks(string accessToken)
+        {
+            var query = new ListRanks_Q();
+
+            var result = _queryDispatcher.Dispatch<ListRanks_Q, List<ListRanks_QRM>>(accessToken, query);
+
+            return result;
+        }
+
+        public List<PayGrade> ListPayGrades(string accessToken)
+        {
+            var query = new ListPayGrades_Q { };
+
+            var result = _queryDispatcher.Dispatch<ListPayGrades_Q, List<PayGrade>>(accessToken, query);
 
             return result;
         }

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [People].[Ranks] (
+﻿CREATE TABLE [Organizations].[Ranks] (
 	ID int identity(1,1) NOT NULL
 	,PayGradeID INT NOT NULL
 	,RankName [dbo].Name
@@ -14,5 +14,5 @@
 	,ModifiedOn [dbo].ModifiedOn
 	,ModifiedBy [dbo].ModifiedBy
 	,CONSTRAINT [PK_Ranks] PRIMARY KEY CLUSTERED (ID)
-	,CONSTRAINT [FK_PayGrades_Ranks] FOREIGN KEY (PayGradeID) REFERENCES [People].[PayGrades](ID)
+	,CONSTRAINT [FK_PayGrades_Ranks] FOREIGN KEY (PayGradeID) REFERENCES [Organizations].[PayGrades](ID)
 )

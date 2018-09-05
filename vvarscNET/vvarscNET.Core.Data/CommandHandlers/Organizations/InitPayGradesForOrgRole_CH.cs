@@ -60,7 +60,7 @@ namespace vvarscNET.Core.Data.CommandHandlers.Organizations
 	                    ,@CreatedBy
 	                    ,@ModifiedOn
 	                    ,@ModifiedBy
-                    from [People].[PayGrades] pg
+                    from [Organizations].[PayGrades] pg
                     where pg.PayGradeName in @SupportedPayGrades
                         and pg.IsActive = 1
                 ";

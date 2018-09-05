@@ -1,4 +1,4 @@
-﻿CREATE TABLE [People].[PayGrades] (
+﻿CREATE TABLE [Organizations].[PayGrades] (
 	ID int identity(1,1) NOT NULL
 	,PayGradeName [dbo].Name
 	,PayGradeDisplayName [dbo].Name

@@ -1,15 +1,14 @@
 ﻿using Dapper;
-using vvarscNET.Core.QueryModels.People;
+using vvarscNET.Core.QueryModels.Organizations;
 using vvarscNET.Core.Interfaces;
 using vvarscNET.Core.Factories;
 using vvarscNET.Model.Objects.Organizations;
-using vvarscNET.Model.Objects.People;
 using System;
 using System.Linq;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-namespace vvarscNET.Core.Data.QueryHandlers.People
+namespace vvarscNET.Core.Data.QueryHandlers.Organizations
 {
     public class ListPayGrades_QH : IQueryHandler<ListPayGrades_Q, List<PayGrade>>
     {
@@ -34,7 +33,7 @@ namespace vvarscNET.Core.Data.QueryHandlers.People
 	                    ,pg.PayGradeOrderBy
 	                    ,pg.PayGradeGroup
 	                    ,pg.IsActive
-                    from People.PayGrades pg
+                    from Organizations.PayGrades pg
                     order by
 	                    pg.PayGradeOrderBy        
                 ";
